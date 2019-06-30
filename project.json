@@ -1,0 +1,19 @@
+{
+  "project_type": "javascript",
+  "debugMode"   : 1,
+  "showFPS"     : false,
+  "frameRate"   : 60,
+  "id"          : "gameCanvas",
+  "renderMode"  : 1,
+  "engineDir"   : "cocos2d-html5",
+  "modules"     : ["cocos2d", "editbox", "ccui"],
+
+  "jsList"      : [
+    "src/GlobalParam.js",
+    "src/MainScene.js",
+    "src/Resources.js",
+
+    "src/BattleStage.js",
+    "src/Stage1.js"
+  ]
+}

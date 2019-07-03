@@ -7,9 +7,16 @@ var MainScene = cc.Scene.extend({
     }
 });
 var type_num = 0;
+
+
+
+gamename = {};
+
 var MainLayer = cc.Layer.extend({
     init: function () {
         this._super();
+        gamename.input = new myGameInput();
+
         var size = cc.director.getWinSize();
 
         this.bg = gb.createSprite(res.main_bg, cc.p(size.width/2, size.height/2), this);

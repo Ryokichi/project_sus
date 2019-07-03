@@ -23,6 +23,14 @@ var BattleLayer = cc.Layer.extend({
         // gb.addMouseEvent(this.skill_2);
         // gb.addMouseEvent(this.skill_3);
 
+        this.skill_2.mouse = function (e) {
+            cc.log("funciona, está vivo", e);
+        };
+
+        cc.log(gamename.input.addEventListener("onMouseDown", "mouse", this.skill_2, 1));
+
+        // gameInput.addEventListener("onMouseDown", "mouse", this.skill_2, 1);
+
 
 
     },

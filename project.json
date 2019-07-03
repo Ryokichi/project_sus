@@ -9,7 +9,10 @@
   "modules"     : ["cocos2d", "editbox", "ccui"],
 
   "jsList"      : [
+    "src/Padroes/gameInput.js",
     "src/GlobalParam.js",
+
+
     "src/MainScene.js",
     "src/Resources.js",
 

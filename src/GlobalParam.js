@@ -1,3 +1,4 @@
+var pd = {};
 var gb = {
     addPlistAndPng: function () {
         for (var plist_key in res) {
@@ -61,38 +62,64 @@ var gb = {
         cc.director.runScene(new transition[type](delay, scene));
     },
 
-    addMouseEvent: function (obj) {
-        if (!cc.sys.capabilities.hasOwnProperty('mouse'))
-            return false;
 
-        cc.eventManager.addListener({
-            event: cc.EventListener.MOUSE,
-            onMouseDown: function (event) {
-                var target = event.getCurrentTarget();
-                var location = target.convertToNodeSpace(event.getLocation());
-                var s = target.getContentSize();
-                var rect = cc.rect(0,0,s.width,s.height);
+};
+/**
+ * Embaralha um array.
+ * @type {Function}
+ * @param {Array} array
+ * @returns {Array}
+ */
+pd.shuffle = function(array) {
+    for(var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+    return array;
+};
 
-                if (cc.rectContainsPoint(rect, location)) {
-                    cc.log("Mouse foi pressionado");
-                    target.setScale(0.5);
-                }
-            },
-            onMouseUp: function (event) {
-                var target = event.getCurrentTarget();
-                cc.log("Mouse foi solto");
-                target.setScale(1);
-            },
-            onMouseMove: function (event) {
-                // cc.log("Mouse Movendo");
-                // cc.log(event);
-            },
-            onMouseScroll: function (event) {
-                cc.log("Mouse Scrollando");
-                cc.log(event);
+/**
+ * Troca a posição de dois elementos de um array entre eles.
+ * @type {Function}
+ * @param {Array} array
+ * @param {Number} i - índice do primeiro elemento.
+ * @param {Number} j - índice do segundo elemento.
+ */
+pd.arraySwap = function(array, i, j) {
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+};
+
+/**
+ * Ordena um array.
+ * @type {Function}
+ * @param {Array} array
+ * @param {Number} [key = null] - a propriedade dos elementos do array que será usada como chave de ordenação. Se for null, o elemento do array será a própria chave.
+ * @param {boolean} [crescentOrder=false]
+ */
+pd.orderBy = function(array, key, crescentOrder) {
+    crescentOrder = crescentOrder == null || crescentOrder == undefined ? false : crescentOrder;
+    for(var i = 0 ; i < array.length ; i++) {
+        for(var j = i + 1 ; j < array.length; j++) {
+            if(((array[j][key] || array[j]) < (array[i][key] || array[i])) == !crescentOrder) {
+                pd.arraySwap(array, j, i);
             }
-        }, obj);
-
-        return true;
+        }
     }
+};
+
+/**
+ * Calcula a distância entre dois pontos.
+ * @param {Number|cc.Point} x1_or_p1
+ * @param {Number|cc.Point} y1_or_p2
+ * @param {Number} [x2]
+ * @param {Number} [y2]
+ * @returns {number}
+ * @author Ricardo Petrére
+ */
+pd.pointDistance = function(x1_or_p1, y1_or_p2, x2, y2) {
+    var x1 = typeof x1_or_p1 == "number" ? x1_or_p1 : x1_or_p1.x;
+    var y1 = typeof x1_or_p1 == "number" ? y1_or_p2 : x1_or_p1.y;
+    x2 = typeof y1_or_p2 == "number" ? x2 : y1_or_p2.x;
+    y2 = typeof y1_or_p2 == "number" ? y2 : y1_or_p2.y;
+
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };

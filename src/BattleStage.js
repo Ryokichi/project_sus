@@ -12,14 +12,13 @@ var BattleLayer = cc.Layer.extend({
         var size = cc.director.getWinSize();
         var middle = cc.p(size.width/2, size.height/2);
 
-        gb.createSprite(res.bg, middle, this, -1);
+        pd.createSprite(res.bg, middle, this, -1);
 
-        this.skill_1 = gb.createSprite("cura1.png", cc.p(100,100), this, 1);
-        this.skill_2 = gb.createSprite("cura2.png", cc.p(200,100), this, 1);
-        this.skill_3 = gb.createSprite("cura3.png", cc.p(300,100), this, 1);
+        this.skill_1 = pd.createSprite("cura1.png", cc.p(100,100), this, 1);
+        this.skill_2 = pd.createSprite("cura2.png", cc.p(200,100), this, 1);
+        this.skill_3 = pd.createSprite("cura3.png", cc.p(300,100), this, 1);
 
 
-        gb.addMouseEvent(this.skill_1);
         // gb.addMouseEvent(this.skill_2);
         // gb.addMouseEvent(this.skill_3);
 
@@ -27,11 +26,8 @@ var BattleLayer = cc.Layer.extend({
             cc.log("funciona, está vivo", e);
         };
 
-        cc.log(gamename.input.addEventListener("onMouseDown", "mouse", this.skill_2, 1));
+        cc.log(projectSUS.input.addEventListener("onMouseDown", "mouse", this.skill_2, 1));
 
         // gameInput.addEventListener("onMouseDown", "mouse", this.skill_2, 1);
-
-
-
     },
 });

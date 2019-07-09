@@ -1,15 +1,15 @@
-var pd = {};
-var gb = {
-    addPlistAndPng: function () {
+pd = {};
+
+pd.addPlistAndPng = function () {
         for (var plist_key in res) {
             if (plist_key.match("_plist")) {
                 var png_key = plist_key.replace("_plist", "_png");
                 cc.spriteFrameCache.addSpriteFrames(res[plist_key], res[png_key]);
             }
         }
-    },
+    };
 
-    createSprite: function (spriteName, position, parentNode, localZOrder) {
+    pd.createSprite = function (spriteName, position, parentNode, localZOrder) {
         ////para plist
         //// return cc.spriteFrameCache.getSpriteFrame(spriteFrameName);
         const name = cc.spriteFrameCache.getSpriteFrame(spriteName) || spriteName;
@@ -19,9 +19,9 @@ var gb = {
         if (parentNode)
             parentNode.addChild(obj, localZOrder || 0);
         return obj;
-    },
+    };
 
-    createButtonFromPlist: function (spriteName, parent, zOrder) {
+    pd.createButtonFromPlist = function (spriteName, parent, zOrder) {
         const spriteNormal  = spriteName+"n.png";
         const spritePressed = spriteName+"p.png";
         const spriteDisable = spriteName+"d.png";
@@ -30,17 +30,17 @@ var gb = {
         if (parent)
             parent.addChild(button, (zOrder || 0));
         return button;
-    },
+    };
 
-    createButtonFromLocal: function (spriteNormal, spritePressed, spriteDisable, parent, zOrder) {
+    pd.createButtonFromLocal  = function (spriteNormal, spritePressed, spriteDisable, parent, zOrder) {
         const button = new ccui.Button();
         button.loadTextures(spriteNormal, spritePressed, spriteDisable, ccui.Widget.LOCAL_TEXTURE);
         if (parent)
             parent.addChild(button, (zOrder || 0));
         return button;
-    },
+    };
 
-    changeScene: function (scene, delay, type) {
+    pd.changeScene = function (scene, delay, type) {
         var transition = [];
         transition.push(cc.TransitionCrossFade);
         transition.push(cc.TransitionFade);
@@ -60,10 +60,7 @@ var gb = {
         transition.push(cc.TransitionSlideInR);
 
         cc.director.runScene(new transition[type](delay, scene));
-    },
-
-
-};
+    };
 /**
  * Embaralha um array.
  * @type {Function}

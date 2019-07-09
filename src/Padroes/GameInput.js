@@ -1,4 +1,4 @@
-var myGameInput = cc.Class.extend({
+pd.gameInput = cc.Class.extend({
     ctor: function () {
         this.mouseDownListeners =[];
         this.mouseUpListeners =[];

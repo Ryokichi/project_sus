@@ -14,37 +14,15 @@ cc.game.onStart = function(){
     // cc.view.setDesignResolutionSize(designSize.width, designSize.height, cc.ResolutionPolicy.SHOW_ALL);
 
     cc.view.adjustViewPort(true);
-    cc.view.setDesignResolutionSize(1280, 720, cc.ResolutionPolicy.SHOW_ALL);
+    cc.view.setDesignResolutionSize(640, 360, cc.ResolutionPolicy.SHOW_ALL);
     cc.view.resizeWithBrowserSize(true);
 
     //load resources
 
     cc.LoaderScene.preload(game_resources, function () {
-        cc.director.runScene(new MainScene());
-        gb.addPlistAndPng();
-        // cc.director.runScene(new Stage1Scene());
-        // cc.spriteFrameCache.addSpriteFrames(res.buttons_plist, res.buttons_png); // sprite cache
+        cc.director.runScene(new projectSUS.StartScene());
+        pd.addPlistAndPng();
     }, this);
 
 };
 cc.game.run();
-
-
-
-
-
-
-// cc.game.onStart = function() {
-//     cc.view.adjustViewPort(true);
-//     cc.view.setDesignResolutionSize(1024, 768, cc.ResolutionPolicy.SHOW_ALL);
-//     cc.view.resizeWithBrowserSize(true);
-//
-//     cc.loader.loadJson("paths.json", function(err, data) {
-//         const paths = cc.sys.isMobile ? data.mobile : data.desktop;
-//         cc.loader.loadJs(paths.padroesPath, ["src/Boot.js"], function() {
-//             pd.boot(paths);
-//         });
-//     });
-// };
-//
-// cc.game.run();

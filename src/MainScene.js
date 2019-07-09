@@ -1,49 +1,37 @@
-var MainScene = cc.Scene.extend({
+projectSUS.MainScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
-        var layer = new MainLayer();
+        var layer = new projectSUS.MainLayer();
         this.addChild(layer);
         layer.init();
     }
 });
-var type_num = 0;
 
-
-
-gamename = {};
-
-var MainLayer = cc.Layer.extend({
+projectSUS.MainLayer = cc.Layer.extend({
     init: function () {
-        this._super();
-        gamename.input = new myGameInput();
+        this.bg = pd.createSprite(res.main_bg, cc.p(320, 180), this);
 
-        var size = cc.director.getWinSize();
+        this.btn  = pd.createSprite("btn120x40_n.png", cc.p(30,60), this);
 
-        this.bg = gb.createSprite(res.main_bg, cc.p(size.width/2, size.height/2), this);
-        this.bg.setScale(1.5);
+        this.to_spell_book_btn = new pd.Button();
+        this.to_spell_book_btn.setSprites("btn120x40_n.png", "btn120x40_p.png", "btn120x40_d.png");
+        this.to_spell_book_btn.setLabel("Spell Book");
+        this.to_spell_book_btn.setPosition(70, 330);
+        this.addChild(this.to_spell_book_btn);
 
-        this.btn_start = gb.createButtonFromPlist("btn_start_", this, 10);
-        this.btn_start.setPosition(size.width/2, size.height/1.5);
-        this.btn_start.addClickEventListener(this.startGame, this);
 
-        this.btn_options = gb.createButtonFromPlist("btn_opt_", this, 10);
-        this.btn_options.setPosition(size.width/2, size.height/4);
-        this.btn_options.addClickEventListener(this.goOptions, ["1", "2"]);
-
-        this.test = gb.createButtonFromLocal(res.close_btn, res.close_btn_p, "", this, 0);
-        this.test.setPosition(100,100);
-    },
-
-    startGame: function () {
-        if (type_num <= 15) {
-            gb.changeScene(new BattleScene(), 1, type_num);
+        projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this.to_spell_book_btn, 1);
+        this.to_spell_book_btn.onMouseDown = function (e) {
+            var box = this.getBoundingBox();
+            cc.log(box);
+            // if (cc.rectContainsPoint(cc.rect(0,0,)this.convertToNodeSpace(e.getLocation())))
+            // pd.changeScene(new projectSUS.MainScene(), 1, 0);
         }
-    },
 
-    goOptions: function (alpha, beta, charlie) {
-        cc.log("Ir para opções");
-        cc.log(alpha);
-        cc.log(beta);
-        cc.log(charlie);
+
     }
 });
+
+
+///todo  Animated button, Static button e button padarao
+

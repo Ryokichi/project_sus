@@ -12,13 +12,13 @@ var Stage1Layer = cc.Layer.extend({
         var size = cc.director.getWinSize();
         var middle = cc.p(size.width/2, size.height/2);
 
-        gb.createSprite(res.bg, middle, this, -1);
+        pd.createSprite(res.bg, middle, this, -1);
 
         this.runAction(cc.sequence(
             cc.delayTime(3),
             cc.callFunc(function () {
                 type_num ++;
-                gb.changeScene(new MainScene(), 1, 0);
+                pd.changeScene(new projectSUS.MainScene(), 1, 0);
             }, this)
         ))
     },

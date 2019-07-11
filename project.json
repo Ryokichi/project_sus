@@ -13,12 +13,16 @@
     "src/Padroes/GameInput.js",
     "src/Padroes/Button.js",
 
+    "src/Resources.js",
     "src/StartScene.js",
     "src/MainScene.js",
-    "src/Resources.js",
+
 
     "src/BattleStage.js",
-    "src/Stage1.js"
+    "src/SpellBookScene.js",
+    "src/Stage1.js",
 
+    "src/Spells/Spell.js",
+    "src/Spells/Cure.js"
   ]
 }

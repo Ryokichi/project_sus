@@ -1,6 +1,7 @@
 var res = {
     bg: "res/img/bg/bg.png",
     main_bg: "res/img/bg/main_bg.png",
+    spell_book: "res/img/spell_book/interface.png",
 
 
     buttons_plist: "res/img/buttons.plist",

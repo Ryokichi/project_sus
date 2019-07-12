@@ -9,36 +9,42 @@ projectSUS.MainScene = cc.Scene.extend({
 
 projectSUS.MainLayer = cc.Layer.extend({
     init: function () {
+        this.has_control = true;
+
         this.bg = pd.createSprite(res.main_bg, cc.p(320, 180), this);
 
         this.btn_1 = pd.createSprite("btn120x40_n.png", cc.p(70,330), this);
         this.btn_2 = pd.createSprite("btn120x40_n.png", cc.p(70,270), this);
 
-        projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
 
-        // this.to_spell_book_btn = new pd.Button();
-        // this.to_spell_book_btn.setSprites("btn120x40_n.png", "btn120x40_p.png", "btn120x40_d.png");
-        // this.to_spell_book_btn.setLabel("Spell Book");
-        // this.to_spell_book_btn.setPosition(70, 330);
-        // this.addChild(this.to_spell_book_btn);
-        //
-        //
-        // projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this.to_spell_book_btn, 1);
-        // this.to_spell_book_btn.onMouseDown = function (e) {
-        //     var box = this.getBoundingBox();
-        //     cc.log(box);
-        //     // if (cc.rectContainsPoint(cc.rect(0,0,)this.convertToNodeSpace(e.getLocation())))
-        //     // pd.changeScene(new projectSUS.MainScene(), 1, 0);
-        // }
+
+        projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
     },
 
     onMouseDown: function (e) {
+        if (!this.has_control)
+            return;
+
         if (cc.rectContainsPoint(this.btn_1.getBoundingBox(), e.getLocation())){
+            this.pauseControl();
+            new projectSUS.SpellBookLayer(this);
+            // this.addChild(spel_b, 1000);
+        }
+        else if (cc.rectContainsPoint(this.btn_2.getBoundingBox(), e.getLocation())){
             pd.changeScene(new projectSUS.SpellBookScene(), 1, type_num);
         }
-    }
+    },
+
+    pauseControl: function () {
+        this.has_control = false;
+    },
+
+    resumeControl: function () {
+        this.has_control = true;
+    },
+
 });
 
 
-///todo  Animated button, Static button e button padarao
+///todo  Animated button, Static button e button padrao
 

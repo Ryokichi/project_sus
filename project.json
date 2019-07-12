@@ -17,12 +17,14 @@
     "src/StartScene.js",
     "src/MainScene.js",
 
-
     "src/BattleStage.js",
     "src/SpellBookScene.js",
     "src/Stage1.js",
 
     "src/Spells/Spell.js",
-    "src/Spells/Cure.js"
+    "src/Spells/Heal.js",
+    "src/Spells/FastHeal.js",
+    "src/Spells/GreatHeal.js",
+    "src/Spells/Renew.js"
   ]
 }

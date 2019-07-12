@@ -5,12 +5,13 @@ var res = {
 
 
     buttons_plist: "res/img/buttons.plist",
-    chars_plist: "res/img/chars.plist",
-    life_plist: "res/img/life.plist",
-
     buttons_png: "res/img/buttons.png",
+    chars_plist: "res/img/chars.plist",
     chars_png: "res/img/chars.png",
+    life_plist: "res/img/life.plist",
     life_png: "res/img/life.png",
+    spell_book_plist: "res/img/spell_book.plist",
+    spell_book_png: "res/img/spell_book.png"
 
     //audio
 };

@@ -39,6 +39,10 @@ pd.gameInput = cc.Class.extend({
         cc.eventManager.addListener(keyBoardListener, 2);
     },
 
+    removeEventListener: function () {
+
+    },
+
     addEventListener: function(typeFunc, funcName, caller_node, priority) {
         var nodeData = {caller: caller_node, func: funcName, priority: priority};
 

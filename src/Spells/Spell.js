@@ -5,24 +5,42 @@ projectSUS.Spell = cc.Node.extend({
         this.code = null;
         this.name = "";
         this.description = "";
-        this.level = 0;
+        this.level = 1;
 
-        this.heal_base = 0;
-        this.mana_base = 0;
-        this.cast_base = 0;
-        this.cd_base = 0;
+        this.base_heal = 0;
+        this.base_mana = 0;
+        this.base_cast = 0;
+        this.base_cd   = 0;
+        this.base_tick = 0;
+        this.base_duration = 0;
 
         this.curr_heal = 0;
         this.curr_mana = 0;
         this.curr_cast = 0;
-        this.curr_cd = 0;
+        this.curr_cd   = 0;
+        this.curr_tick = 0;
+        this.curr_duration = 0;
     },
 
-    setSpellName: function (name) {
+    init: function () {
+        this.setValues();
+        this.setDescription();
+    },
+
+    setValues: function () {
+        this.curr_heal = this.base_heal;
+        this.curr_mana = this.base_mana;
+        this.curr_cast = this.base_cast;
+        this.curr_cd   = this.base_cd;
+        this.curr_tick = this.base_tick;
+        this.curr_duration = this.base_duration;
+    },
+
+    setName: function (name) {
         this.name = name;
     },
 
-    getSpellName: function f() {
+    getName: function f() {
         return this.name;
     },
 
@@ -32,6 +50,10 @@ projectSUS.Spell = cc.Node.extend({
 
     getDescription: function () {
         return this.description;
+    },
+
+    setDescription: function () {
+        cc.warn("Sobrescrever de funcao spell: " + this.name);
     }
 
 });

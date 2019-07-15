@@ -4,12 +4,12 @@ projectSUS.GreatHeal = projectSUS.Spell.extend({
 
         this.code = "SPS1";
         this.name = "Grande Cura";
+        this.sprite_name = "cura3.png";
 
         this.base_heal = 30;
         this.base_mana = 10;
         this.base_cast = 1.3;
 
-        this.sprite = pd.createSprite("cura3.png", cc.p(0,0), this, 1);
         this.init();
     },
 

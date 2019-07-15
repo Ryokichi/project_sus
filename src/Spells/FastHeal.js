@@ -4,12 +4,12 @@ projectSUS.FastHeal = projectSUS.Spell.extend({
 
         this.code = "SPS1";
         this.name = "Cura Rapida";
+        this.sprite_name = "cura2.png";
 
         this.base_heal = 20;
         this.base_mana = 30;
         this.base_cast = 0.2;
 
-        this.sprite = pd.createSprite("cura2.png", cc.p(0,0), this, 1);
         this.init();
     },
 

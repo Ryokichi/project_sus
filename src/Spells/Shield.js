@@ -1,10 +1,10 @@
-projectSUS.Renew = projectSUS.Spell.extend({
+projectSUS.Shield = projectSUS.Spell.extend({
     ctor: function () {
         this._super();
 
         this.code = "SPS2";
-        this.name = "Renovar";
-        this.sprite_name = "cura4.png";
+        this.name = "Bolha Protetora";
+        this.sprite_name = "cura5.png";
 
         this.base_heal = 3;
         this.base_mana = 5;
@@ -21,8 +21,7 @@ projectSUS.Renew = projectSUS.Spell.extend({
     },
 
     setDescription: function () {
-        this.description = "Cura o aliado selecionado em " + this.curr_heal +
-            " a cada " + this.curr_tick + " seg, ao longo de " + this.curr_duration + " seg.";
+        this.description = "Lança uma bolha protetora sobre o aliado, ignorando o dano.";
     }
 
 });

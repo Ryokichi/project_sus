@@ -7,9 +7,9 @@ pd.gameInput = cc.Class.extend({
         this.keyUpListeners =[];
         this.keyDownListeners =[];
 
-        var controller = this;
+        let controller = this;
 
-        var mouseListener = cc.EventListener.create({
+        let mouseListener = cc.EventListener.create({
             event: cc.EventListener.MOUSE,
             onMouseDown: function (event) {
                 controller.onMouseDown(event);
@@ -25,7 +25,7 @@ pd.gameInput = cc.Class.extend({
             }
         });
 
-        var keyBoardListener = cc.EventListener.create({
+        let keyBoardListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed: function (key_code, event) {
                 controller.onKeyPressed(key_code, event)
@@ -44,7 +44,7 @@ pd.gameInput = cc.Class.extend({
     },
 
     addEventListener: function(typeFunc, funcName, caller_node, priority) {
-        var nodeData = {caller: caller_node, func: funcName, priority: priority};
+        let nodeData = {caller: caller_node, func: funcName, priority: priority};
 
         if (typeFunc === "onMouseDown") {
             this.mouseDownListeners.push(nodeData);
@@ -87,9 +87,9 @@ pd.gameInput = cc.Class.extend({
     },
 
     onMouseDown: function (e) {
-        var listener;
-        var swallow = false;
-        for (var i=0; i < this.mouseDownListeners.length; i++) {
+        let listener;
+        let swallow = false;
+        for (let i=0; i < this.mouseDownListeners.length; i++) {
             listener = this.mouseDownListeners[i];
             swallow = listener.caller[listener.func](e);
 
@@ -99,33 +99,63 @@ pd.gameInput = cc.Class.extend({
     },
 
     onMouseUp: function (e) {
-        for (var i=0; i < this.mouseUpListeners.length; i++) {
+        let listener;
+        let swallow = false;
+        for (let i=0; i < this.mouseUpListeners.length; i++) {
+            listener = this.mouseUpListeners[i];
+            swallow = listener.caller[listener.func](e);
 
+            if (swallow)
+                return;
         }
     },
 
     onMouseMove: function (e) {
-        for (var i=0; i < this.mouseMoveListeners.length; i++) {
+        let listener;
+        let swallow = false;
+        for (let i=0; i < this.mouseMoveListeners.length; i++) {
+            listener = this.mouseMoveListeners[i];
+            swallow = listener.caller[listener.func](e);
 
+            if (swallow)
+                return;
         }
     },
 
     onMouseScroll: function (e) {
-        for (var i=0; i < this.mouseScrollListeners.length; i++) {
+        let listener;
+        let swallow = false;
+        for (let i=0; i < this.mouseScrollListeners.length; i++) {
+            listener = this.mouseScrollListeners[i];
+            swallow = listener.caller[listener.func](e);
 
+            if (swallow)
+                return;
         }
     },
 
     onKeyPressed: function (key_code, event) {
-        for (var i=0; i < this.keyDownListeners.length; i++) {
+        let listener;
+        let swallow = false;
+        for (let i=0; i < this.keyDownListeners.length; i++) {
+            listener = this.keyDownListeners[i];
+            swallow = listener.caller[listener.func](e);
 
+            if (swallow)
+                return;
         }
 
     },
 
     onKeyReleased: function (key_code, event) {
-        for (var i=0; i < this.keyUpListeners.length; i++) {
+        let listener;
+        let swallow = false;
+        for (let i=0; i < this.keyUpListeners.length; i++) {
+            listener = this.keyUpListeners[i];
+            swallow = listener.caller[listener.func](e);
 
+            if (swallow)
+                return;
         }
 
     }

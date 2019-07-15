@@ -9,22 +9,23 @@
   "modules"     : ["cocos2d", "editbox", "ccui"],
 
   "jsList"      : [
-    "src/Padroes/Snippets.js",
-    "src/Padroes/GameInput.js",
-    "src/Padroes/Button.js",
+    "src/Padroes/Snippets.js"
+    ,"src/Padroes/GameInput.js"
+    ,"src/Padroes/Button.js"
 
-    "src/Resources.js",
-    "src/StartScene.js",
-    "src/MainScene.js",
+    ,"src/Resources.js"
+    ,"src/StartScene.js"
+    ,"src/MainScene.js"
 
-    "src/BattleStage.js",
-    "src/SpellBookScene.js",
-    "src/Stage1.js",
+    ,"src/BattleStage.js"
+    ,"src/SpellBookScene.js"
+    ,"src/Stage1.js"
 
-    "src/Spells/Spell.js",
-    "src/Spells/Heal.js",
-    "src/Spells/FastHeal.js",
-    "src/Spells/GreatHeal.js",
-    "src/Spells/Renew.js"
+    ,"src/Spells/Spell.js"
+    ,"src/Spells/Heal.js"
+    ,"src/Spells/FastHeal.js"
+    ,"src/Spells/GreatHeal.js"
+    ,"src/Spells/Renew.js"
+    ,"src/Spells/Shield.js"
   ]
 }

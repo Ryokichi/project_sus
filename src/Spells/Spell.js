@@ -5,6 +5,7 @@ projectSUS.Spell = cc.Node.extend({
         this.code = null;
         this.name = "";
         this.description = "";
+        this.sprite_name = "";
         this.level = 1;
 
         this.base_heal = 0;
@@ -23,6 +24,7 @@ projectSUS.Spell = cc.Node.extend({
     },
 
     init: function () {
+        this.sprite = pd.createSprite(this.sprite_name, cc.p(0,0), this, 1);
         this.setValues();
         this.setDescription();
     },
@@ -40,8 +42,12 @@ projectSUS.Spell = cc.Node.extend({
         this.name = name;
     },
 
-    getName: function f() {
+    getName: function () {
         return this.name;
+    },
+
+    getSpriteName: function () {
+        return this.sprite_name;
     },
 
     setDescription: function (desc) {

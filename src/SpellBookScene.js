@@ -29,7 +29,6 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.spells_list  = [];
         this.spells_box   = [];
         this.spells_select = [];
-        this.aux_spell_img = [];
 
         this.spell_description = this.std_label();
         this.spell_description.setPosition(75,200);
@@ -44,7 +43,10 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.cd_label   = this.std_label();
         this.cd_label.setPosition(222,82);
 
-
+        this.mock_spell = pd.createSprite("cura1.png", cc.p(50,300), this, 100);
+        this.mock_spell.is_active = false;
+        this.mock_spell.name = null;
+        this.mock_spell.came_from_hot_bar = false;
 
         this.createSpellList();
         this.createSelectedSpells();
@@ -84,11 +86,6 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             this.spells_box[i].spell.setPosition(25,25);
             this.spells_box[i].label = this.spellBoxLabel(this.spells_box[i], this.spells_box[i].spell.getName());
             this.spells_box[i].addChild(this.spells_box[i].spell);
-
-            let name = this.spells_box[i].spell.getSpriteName();
-            let pos = this.spells_box[i].convertToWorldSpace(this.spells_box[i].spell.getPosition());
-            this.aux_spell_img.push(pd.createSprite(name, pos, this, 10));
-            this.aux_spell_img[i].was_clicked = false;
         }
     },
 
@@ -107,7 +104,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         for (let i = 0; i < 4; i++) {
             this.spells_select.push(pd.createSprite("btn_padrao.png", cc.p(0,0), this));
             this.spells_select[i].setPosition(170+(80*i), 25);
-            this.spells_select[i].spell_code = null;
+            this.spells_select[i].spell_name = null;
         }
     },
 
@@ -115,66 +112,64 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         if (e.getButton() === cc.EventMouse.BUTTON_RIGHT){
             cc.log(e.getLocation());
         }
+        if (cc.rectContainsPoint(this.close_btn, e.getLocation())) {
+            this.closeAndResumeParent();
+            return;
+        }
 
         let rect;
         for (let i = 0; i < this.spells_list.length; i++) {
             rect = this.spells_box[i].getBoundingBoxToWorld();
-
             if (cc.rectContainsPoint(rect, e.getLocation())) {
-                this.setSpellData(this.spells_box[i].spell);
-            }
-            else if (cc.rectContainsPoint(this.close_btn, e.getLocation())){
-                this.closeAndResumeParent();
+                this.changeMockSprite(this.spells_box[i].spell.getSpriteName());
             }
         }
 
-        for (let i = 0; i < this.aux_spell_img.length; i++) {
-            rect = this.aux_spell_img[i].getBoundingBox();
-            if (cc.rectContainsPoint(rect, e.getLocation())){
-                this.aux_spell_img[i].was_clicked = true;
-            }
-        }
-    },
-
-    onMouseUp: function (e) {
-        let rect, box_pos;
-        for (let i = 0; i < this.aux_spell_img.length; i++) {
-            if (this.aux_spell_img[i].was_clicked) {
-                this.aux_spell_img[i].was_clicked = false;
-                this.aux_spell_img[i].setLocalZOrder(10);
-
-                for (let j = 0; j < this.spells_select.length; j++) {
-                    rect = this.spells_select[j].getBoundingBox();
-
-                    cc.log(rect);
-                    if (cc.rectContainsPoint(rect, e.getLocation())) {
-                        this.aux_spell_img[i].setPosition(this.spells_select[j].getPosition());
-                        break;
-                    }
-                    else {
-                        box_pos = this.spells_box[i].convertToWorldSpace(this.spells_box[i].spell.getPosition());
-                        this.aux_spell_img[i].setPosition(box_pos);
-                    }
+        for (let i = 0; i < this.spells_select.length; i++) {
+            rect = this.spells_select[i].getBoundingBoxToWorld();
+            if (cc.rectContainsPoint(rect, e.getLocation())) {
+                if (this.spells_select[i].spell_name) {
+                    this.changeMockSprite(this.spells_select[i].spell_name);
+                    this.spells_select.came_from_hot_bar = i;
                 }
             }
         }
     },
 
-    onMouseMove: function (e) {
-        for (let i = 0; i < this.aux_spell_img.length; i++) {
-            if (this.aux_spell_img[i].was_clicked){
-                this.aux_spell_img[i].setPosition(e.getLocation());
-                this.aux_spell_img[i].setLocalZOrder(11);
-            }
-        }
+    permutSprite: function (curr_idx, old_idx) {
+        cc.log( this.spells_select[curr_idx].spell_name, "-->", this.mock_spell.spell_name);
+        this.changeHotBarSprite(this.spells_select[old_idx], this.spells_select[curr_idx].spell_name);
+        this.changeHotBarSprite(this.spells_select[curr_idx], this.mock_spell.spell_name);
     },
 
-    setSpellData: function (spell) {
-        this.spell_description.setString(spell.getDescription());
-        this.life_label.setString(spell.curr_heal);
-        this.mana_label.setString(spell.curr_mana);
-        this.cast_label.setString(spell.curr_cast);
-        this.cd_label.setString(spell.curr_cd);
+    onMouseUp: function (e) {
+        let rect;
+
+        if (this.mock_spell.is_active) {
+            cc.log("is active");
+            for (let i = 0; i < this.spells_select.length; i++) {
+                rect = this.spells_select[i].getBoundingBox();
+                if (cc.rectContainsPoint(rect, e.getLocation())) {
+                    cc.log("está dentro");
+                    if (this.mock_spell.came_from_hot_bar) {
+                        cc.log("veio do hot bar", this.mock_spell.came_from_hot_bar);
+                        this.permutSprite(i, this.mock_spell.came_from_hot_bar);
+                    } else {
+                        cc.log("veio da lista");
+                        this.changeHotBarSprite(this.spells_select[i], this.mock_spell.name);
+                    }
+                    this.hideMockSpell();
+                }
+            }
+        }
+
+        this.hideMockSpell();
+    },
+
+    onMouseMove: function (e) {
+        if (this.mock_spell.is_active) {
+            this.mock_spell.setPosition(e.getLocation());
+        }
     },
 
     closeAndResumeParent: function () {
@@ -185,5 +180,26 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
                 this.removeFromParent();
             }, this)
         ));
+    },
+
+    changeMockSprite: function (name) {
+        if (name !== "" && name != null) {
+            this.mock_spell.setVisible(true);
+            this.mock_spell.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
+            this.mock_spell.name = name;
+            this.mock_spell.is_active = true;
+        }
+    },
+
+    hideMockSpell: function () {
+        this.mock_spell.setVisible(false);
+        this.mock_spell.setPosition(-100,-100);
+        this.mock_spell.came_from_hot_bar = false;
+    },
+
+    changeHotBarSprite(obj, name) {
+        name = (name) ? name : "btn_padrao.png";
+        obj.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
+        obj.spell_name = name;
     }
 });

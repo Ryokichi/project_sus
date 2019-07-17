@@ -50,10 +50,6 @@ projectSUS.Spell = cc.Node.extend({
         return this.sprite_name;
     },
 
-    setDescription: function (desc) {
-        this.description = desc;
-    },
-
     getDescription: function () {
         return this.description;
     },

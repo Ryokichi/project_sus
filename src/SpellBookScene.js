@@ -45,6 +45,8 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
 
         this.mock_spell = pd.createSprite("cura1.png", cc.p(50,300), this, 100);
         this.mock_spell.is_active = false;
+        // this.mock_spell.setColor(cc.color(150,150,150));
+        this.mock_spell.setScale(1.1);
         this.mock_spell.name = null;
         this.mock_spell.came_from_hot_bar = false;
 
@@ -121,7 +123,9 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         for (let i = 0; i < this.spells_list.length; i++) {
             rect = this.spells_box[i].getBoundingBoxToWorld();
             if (cc.rectContainsPoint(rect, e.getLocation())) {
+                this.showSpellData(this.spells_box[i].spell);
                 this.changeMockSprite(this.spells_box[i].spell.getSpriteName());
+                this.spells_box[i].spell.sprite.setColor(cc.color(150,150,150));
             }
         }
 
@@ -130,46 +134,75 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             if (cc.rectContainsPoint(rect, e.getLocation())) {
                 if (this.spells_select[i].spell_name) {
                     this.changeMockSprite(this.spells_select[i].spell_name);
-                    this.spells_select.came_from_hot_bar = i;
+                    this.mock_spell.came_from_hot_bar = i;
+                    this.changeHotBarSprite(this.spells_select[i], null);
                 }
             }
         }
     },
 
     permutSprite: function (curr_idx, old_idx) {
-        cc.log( this.spells_select[curr_idx].spell_name, "-->", this.mock_spell.spell_name);
+        cc.log("Permutando as spells");
+        cc.log(curr_idx,"-->", this.mock_spell.name);
+        cc.log(old_idx,"-->", this.spells_select[curr_idx].spell_name);
+
         this.changeHotBarSprite(this.spells_select[old_idx], this.spells_select[curr_idx].spell_name);
-        this.changeHotBarSprite(this.spells_select[curr_idx], this.mock_spell.spell_name);
+        this.changeHotBarSprite(this.spells_select[curr_idx], this.mock_spell.name);
+
     },
 
     onMouseUp: function (e) {
         let rect;
 
         if (this.mock_spell.is_active) {
-            cc.log("is active");
             for (let i = 0; i < this.spells_select.length; i++) {
                 rect = this.spells_select[i].getBoundingBox();
                 if (cc.rectContainsPoint(rect, e.getLocation())) {
-                    cc.log("está dentro");
-                    if (this.mock_spell.came_from_hot_bar) {
-                        cc.log("veio do hot bar", this.mock_spell.came_from_hot_bar);
+                    cc.log("+++ ", this.mock_spell.came_from_hot_bar);
+                    if (this.mock_spell.came_from_hot_bar !== false) {
                         this.permutSprite(i, this.mock_spell.came_from_hot_bar);
                     } else {
-                        cc.log("veio da lista");
                         this.changeHotBarSprite(this.spells_select[i], this.mock_spell.name);
                     }
+
+                    this.checkDuplicates(i, this.mock_spell.name);
                     this.hideMockSpell();
                 }
             }
         }
-
         this.hideMockSpell();
+
+        for (let i = 0; i < this.spells_box.length; i++) {
+            this.spells_box[i].spell.sprite.setColor(cc.color(255,255,255));
+            for (let j = 0; j < this.spells_select.length; j++) {
+                if (this.spells_box[i].spell.getSpriteName() == this.spells_select[j].spell_name) {
+                    this.spells_box[i].spell.sprite.setColor(cc.color(150,150,150));
+                }
+            }
+        }
     },
+
+    checkDuplicates: function (curr_idx, name) {
+        for (let i = 0; i < this.spells_select.length; i++) {
+            if (i !== curr_idx && this.spells_select[i].spell_name == name) {
+                this.changeHotBarSprite(this.spells_select[i], null);
+            }
+        }
+    },
+
 
     onMouseMove: function (e) {
         if (this.mock_spell.is_active) {
             this.mock_spell.setPosition(e.getLocation());
         }
+    },
+
+    showSpellData: function (spell) {
+        this.spell_description.setString(spell.getDescription());
+        this.life_label.setString(spell.curr_heal);
+        this.mana_label.setString(spell.curr_mana);
+        this.cast_label.setString(spell.curr_cast);
+        this.cd_label.setString(spell.curr_cd);
     },
 
     closeAndResumeParent: function () {
@@ -188,6 +221,10 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             this.mock_spell.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
             this.mock_spell.name = name;
             this.mock_spell.is_active = true;
+
+            cc.log("Estou mudando o mock;");
+            cc.log("Seu nome: ", name);
+            cc.log("-----------");
         }
     },
 
@@ -200,6 +237,6 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     changeHotBarSprite(obj, name) {
         name = (name) ? name : "btn_padrao.png";
         obj.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
-        obj.spell_name = name;
+        obj.spell_name = (name != "btn_padrao.png") ? name : null;
     }
 });

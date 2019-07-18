@@ -1,12 +1,3 @@
-projectSUS.SpellBookScene = cc.Scene.extend({
-    onEnter:function () {
-        this._super();
-        var layer = new projectSUS.SpellBookLayer();
-        this.addChild(layer);
-        layer.init();
-    }
-});
-
 projectSUS.SpellBookLayer = cc.Layer.extend({
     ctor: function (parent) {
         this._super ();
@@ -19,8 +10,23 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     init: function () {
-        this.bg = new cc.LayerColor(cc.color(0,0,0,150), 640, 360);
+        this.is_paused = false;
+
+        this.bg = new cc.LayerColor(cc.color(0,0,0,150));
         this.addChild(this.bg, -1);
+
+        this.target_spell = null;
+
+        this.level_up_layer = new projectSUS.SpellUp(cc.color(0,150,150, 255), 280, 340, this);
+        this.level_up_layer.setAnchorPoint(0.5, 0.5);
+        this.level_up_layer.setPosition(320,180);
+        this.level_up_layer.setScale(0);
+        this.level_up_layer.setLocalZOrder(1000);
+
+        this.open_up = new cc.LayerColor(cc.color(255,255,0, 255), 20, 20);
+        this.open_up.setPosition(280,300);
+        this.addChild(this.open_up, 900);
+        cc.log(this.level_up_layer.getBoundingBox());
 
         this.close_btn = cc.rect(594,311,25,14);
 
@@ -111,11 +117,23 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     onMouseDown: function (e) {
+        if (this.is_paused)
+            return;
+
         if (e.getButton() === cc.EventMouse.BUTTON_RIGHT){
             cc.log(e.getLocation());
         }
         if (cc.rectContainsPoint(this.close_btn, e.getLocation())) {
             this.closeAndResumeParent();
+            return;
+        }
+
+        if (cc.rectContainsPoint(this.open_up.getBoundingBox(), e.getLocation())) {
+            if (this.target_spell == null)
+                return;
+
+            this.level_up_layer.showUp(this.target_spell);
+            this.pauseControl();
             return;
         }
 
@@ -142,10 +160,6 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     permutSprite: function (curr_idx, old_idx) {
-        cc.log("Permutando as spells");
-        cc.log(curr_idx,"-->", this.mock_spell.name);
-        cc.log(old_idx,"-->", this.spells_select[curr_idx].spell_name);
-
         this.changeHotBarSprite(this.spells_select[old_idx], this.spells_select[curr_idx].spell_name);
         this.changeHotBarSprite(this.spells_select[curr_idx], this.mock_spell.name);
 
@@ -198,6 +212,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     showSpellData: function (spell) {
+        this.target_spell = spell;
         this.spell_description.setString(spell.getDescription());
         this.life_label.setString(spell.curr_heal);
         this.mana_label.setString(spell.curr_mana);
@@ -215,16 +230,20 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         ));
     },
 
+    pauseControl: function () {
+        this.is_paused = true;
+    },
+
+    resumeControl: function () {
+        this.is_paused = false;
+    },
+
     changeMockSprite: function (name) {
         if (name !== "" && name != null) {
             this.mock_spell.setVisible(true);
             this.mock_spell.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
             this.mock_spell.name = name;
             this.mock_spell.is_active = true;
-
-            cc.log("Estou mudando o mock;");
-            cc.log("Seu nome: ", name);
-            cc.log("-----------");
         }
     },
 

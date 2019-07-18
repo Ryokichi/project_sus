@@ -26,10 +26,7 @@ projectSUS.StartLayer = cc.Layer.extend({
 
         this.btn_options = pd.createButtonFromPlist("btn_opt_", this, 10);
         this.btn_options.setPosition(size.width/2, size.height/4);
-        this.btn_options.addClickEventListener(this.goOptions, ["1", "2"]);
-
-        this.test = pd.createButtonFromLocal(res.close_btn, res.close_btn_p, "", this, 0);
-        this.test.setPosition(100,100);
+        this.btn_options.addClickEventListener(this.goOptions, this);
     },
 
     startGame: function () {
@@ -38,10 +35,7 @@ projectSUS.StartLayer = cc.Layer.extend({
         }
     },
 
-    goOptions: function (alpha, beta, charlie) {
-        cc.log("Ir para opções");
-        cc.log(alpha);
-        cc.log(beta);
-        cc.log(charlie);
+    goOptions: function () {
+        pd.changeScene(new projectSUS.OptionsScene(), 1, type_num);
     }
 });

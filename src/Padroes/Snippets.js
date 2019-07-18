@@ -1,5 +1,16 @@
 pd = {};
 
+pd.label = function (parent) {
+        let label =  new cc.LabelTTF("-", "Arial", 10, cc.TEXT_ALIGNMENT_LEFT, cc.VERTICAL_TEXT_ALIGNMENT_TOP);
+        label.setFontFillColor(cc.color(0,0,0,255));
+        label.setAnchorPoint(0,1);
+
+        if (parent)
+            parent.addChild(label);
+
+        return label;
+};
+
 pd.addPlistAndPng = function () {
         for (var plist_key in res) {
             if (plist_key.match("_plist")) {

@@ -1,31 +1,36 @@
 {
   "project_type": "javascript",
-  "debugMode"   : 1,
-  "showFPS"     : false,
-  "frameRate"   : 60,
-  "id"          : "gameCanvas",
-  "renderMode"  : 1,
-  "engineDir"   : "cocos2d-html5",
-  "modules"     : ["cocos2d", "editbox", "ccui"],
+  "debugMode": 1,
+  "showFPS": false,
+  "frameRate": 60,
+  "id": "gameCanvas",
+  "renderMode": 1,
+  "engineDir": "cocos2d-html5",
+  "modules": [
+    "cocos2d",
+    "editbox",
+    "ccui"
+  ],
+  "jsList": [
+    "src/Padroes/Snippets.js",
+    "src/Padroes/GameInput.js",
+    "src/Padroes/Button.js",
 
-  "jsList"      : [
-    "src/Padroes/Snippets.js"
-    ,"src/Padroes/GameInput.js"
-    ,"src/Padroes/Button.js"
+    "src/Resources.js",
+    "src/StartScene.js",
 
-    ,"src/Resources.js"
-    ,"src/StartScene.js"
-    ,"src/MainScene.js"
+    "src/Options.js",
+    "src/MainScene.js",
+    "src/BattleStage.js",
+    "src/Stage1.js",
 
-    ,"src/BattleStage.js"
-    ,"src/SpellBookScene.js"
-    ,"src/Stage1.js"
-
-    ,"src/Spells/Spell.js"
-    ,"src/Spells/Heal.js"
-    ,"src/Spells/FastHeal.js"
-    ,"src/Spells/GreatHeal.js"
-    ,"src/Spells/Renew.js"
-    ,"src/Spells/Shield.js"
+    "src/SpellBook/SpellBookScene.js",
+    "src/SpellBook/SpellLevelUp.js",
+    "src/Spells/Spell.js",
+    "src/Spells/Heal.js",
+    "src/Spells/FastHeal.js",
+    "src/Spells/GreatHeal.js",
+    "src/Spells/Renew.js",
+    "src/Spells/Shield.js"
   ]
 }

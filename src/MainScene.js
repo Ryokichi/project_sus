@@ -9,20 +9,17 @@ projectSUS.MainScene = cc.Scene.extend({
 
 projectSUS.MainLayer = cc.Layer.extend({
     init: function () {
-        this.has_control = true;
+        this.is_paused = false;
 
         this.bg = pd.createSprite(res.main_bg, cc.p(320, 180), this);
-
         this.btn_1 = pd.createSprite("btn120x40_n.png", cc.p(70,330), this);
         this.btn_2 = pd.createSprite("btn120x40_n.png", cc.p(70,270), this);
-
-
 
         projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
     },
 
     onMouseDown: function (e) {
-        if (!this.has_control)
+        if (this.is_paused)
             return;
 
         if (cc.rectContainsPoint(this.btn_1.getBoundingBox(), e.getLocation())){
@@ -31,16 +28,16 @@ projectSUS.MainLayer = cc.Layer.extend({
             // this.addChild(spel_b, 1000);
         }
         else if (cc.rectContainsPoint(this.btn_2.getBoundingBox(), e.getLocation())){
-            pd.changeScene(new projectSUS.SpellBookScene(), 1, type_num);
+
         }
     },
 
     pauseControl: function () {
-        this.has_control = false;
+        this.is_paused = true;
     },
 
     resumeControl: function () {
-        this.has_control = true;
+        this.is_paused = false;
     },
 
 });

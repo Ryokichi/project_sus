@@ -11,7 +11,9 @@ var res = {
     life_plist: "res/img/life.plist",
     life_png: "res/img/life.png",
     spell_book_plist: "res/img/spell_book.plist",
-    spell_book_png: "res/img/spell_book.png"
+    spell_book_png: "res/img/spell_book.png",
+    options_plist: "res/img/options.plist",
+    options_book_png: "res/img/options.png"
 
     //audio
 };

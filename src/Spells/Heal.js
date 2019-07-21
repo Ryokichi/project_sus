@@ -19,9 +19,7 @@ projectSUS.Heal = projectSUS.Spell.extend({
     },
 
     setDescription: function () {
-        this.description = "Após " + this.curr_cast + " seg, cura o aliado selecionado em " + this.curr_heal + "." +
-        "dsdsafdsf dsfafdsafdsa sadfsdaf kkkkkkkkkkkkkkkkkkkkksdfdsfsdafa  saddfdsa fdsaf asddsf f sadf  asdfads safdsaf"+
-        "lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll asdfsadf";
+        this.description = "Após " + this.curr_cast + " seg, cura o aliado selecionado em " + this.curr_heal + ".";
     }
 
 });

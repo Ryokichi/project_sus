@@ -59,6 +59,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.createSpellList();
         this.createSelectedSpells();
         this.runAction(cc.fadeIn(0.3));
+
         projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
         projectSUS.input.addEventListener("onMouseUp", "onMouseUp", this, 1);
         projectSUS.input.addEventListener("onMouseMove", "onMouseMove", this, 1);

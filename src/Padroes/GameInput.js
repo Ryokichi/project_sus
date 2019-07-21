@@ -87,6 +87,10 @@ pd.gameInput = cc.Class.extend({
     },
 
     onMouseDown: function (e) {
+        if (e.getButton() === cc.EventMouse.BUTTON_RIGHT){
+            cc.log(e.getLocation());
+        }
+
         let listener;
         let swallow = false;
         for (let i=0; i < this.mouseDownListeners.length; i++) {

@@ -1,14 +1,42 @@
 pd = {};
 
-pd.label = function (parent) {
-        let label =  new cc.LabelTTF("-", "Arial", 10, cc.TEXT_ALIGNMENT_LEFT, cc.VERTICAL_TEXT_ALIGNMENT_TOP);
-        label.setFontFillColor(cc.color(0,0,0,255));
-        label.setAnchorPoint(0,1);
+pd.label = function (parent, text, hor, ver) {
+    let hor_align = cc.TEXT_ALIGNMENT_LEFT;
+    let ver_align = cc.VERTICAL_TEXT_ALIGNMENT_TOP;
 
-        if (parent)
-            parent.addChild(label);
+    if (!text)
+        text = "---";
 
-        return label;
+    switch (hor) {
+        case 0:
+            hor_align = cc.TEXT_ALIGNMENT_LEFT;
+            break;
+        case 1:
+            hor_align = cc.TEXT_ALIGNMENT_CENTER;
+            break;
+        case 2:
+            hor_align = cc.TEXT_ALIGNMENT_RIGHT;
+    }
+
+    switch (ver) {
+        case 0:
+            ver_align = cc.VERTICAL_TEXT_ALIGNMENT_TOP;
+            break;
+        case 1:
+            ver_align = cc.VERTICAL_TEXT_ALIGNMENT_CENTER;
+            break;
+        case 2:
+            ver_align = cc.VERTICAL_TEXT_ALIGNMENT_BOTTOM;
+    }
+
+    let label = new cc.LabelTTF(text, "Arial", 10, hor_align, ver_align);
+    label.setFontFillColor(cc.color(0, 0, 0, 255));
+    label.setAnchorPoint(0, 1);
+
+    if (parent)
+        parent.addChild(label);
+
+    return label;
 };
 
 pd.addPlistAndPng = function () {

@@ -15,6 +15,8 @@ projectSUS.MainLayer = cc.Layer.extend({
         this.btn_1 = pd.createSprite("btn120x40_n.png", cc.p(70,330), this);
         this.btn_2 = pd.createSprite("btn120x40_n.png", cc.p(70,270), this);
 
+        this.btn_opt = pd.createSprite("btn_opt.png", cc.p(615,335), this);
+
         projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
     },
 
@@ -29,6 +31,10 @@ projectSUS.MainLayer = cc.Layer.extend({
         }
         else if (cc.rectContainsPoint(this.btn_2.getBoundingBox(), e.getLocation())){
 
+        }
+        else if (cc.rectContainsPoint(this.btn_opt.getBoundingBox(), e.getLocation())){
+            this.pauseControl();
+            new projectSUS.OptionsLayer(this);
         }
     },
 

@@ -8,6 +8,15 @@ projectSUS.OptionsScene = cc.Scene.extend({
 });
 
 projectSUS.OptionsLayer = cc.Layer.extend({
+    ctor: function (parent) {
+        this._super();
+        if (parent)
+            parent.addChild(this);
+
+        this.init();
+    },
+
+
     init: function () {
         this.sound_lvl = 100;
         this.difficult = 0;
@@ -17,6 +26,8 @@ projectSUS.OptionsLayer = cc.Layer.extend({
 
         this.bg = new cc.LayerColor(cc.color(150,150,50));
         this.addChild(this.bg, -1);
+
+        this.btn_close = pd.createSprite("btn_close.png", cc.p(615,335), this);
 
         this.labels.push(pd.label(this, "VOLUME : " + this.sound_lvl , 1, 1));
         this.labels.push(pd.label(this, "DIFFICULT", 1, 1));
@@ -83,6 +94,16 @@ projectSUS.OptionsLayer = cc.Layer.extend({
         if (cc.rectContainsPoint(rect, e.getLocation()) || cc.rectContainsPoint(rect2, e.getLocation())) {
             this.vol_bar.is_active = true;
             this.changeVolume(e.getLocation());
+        }
+        else if (cc.rectContainsPoint(this.btn_close.getBoundingBox(), e.getLocation())) {
+            this.runAction(cc.sequence(
+                cc.fadeOut(0.3),
+                cc.callFunc(function () {
+                    this.getParent().resumeControl();
+                    this.removeFromParent();
+                }, this)
+            ));
+
         }
     },
 

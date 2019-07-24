@@ -1,7 +1,7 @@
 {
   "project_type": "javascript",
   "debugMode": 1,
-  "showFPS": false,
+  "showFPS": true,
   "frameRate": 60,
   "id": "gameCanvas",
   "renderMode": 1,
@@ -24,6 +24,7 @@
     "src/BattleStage.js",
     "src/Stage1.js",
 
+    "src/PartySelect/PartySelect.js",
     "src/SpellBook/SpellBookScene.js",
     "src/SpellBook/SpellLevelUp.js",
     "src/Spells/Spell.js",

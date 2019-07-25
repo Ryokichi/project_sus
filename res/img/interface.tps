@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>5.0.1</string>
+        <string>5.1.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -102,11 +102,11 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
             <false/>
             <key>maxRects</key>
@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>life.plist</filename>
+                <filename>interface.plist</filename>
             </struct>
             <key>header</key>
             <key>source</key>
@@ -155,7 +155,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <false/>
+        <true/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
@@ -169,13 +169,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -187,37 +187,77 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">life/life_bg.png</key>
-            <key type="filename">life/life_bg_s.png</key>
+            <key type="filename">interface/base_interface.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>76,34,152,67</rect>
+                <rect>160,90,320,180</rect>
                 <key>scale9Paddings</key>
-                <rect>76,34,152,67</rect>
+                <rect>160,90,320,180</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">life/lifebar.png</key>
+            <key type="filename">interface/boss_bar.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>68,5,137,10</rect>
+                <rect>112,4,223,9</rect>
                 <key>scale9Paddings</key>
-                <rect>68,5,137,10</rect>
+                <rect>112,4,223,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/cross.png</key>
+            <key type="filename">interface/shield.png</key>
+            <key type="filename">interface/sword.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,2,4,4</rect>
+                <key>scale9Paddings</key>
+                <rect>2,2,4,4</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/i_life_bar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,5,28,10</rect>
+                <key>scale9Paddings</key>
+                <rect>14,5,28,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/mana_bar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,6,88,11</rect>
+                <key>scale9Paddings</key>
+                <rect>44,6,88,11</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>life</filename>
+            <filename>interface</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

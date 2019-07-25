@@ -4,50 +4,50 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>life_bg.png</key>
+            <key>bg.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{304,134}</string>
+                <string>{640,360}</string>
                 <key>spriteSourceSize</key>
-                <string>{304,134}</string>
+                <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{304,134}}</string>
+                <string>{{1,1},{640,360}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>life_bg_s.png</key>
+            <key>game_interface.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{0,0}</string>
+                <string>{0,-3}</string>
                 <key>spriteSize</key>
-                <string>{304,134}</string>
+                <string>{640,354}</string>
                 <key>spriteSourceSize</key>
-                <string>{304,134}</string>
+                <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{0,134},{304,134}}</string>
+                <string>{{1,363},{640,354}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>lifebar.png</key>
+            <key>main_bg.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{273,20}</string>
+                <string>{640,360}</string>
                 <key>spriteSourceSize</key>
-                <string>{273,20}</string>
+                <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{0,268},{273,20}}</string>
+                <string>{{643,1},{640,360}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
@@ -59,13 +59,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>life.png</string>
+            <string>bg.png</string>
             <key>size</key>
-            <string>{304,288}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:164f60cd17e8e6e18b7d1c7613f87287:afd8b963da15127f87704e24a2e7a209:692642b20dcdd2084ea25fd2e7288fa1$</string>
+            <string>$TexturePacker:SmartUpdate:d710b985ddc91d1529f7c8616439d167:bfc227aa7cc5ea8e8ef844f1c2d62920:ba3351e848913f852cb04737e7054a9e$</string>
             <key>textureFileName</key>
-            <string>life.png</string>
+            <string>bg.png</string>
         </dict>
     </dict>
 </plist>

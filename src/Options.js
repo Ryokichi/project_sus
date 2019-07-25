@@ -58,15 +58,15 @@ projectSUS.OptionsLayer = cc.Layer.extend({
     },
 
     updateLanguage: function () {
-        for (let i = 0; i < this.flags.length; i++) {
+        for (var i = 0; i < this.flags.length; i++) {
             this.flags[i].setColor(cc.color(70,70,70));
         }
         this.flags[this.selected_lang].setColor(cc.color(255,255,255));
     },
 
     changeVolume: function(pos) {
-        let x = this.vol_bar.convertToNodeSpace(pos).x;
-        let vol = Math.floor(100 * x / this.vol_bar.width);
+        var x = this.vol_bar.convertToNodeSpace(pos).x;
+        var vol = Math.floor(100 * x / this.vol_bar.width);
         if (vol < 0){
             vol = 0;
         }
@@ -80,8 +80,8 @@ projectSUS.OptionsLayer = cc.Layer.extend({
     },
 
     onMouseDown: function (e) {
-        let rect, rect2;
-        for (let i = 0; i < this.flags.length; i++) {
+        var rect, rect2;
+        for (var i = 0; i < this.flags.length; i++) {
             rect = this.flags[i].getBoundingBox();
             if (cc.rectContainsPoint(rect, e.getLocation())) {
                 this.selected_lang = i;

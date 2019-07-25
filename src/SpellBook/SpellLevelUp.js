@@ -43,7 +43,7 @@ projectSUS.SpellUp = cc.LayerColor.extend({
     },
 
     std_label: function () {
-        let label =  new cc.LabelTTF("-", "Arial", 10, cc.TEXT_ALIGNMENT_LEFT, cc.VERTICAL_TEXT_ALIGNMENT_TOP);
+        var label =  new cc.LabelTTF("-", "Arial", 10, cc.TEXT_ALIGNMENT_LEFT, cc.VERTICAL_TEXT_ALIGNMENT_TOP);
         label.setFontFillColor(cc.color(0,0,0,255));
         label.setDimensions(240,20);
         label.setAnchorPoint(0,1);
@@ -69,7 +69,7 @@ projectSUS.SpellUp = cc.LayerColor.extend({
     setStrings: function () {
         this.level_lbl.setString("Level " + this.spell.level);
 
-        let new_lvl = this.spell.level + 1;
+        var new_lvl = this.spell.level + 1;
 
         this.heal_lbl.setString("Vida: " + this.spell.curr_heal + " --> " + this.spell.curr_heal * new_lvl);
         this.mana_lbl.setString("Mana: " + this.spell.curr_mana + " --> " + this.spell.curr_mana * new_lvl);
@@ -94,7 +94,7 @@ projectSUS.SpellUp = cc.LayerColor.extend({
         if (this.is_paused)
             return;
 
-        let pto = this.convertToNodeSpace(e.getLocation());
+        var pto = this.convertToNodeSpace(e.getLocation());
         if (cc.rectContainsPoint(this.cancel_btn.getBoundingBox(), pto)) {
             this.minimaze();
         }

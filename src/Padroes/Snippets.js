@@ -1,8 +1,8 @@
 pd = {};
 
 pd.label = function (parent, text, hor, ver) {
-    let hor_align = cc.TEXT_ALIGNMENT_LEFT;
-    let ver_align = cc.VERTICAL_TEXT_ALIGNMENT_TOP;
+    var hor_align = cc.TEXT_ALIGNMENT_LEFT;
+    var ver_align = cc.VERTICAL_TEXT_ALIGNMENT_TOP;
 
     if (!text)
         text = "---";
@@ -29,7 +29,7 @@ pd.label = function (parent, text, hor, ver) {
             ver_align = cc.VERTICAL_TEXT_ALIGNMENT_BOTTOM;
     }
 
-    let label = new cc.LabelTTF(text, "Arial", 10, hor_align, ver_align);
+    var label = new cc.LabelTTF(text, "Arial", 10, hor_align, ver_align);
     label.setFontFillColor(cc.color(0, 0, 0, 255));
     label.setAnchorPoint(0, 1);
 
@@ -51,8 +51,8 @@ pd.addPlistAndPng = function () {
     pd.createSprite = function (spriteName, position, parentNode, localZOrder) {
         ////para plist
         //// return cc.spriteFrameCache.getSpriteFrame(spriteFrameName);
-        const name = cc.spriteFrameCache.getSpriteFrame(spriteName) || spriteName;
-        const obj = new cc.Sprite(name);
+        var name = cc.spriteFrameCache.getSpriteFrame(spriteName) || spriteName;
+        var obj = new cc.Sprite(name);
         if (position)
             obj.setPosition(position);
         if (parentNode)
@@ -61,10 +61,10 @@ pd.addPlistAndPng = function () {
     };
 
     pd.createButtonFromPlist = function (spriteName, parent, zOrder) {
-        const spriteNormal  = spriteName+"n.png";
-        const spritePressed = spriteName+"p.png";
-        const spriteDisable = spriteName+"d.png";
-        const button = new ccui.Button();
+        var spriteNormal  = spriteName+"n.png";
+        var spritePressed = spriteName+"p.png";
+        var spriteDisable = spriteName+"d.png";
+        var button = new ccui.Button();
         button.loadTextures(spriteNormal, spritePressed, spriteDisable, ccui.Widget.PLIST_TEXTURE);
         if (parent)
             parent.addChild(button, (zOrder || 0));
@@ -72,7 +72,7 @@ pd.addPlistAndPng = function () {
     };
 
     pd.createButtonFromLocal  = function (spriteNormal, spritePressed, spriteDisable, parent, zOrder) {
-        const button = new ccui.Button();
+        var button = new ccui.Button();
         button.loadTextures(spriteNormal, spritePressed, spriteDisable, ccui.Widget.LOCAL_TEXTURE);
         if (parent)
             parent.addChild(button, (zOrder || 0));
@@ -119,7 +119,7 @@ pd.shuffle = function(array) {
  * @param {Number} j - índice do segundo elemento.
  */
 pd.arraySwap = function(array, i, j) {
-    const temp = array[i];
+    var temp = array[i];
     array[i] = array[j];
     array[j] = temp;
 };

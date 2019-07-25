@@ -29,7 +29,10 @@ projectSUS.MainLayer = cc.Layer.extend({
             new projectSUS.SpellBookLayer(this);
             // this.addChild(spel_b, 1000);
         }
-        else if (cc.rectContainsPoint(this.btn_2.getBoundingBox(), e.getLocation())){
+        else if (cc.rectContainsPoint(this.btn_2.getBoundingBox(), e.getLocation())) {
+            projectSUS.input.removeEventListener(this);
+            pd.changeScene(new projectSUS.BattleScene, 1, 0);
+            // pd.changeScene(new projectSUS.PartySelectionScene, 1, 0);
 
         }
         else if (cc.rectContainsPoint(this.btn_opt.getBoundingBox(), e.getLocation())){
@@ -44,7 +47,7 @@ projectSUS.MainLayer = cc.Layer.extend({
 
     resumeControl: function () {
         this.is_paused = false;
-    },
+    }
 
 });
 

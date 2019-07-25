@@ -26,7 +26,6 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.open_up = new cc.LayerColor(cc.color(255,255,0, 255), 20, 20);
         this.open_up.setPosition(280,300);
         this.addChild(this.open_up, 900);
-        cc.log(this.level_up_layer.getBoundingBox());
 
         this.close_btn = cc.rect(594,311,25,14);
 
@@ -66,7 +65,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     std_label: function () {
-        let label =  new cc.LabelTTF("-", "Arial", 10, cc.TEXT_ALIGNMENT_LEFT, cc.VERTICAL_TEXT_ALIGNMENT_TOP);
+        var label =  new cc.LabelTTF("-", "Arial", 10, cc.TEXT_ALIGNMENT_LEFT, cc.VERTICAL_TEXT_ALIGNMENT_TOP);
         label.setFontFillColor(cc.color(0,0,0,255));
         label.setDimensions(50,15);
         label.setAnchorPoint(0,1);
@@ -83,8 +82,8 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             new projectSUS.Shield()
         ];
 
-        let x = 390, y = 310;
-        for (let i = 0; i < this.spells_list.length; i++) {
+        var x = 390, y = 310;
+        for (var i = 0; i < this.spells_list.length; i++) {
             x += 130;
             if (i%2 == 0) {
                 x = 390;
@@ -99,7 +98,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     spellBoxLabel: function (parent, text) {
-        let label = new cc.LabelTTF(text, "Arial", 11, cc.TEXT_ALIGNMENT_CENTER, cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
+        var label = new cc.LabelTTF(text, "Arial", 11, cc.TEXT_ALIGNMENT_CENTER, cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
         label.setFontFillColor(cc.color(0,0,0,255));
         label.setPosition(47, 45);
         label.setDimensions(73, 42);
@@ -110,7 +109,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     createSelectedSpells: function () {
-        for (let i = 0; i < 4; i++) {
+        for (var i = 0; i < 4; i++) {
             this.spells_select.push(pd.createSprite("btn_padrao.png", cc.p(0,0), this));
             this.spells_select[i].setPosition(170+(80*i), 25);
             this.spells_select[i].spell_name = null;
@@ -138,8 +137,8 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             return;
         }
 
-        let rect;
-        for (let i = 0; i < this.spells_list.length; i++) {
+        var rect;
+        for (var i = 0; i < this.spells_list.length; i++) {
             rect = this.spells_box[i].getBoundingBoxToWorld();
             if (cc.rectContainsPoint(rect, e.getLocation())) {
                 this.showSpellData(this.spells_box[i].spell);
@@ -148,7 +147,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             }
         }
 
-        for (let i = 0; i < this.spells_select.length; i++) {
+        for (var i = 0; i < this.spells_select.length; i++) {
             rect = this.spells_select[i].getBoundingBoxToWorld();
             if (cc.rectContainsPoint(rect, e.getLocation())) {
                 if (this.spells_select[i].spell_name) {
@@ -167,10 +166,10 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     onMouseUp: function (e) {
-        let rect;
+        var rect;
 
         if (this.mock_spell.is_active) {
-            for (let i = 0; i < this.spells_select.length; i++) {
+            for (var i = 0; i < this.spells_select.length; i++) {
                 rect = this.spells_select[i].getBoundingBox();
                 if (cc.rectContainsPoint(rect, e.getLocation())) {
                     cc.log("+++ ", this.mock_spell.came_from_hot_bar);
@@ -187,9 +186,9 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         }
         this.hideMockSpell();
 
-        for (let i = 0; i < this.spells_box.length; i++) {
+        for (var i = 0; i < this.spells_box.length; i++) {
             this.spells_box[i].spell.sprite.setColor(cc.color(255,255,255));
-            for (let j = 0; j < this.spells_select.length; j++) {
+            for (var j = 0; j < this.spells_select.length; j++) {
                 if (this.spells_box[i].spell.getSpriteName() == this.spells_select[j].spell_name) {
                     this.spells_box[i].spell.sprite.setColor(cc.color(150,150,150));
                 }
@@ -198,7 +197,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     checkDuplicates: function (curr_idx, name) {
-        for (let i = 0; i < this.spells_select.length; i++) {
+        for (var i = 0; i < this.spells_select.length; i++) {
             if (i !== curr_idx && this.spells_select[i].spell_name == name) {
                 this.changeHotBarSprite(this.spells_select[i], null);
             }
@@ -254,7 +253,7 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.mock_spell.came_from_hot_bar = false;
     },
 
-    changeHotBarSprite(obj, name) {
+    changeHotBarSprite: function (obj, name) {
         name = (name) ? name : "btn_padrao.png";
         obj.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
         obj.spell_name = (name != "btn_padrao.png") ? name : null;

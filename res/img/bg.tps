@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -102,11 +102,11 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
             <false/>
             <key>maxRects</key>
@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>chars.plist</filename>
+                <filename>bg.plist</filename>
             </struct>
             <key>header</key>
             <key>source</key>
@@ -155,7 +155,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <false/>
+        <true/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
@@ -169,13 +169,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -187,169 +187,25 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">chars/char1.png</key>
-            <key type="filename">chars/char3.png</key>
-            <key type="filename">chars/char4.png</key>
+            <key type="filename">bg/bg.png</key>
+            <key type="filename">bg/game_interface.png</key>
+            <key type="filename">bg/main_bg.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>6,8,11,15</rect>
+                <rect>160,90,320,180</rect>
                 <key>scale9Paddings</key>
-                <rect>6,8,11,15</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char10.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>8,9,16,17</rect>
-                <key>scale9Paddings</key>
-                <rect>8,9,16,17</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char11.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>6,8,11,17</rect>
-                <key>scale9Paddings</key>
-                <rect>6,8,11,17</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char12.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>7,9,15,18</rect>
-                <key>scale9Paddings</key>
-                <rect>7,9,15,18</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>7,8,14,15</rect>
-                <key>scale9Paddings</key>
-                <rect>7,8,14,15</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char5.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>7,9,14,19</rect>
-                <key>scale9Paddings</key>
-                <rect>7,9,14,19</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char6.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>10,8,19,15</rect>
-                <key>scale9Paddings</key>
-                <rect>10,8,19,15</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char7.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>11,9,21,18</rect>
-                <key>scale9Paddings</key>
-                <rect>11,9,21,18</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char8.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>9,8,19,15</rect>
-                <key>scale9Paddings</key>
-                <rect>9,8,19,15</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/char9.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>6,9,11,19</rect>
-                <key>scale9Paddings</key>
-                <rect>6,9,11,19</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/grupo1.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>38,9,75,17</rect>
-                <key>scale9Paddings</key>
-                <rect>38,9,75,17</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">chars/grupo2.png</key>
-            <key type="filename">chars/grupo3.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>38,10,75,19</rect>
-                <key>scale9Paddings</key>
-                <rect>38,10,75,19</rect>
+                <rect>160,90,320,180</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>chars</filename>
+            <filename>bg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

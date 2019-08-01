@@ -187,6 +187,19 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">chars/boss.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>246,219,493,438</rect>
+                <key>scale9Paddings</key>
+                <rect>246,219,493,438</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">chars/char1.png</key>
             <key type="filename">chars/char3.png</key>
             <key type="filename">chars/char4.png</key>
@@ -343,6 +356,19 @@
                 <rect>38,10,75,19</rect>
                 <key>scale9Paddings</key>
                 <rect>38,10,75,19</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">chars/life_bar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,1,25,1</rect>
+                <key>scale9Paddings</key>
+                <rect>13,1,25,1</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

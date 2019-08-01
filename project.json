@@ -1,7 +1,7 @@
 {
   "project_type": "javascript",
   "debugMode": 1,
-  "showFPS": true,
+  "showFPS": false,
   "frameRate": 60,
   "id": "gameCanvas",
   "renderMode": 1,
@@ -24,6 +24,7 @@
     "src/BattleStage.js",
     "src/Stage1.js",
 
+    "src/Bosses/Boss.js",
     "src/Chars/Char.js",
     "src/GameInterface/GameInterface.js",
     "src/PartySelect/PartySelect.js",

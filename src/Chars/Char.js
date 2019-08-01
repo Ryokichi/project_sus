@@ -1,8 +1,7 @@
 projectSUS.Char = cc.Node.extend({
     ctor: function (parent, sprite, pos) {
         this._super();
-        if (parent)
-            parent.addChild(this);
+        if (parent) parent.addChild(this);
         this.setPosition(pos);
 
         this.life = 100;

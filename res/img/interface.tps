@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -102,7 +102,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -155,7 +155,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <true/>
+        <false/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
@@ -169,13 +169,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -187,70 +187,173 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">interface/base_interface.png</key>
+            <key type="filename">interface/boss_health_bar.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>160,90,320,180</rect>
+                <rect>106,5,211,9</rect>
                 <key>scale9Paddings</key>
-                <rect>160,90,320,180</rect>
+                <rect>106,5,211,9</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">interface/boss_bar.png</key>
+            <key type="filename">interface/boss_health_icon.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>112,4,223,9</rect>
+                <rect>6,6,11,12</rect>
                 <key>scale9Paddings</key>
-                <rect>112,4,223,9</rect>
+                <rect>6,6,11,12</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">interface/cross.png</key>
-            <key type="filename">interface/shield.png</key>
-            <key type="filename">interface/sword.png</key>
+            <key type="filename">interface/boss_health_life.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>2,2,4,4</rect>
+                <rect>104,3,208,6</rect>
                 <key>scale9Paddings</key>
-                <rect>2,2,4,4</rect>
+                <rect>104,3,208,6</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">interface/i_life_bar.png</key>
+            <key type="filename">interface/interface_background.png</key>
+            <key type="filename">interface/interface_background_mock.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>14,5,28,10</rect>
+                <rect>160,13,320,25</rect>
                 <key>scale9Paddings</key>
-                <rect>14,5,28,10</rect>
+                <rect>160,13,320,25</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">interface/mana_bar.png</key>
+            <key type="filename">interface/interface_mana_icon.png</key>
+            <key type="filename">interface/manacost_n0.png</key>
+            <key type="filename">interface/manacost_n2.png</key>
+            <key type="filename">interface/manacost_n3.png</key>
+            <key type="filename">interface/manacost_n5.png</key>
+            <key type="filename">interface/manacost_n6.png</key>
+            <key type="filename">interface/manacost_n7.png</key>
+            <key type="filename">interface/manacost_n8.png</key>
+            <key type="filename">interface/manacost_n9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>44,6,88,11</rect>
+                <rect>1,1,2,3</rect>
                 <key>scale9Paddings</key>
-                <rect>44,6,88,11</rect>
+                <rect>1,1,2,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/manacost_n1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,1,3</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,1,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/manacost_n4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,3,3</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,3,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/party_icon_mage.png</key>
+            <key type="filename">interface/party_icon_melee.png</key>
+            <key type="filename">interface/party_icon_range.png</key>
+            <key type="filename">interface/party_icon_tank.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,2,3,3</rect>
+                <key>scale9Paddings</key>
+                <rect>2,2,3,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/party_interface_background.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,5,25,10</rect>
+                <key>scale9Paddings</key>
+                <rect>12,5,25,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/party_interface_life.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,5,23,9</rect>
+                <key>scale9Paddings</key>
+                <rect>12,5,23,9</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/player_health_bar.png</key>
+            <key type="filename">interface/player_mana_bar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,4,46,7</rect>
+                <key>scale9Paddings</key>
+                <rect>23,4,46,7</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/player_health_life.png</key>
+            <key type="filename">interface/player_mana_life.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,3,44,5</rect>
+                <key>scale9Paddings</key>
+                <rect>22,3,44,5</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

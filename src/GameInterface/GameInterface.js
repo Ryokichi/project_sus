@@ -5,10 +5,11 @@ projectSUS.GameInterface = cc.Node.extend({
 
         this.bg = pd.createSprite("interface_background_mock.png", cc.p(320,25), this);
         this.mana_frame = pd.createSprite("player_mana_bar.png", cc.p(312,10), this);
-        this.mana_bar = pd.createSprite("player_mana_life.png", cc.p(312,10), this);
+        this.mana_bar   = pd.createSprite("player_mana_life.png", cc.p(268,10), this);
+        this.mana_bar.setAnchorPoint(0.0, 0.5);
         this.life_frame = pd.createSprite("player_health_bar.png", cc.p(312,26), this);
-        this.life_bar = pd.createSprite("player_health_life.png", cc.p(312,26), this);
-        this.name_frame = pd.createSprite("party_interface_background.png", cc.p(312,45), this);
+        this.life_bar   = pd.createSprite("player_health_life.png", cc.p(268,26), this);
+        this.life_bar.setAnchorPoint(0.0, 0.5);
 
         this.boss_life_frame = pd.createSprite("boss_health_bar.png", cc.p(320,340), this);
         this.boss_life_bar = pd.createSprite("boss_health_life.png", cc.p(3,3), this.boss_life_frame);
@@ -19,7 +20,11 @@ projectSUS.GameInterface = cc.Node.extend({
         var x = 5;
         var y = 27;
         var y_ini = y;
+
+        var char_bg;
         for (var i = 0; i < 10; i++) {
+            char_bg = pd.createSprite("party_interface_background.png", cc.p(x-1, y-1), this);
+            char_bg.setAnchorPoint(0,0);
             this.char_list[i] = pd.createSprite("party_interface_life.png", cc.p(x,y), this);
             this.char_list[i].setAnchorPoint(0,0);
 
@@ -30,6 +35,7 @@ projectSUS.GameInterface = cc.Node.extend({
             }
 
             this.char_list[i].setColor(cc.color(0,128,0));
+            this.player_index = null;
         }
 
         pd.createSprite("party_icon_tank.png", cc.p(10,40),this);
@@ -44,22 +50,20 @@ projectSUS.GameInterface = cc.Node.extend({
         pd.createSprite("party_icon_mage.png", cc.p(218,16),this);
     },
 
-    informWhoIsPlayer: function (player) {
-        this.player = player;
+    informWhoIsPlayer: function (index) {
+        this.player_index = index;
     },
 
     updateCharLife: function (index, char) {
         var  color;
         var percent = char.getLifePercentage();
 
-
-        if (this.char_list[index] == this.player) {
+        if (index == this.player_index) {
             this.updatePlayerLife(percent);
         }
 
-
-        if (percent <= 0.26)      color = cc.color(128,0,0);
-        else if (percent <=0.51)  color = cc.color(128,30,0);
+        if      (percent <= 0.26) color = cc.color(128,0,0);
+        else if (percent <= 0.51) color = cc.color(128,30,0);
         else if (percent <= 0.76) color = cc.color(128,128,0);
         else                      color = cc.color(0,128,0);
 

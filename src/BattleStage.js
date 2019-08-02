@@ -35,6 +35,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         this.char_list[8] = new projectSUS.Char(this, "char7.png",  cc.p(370,85));
         this.char_list[9] = new projectSUS.Char(this, "char5.png",  cc.p(430,130));
 
+        this.layer.informWhoIsPlayer(9);
 
         var x = 5;
         var y = 27;

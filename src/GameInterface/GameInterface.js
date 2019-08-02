@@ -29,11 +29,7 @@ projectSUS.GameInterface = cc.Node.extend({
                 y = y_ini;
             }
 
-            if (i % 5 == 0) this.char_list[i].setColor(cc.color(0,128,0));
-            if (i % 5 == 1) this.char_list[i].setColor(cc.color(0,128,128));
-            if (i % 5 == 2) this.char_list[i].setColor(cc.color(128,140,0));
-            if (i % 5 == 3) this.char_list[i].setColor(cc.color(128,0,0));
-            if (i % 5 == 3) this.char_list[i].setColor(cc.color(196,30,30));
+            this.char_list[i].setColor(cc.color(0,128,0));
         }
 
         pd.createSprite("party_icon_tank.png", cc.p(10,40),this);
@@ -46,19 +42,40 @@ projectSUS.GameInterface = cc.Node.extend({
         pd.createSprite("party_icon_mage.png", cc.p(166,16),this);
         pd.createSprite("party_icon_mage.png", cc.p(218,40),this);
         pd.createSprite("party_icon_mage.png", cc.p(218,16),this);
+    },
 
+    informWhoIsPlayer: function (player) {
+        this.player = player;
     },
 
     updateCharLife: function (index, char) {
+        var  color;
         var percent = char.getLifePercentage();
-        this.char_list[index].setScaleX = percent;
+
+
+        if (this.char_list[index] == this.player) {
+            this.updatePlayerLife(percent);
+        }
+
+
+        if (percent <= 0.26)      color = cc.color(128,0,0);
+        else if (percent <=0.51)  color = cc.color(128,30,0);
+        else if (percent <= 0.76) color = cc.color(128,128,0);
+        else                      color = cc.color(0,128,0);
+
+        this.char_list[index].setColor(color);
+        this.char_list[index].setScaleX(percent);
     },
 
-    updatePlayerLife: function () {
-
+    updatePlayerLife: function (perc) {
+        this.life_bar.setScaleX(perc)
     },
 
-    updatePlayerMana: function () {
-
+    updatePlayerMana: function (perc) {
+        this.mana_bar.setScaleX(perc)
     },
+
+    updateBossLife: function(perc) {
+        this.boss_life_bar.setScaleX(perc);
+    }
 });

@@ -11,7 +11,21 @@ projectSUS.Boss = cc.Node.extend({
         this.sprite.setScale(0.6,0.6);
     },
 
-    setLife: function (qtd) {
+    addLife: function (qtd) {
+        this.life += qtd;
+        if (this.life > this.max_life) {
+            this.life = this.max_life;
+        }
+    },
+
+    subtractLife: function (qtd) {
+        this.life -= qtd;
+        if (this.life < 0) {
+            this.life = 0;
+        }
+    },
+
+    setInitialLife: function (qtd) {
         this.life = qtd;
         this.max_life = this.life;
     },

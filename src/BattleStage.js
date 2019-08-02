@@ -1,9 +1,9 @@
 projectSUS.BattleScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
-        var layer = new projectSUS.BattleLayer();
-        this.addChild(layer);
-        layer.init();
+        this.layer = new projectSUS.BattleLayer();
+        this.addChild(this.layer);
+        this.layer.init();
     }
 });
 
@@ -19,6 +19,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         this.layer.setLocalZOrder(1000);
 
         this.boss = new projectSUS.Boss(this);
+        this.boss.setInitialLife(10000);
         this.boss.setPosition(130,205);
 
         this.char_selected = 0;
@@ -67,26 +68,26 @@ projectSUS.BattleLayer = cc.Layer.extend({
 
         this.time_to_attack = 5;
         this.keys = [81,87,69,82];
-        this.damage_time = 3;
+        this.damage_time = 0.3;
 
         this.scheduleUpdate();
-
     },
 
     update: function(dt) {
         this.time_to_attack -= dt;
         this.damage_time -= dt;
 
+        if (this.damage_time <= 0) {
+            this.damage_time = 0.3;
+            this.boss.subtractLife(5);
+            this.layer.updateBossLife(this.boss.getLifePerc());
+        }
+
         if (this.time_to_attack <=0) {
             this.time_to_attack = 2 + Math.random()*3;
             pd.shuffle(this.keys);
-            cc.log(this.keys);
             this.onKeyPressed(this.keys[0]);
         }
-
-
-
-
     },
 
     onMouseDown: function (e) {
@@ -122,13 +123,14 @@ projectSUS.BattleLayer = cc.Layer.extend({
         else if (cc.rectContainsPoint(this.spell_list[4].getBoundingBox(), e.getLocation())) {
             for (var i=0; i < this.char_list.length; i++) {
                 this.char_list[i].addLife(100);
+                this.layer.updateCharLife(i, this.char_list[i]);
             }
         }
 
+        this.layer.updateCharLife(this.char_selected, this.char_list[this.char_selected]);
     },
 
     onKeyPressed: function (key, e) {
-        cc.log("chamou", key);
         if (key == 81) {
             var target = Math.ceil(Math.random()*893) % this.char_list.length;
             this.char_list[target].subtractLife(15);
@@ -147,7 +149,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         else if (key == 82) {
             for (var i=0; i < this.char_list.length; i++) {
                 this.char_list[i].subtractLife(20);
-                this.layer.updateCharLife(target, this.char_list[target]);
+                this.layer.updateCharLife(i, this.char_list[i]);
             }
         }
     }

@@ -11,11 +11,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{640,360}</string>
+                <string>{640,384}</string>
                 <key>spriteSourceSize</key>
-                <string>{640,360}</string>
+                <string>{640,384}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{640,360}}</string>
+                <string>{{0,0},{640,384}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -24,13 +24,13 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{0,-3}</string>
+                <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{640,354}</string>
+                <string>{640,360}</string>
                 <key>spriteSourceSize</key>
                 <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{1,363},{640,354}}</string>
+                <string>{{640,0},{640,360}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,9 +45,9 @@
                 <key>spriteSourceSize</key>
                 <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{643,1},{640,360}}</string>
+                <string>{{1280,0},{640,360}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
@@ -61,9 +61,9 @@
             <key>realTextureFileName</key>
             <string>bg.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{2048,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d710b985ddc91d1529f7c8616439d167:bfc227aa7cc5ea8e8ef844f1c2d62920:ba3351e848913f852cb04737e7054a9e$</string>
+            <string>$TexturePacker:SmartUpdate:93cdd9c5b740a7d66c38ca0f0ba459f3:9e9331541f4e38bd97677de79bfaf88b:ba3351e848913f852cb04737e7054a9e$</string>
             <key>textureFileName</key>
             <string>bg.png</string>
         </dict>

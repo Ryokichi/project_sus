@@ -287,6 +287,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">interface/party_icon_heal.png</key>
             <key type="filename">interface/party_icon_mage.png</key>
             <key type="filename">interface/party_icon_melee.png</key>
             <key type="filename">interface/party_icon_range.png</key>

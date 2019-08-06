@@ -92,7 +92,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
             this.mana_time = 1;
             this.mana += 2.5;
             if (this.mana > this.max_mana) this.mana = this.max_mana;
-            this.gui.updatePlayerMana(this.mana/this.max_mana);
+            this.gui.updatePlayerMana(this.mana, this.max_mana);
         }
 
         if (this.damage_time <= 0) {
@@ -204,13 +204,13 @@ projectSUS.BattleLayer = cc.Layer.extend({
         }
         else if (cc.rectContainsPoint(this.spell_list[4].getBoundingBox(), e.getLocation())) {
             this.magic_data.magic_id = 4;
-            this.cast_time = 0.1;
-            this.magic_data.magic_ct = 0.1;
+            this.cast_time = 10;
+            this.magic_data.magic_ct = 10;
             this.magic_data.mana_cost = 0;
             this.magic_data.heal = 100;
             this.magic_data.target = "all";
         }
-        this.gui.updatePlayerMana(this.mana/this.max_mana);
+        this.gui.updatePlayerMana(this.mana, this.max_mana);
 
     },
 

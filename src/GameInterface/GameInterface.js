@@ -7,6 +7,12 @@ projectSUS.GameInterface = cc.Node.extend({
         this.mana_frame = pd.createSprite("player_mana_bar.png", cc.p(312,10), this);
         this.mana_bar   = pd.createSprite("player_mana_life.png", cc.p(268,10), this);
         this.mana_bar.setAnchorPoint(0.0, 0.5);
+        this.mana_label = pd.label(this, "0/0", 1, 1);
+        this.mana_label.setPosition(312,8);
+        this.mana_label.setFontFillColor(cc.color(255,255,255,255));
+        this.mana_label.setDimensions(92,15);
+        this.mana_label.setAnchorPoint(0.5,0.5);
+
         this.life_frame = pd.createSprite("player_health_bar.png", cc.p(312,26), this);
         this.life_bar   = pd.createSprite("player_health_life.png", cc.p(268,26), this);
         this.life_bar.setAnchorPoint(0.0, 0.5);
@@ -102,14 +108,17 @@ projectSUS.GameInterface = cc.Node.extend({
         this.life_bar.setScaleX(perc)
     },
 
-    updatePlayerMana: function (perc) {
-        this.mana_bar.setScaleX(perc)
+    updatePlayerMana: function (mana, max_mana) {
+        var perc = mana / max_mana;
+        this.mana_bar.setScaleX(perc);
+
+        this.mana_label.setString(Math.floor(mana)+"/"+max_mana);
     },
 
     updateBossLife: function(perc) {
         var x = this.boss_life_bar.getPosition().x + this.boss_life_bar.width*perc;
         this.boss_life_bar.setScaleX(perc);
-        this.boss_icon_frame.x = x
+        // this.boss_icon_frame.x = x
     },
 
     updateCastBar: function (time, ct) {

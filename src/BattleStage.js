@@ -107,33 +107,32 @@ projectSUS.BattleLayer = cc.Layer.extend({
             this.onKeyPressed(this.keys[0]);
         }
 
-        if (this.cast_time > 0 && this.magic_data.target != null) {
-            this.cast_time -= dt;
+        if (this.magic_data.target != null) {
+            this.cast_time = (this.cast_time < this.magic_data.magic_ct) ? this.cast_time + dt : this.magic_data.magic_ct;
             this.gui.updateCastBar(this.cast_time, this.magic_data.magic_ct);
-        }
-        else if (this.cast_time <= 0 && this.magic_data.target != null) {
-            this.cast_time = 0;
 
-            var target = this.magic_data.target;
-            var heal = this.magic_data.heal;
+            if (this.cast_time >= this.magic_data.magic_ct) {
+                var target = this.magic_data.target;
+                var heal = this.magic_data.heal;
 
-            if (target == "all") {
-                for (var i = 0; i < this.char_list.length; i++) {
-                    this.char_list[i].addLife(heal);
-                    this.gui.updateCharLife(i, this.char_list[i]);
+                if (target == "all") {
+                    for (var i = 0; i < this.char_list.length; i++) {
+                        this.char_list[i].addLife(heal);
+                        this.gui.updateCharLife(i, this.char_list[i]);
+                    }
+                } else {
+                    this.char_list[target].addLife(heal);
+                    this.gui.updateCharLife(target, this.char_list[target]);
                 }
-            } else {
-                this.char_list[target].addLife(heal);
-                this.gui.updateCharLife(target, this.char_list[target]);
+
+                this.cast_time = 0;
+                this.magic_data.target = null;
+                this.magic_data.heal = 0;
+                this.magic_data.mana_cost = 0;
+                this.magic_data.magic_id = null;
+                this.magic_data.magic_ct = 0;
             }
-
-            this.magic_data.target = null;
-            this.magic_data.heal = 0;
-            this.magic_data.mana_cost = 0;
-            this.magic_data.magic_id = null;
-            this.magic_data.magic_ct = 0;
         }
-
     },
 
     onMouseDown: function (e) {
@@ -157,7 +156,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         if (cc.rectContainsPoint(this.spell_list[0].getBoundingBox(), e.getLocation())) {
             if (this.mana >=30) {
                 this.magic_data.magic_id = 0;
-                this.cast_time = 0.1;
+                // this.cast_time = 0.1;
                 this.magic_data.magic_ct = 0.1;
                 this.magic_data.mana_cost = 30;
                 this.magic_data.heal = 20;
@@ -169,7 +168,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         else if (cc.rectContainsPoint(this.spell_list[1].getBoundingBox(), e.getLocation())) {
             if (this.mana >=5) {
                 this.magic_data.magic_id = 1;
-                this.cast_time = 1;
+                // this.cast_time = 1;
                 this.magic_data.magic_ct = 1;
                 this.magic_data.mana_cost = 5;
                 this.magic_data.heal = 10;
@@ -181,7 +180,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         else if (cc.rectContainsPoint(this.spell_list[2].getBoundingBox(), e.getLocation())) {
             if (this.mana >=10) {
                 this.magic_data.magic_id = 2;
-                this.cast_time = 1.8;
+                // this.cast_time = 1.8;
                 this.magic_data.magic_ct = 1.8;
                 this.magic_data.mana_cost = 10;
                 this.magic_data.heal = 35;
@@ -193,7 +192,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         else if (cc.rectContainsPoint(this.spell_list[3].getBoundingBox(), e.getLocation())) {
             if (this.mana >= 25) {
                 this.magic_data.magic_id = 3;
-                this.cast_time = 2.3;
+                // this.cast_time = 2.3;
                 this.magic_data.magic_ct = 2.3;
                 this.magic_data.mana_cost = 25;
                 this.magic_data.heal = 20;
@@ -204,7 +203,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         }
         else if (cc.rectContainsPoint(this.spell_list[4].getBoundingBox(), e.getLocation())) {
             this.magic_data.magic_id = 4;
-            this.cast_time = 10;
+            // this.cast_time = 10;
             this.magic_data.magic_ct = 10;
             this.magic_data.mana_cost = 0;
             this.magic_data.heal = 100;

@@ -23,17 +23,17 @@ projectSUS.BattleLayer = cc.Layer.extend({
         this.boss.setPosition(-800,-800);
 
         this.char_selected = 0;
-        this.char_list = [];
-        this.char_list[0] = new projectSUS.Char(this, "char10.png", cc.p(250,150));
-        this.char_list[1] = new projectSUS.Char(this, "char8.png",  cc.p(225,120));
-        this.char_list[2] = new projectSUS.Char(this, "char6.png",  cc.p(285,140));
-        this.char_list[3] = new projectSUS.Char(this, "char2.png",  cc.p(280,100));
-        this.char_list[4] = new projectSUS.Char(this, "char12.png", cc.p(330,160));
-        this.char_list[5] = new projectSUS.Char(this, "char3.png",  cc.p(325,125));
-        this.char_list[6] = new projectSUS.Char(this, "char4.png",  cc.p(375,160));
-        this.char_list[7] = new projectSUS.Char(this, "char9.png",  cc.p(380,120));
-        this.char_list[8] = new projectSUS.Char(this, "char7.png",  cc.p(370,85));
-        this.char_list[9] = new projectSUS.Char(this, "char5.png",  cc.p(430,130));
+        this.hero_list = [];
+        this.hero_list[0] = new projectSUS.Hero(this, "char10.png", cc.p(250,150));
+        this.hero_list[1] = new projectSUS.Hero(this, "char8.png",  cc.p(225,120));
+        this.hero_list[2] = new projectSUS.Hero(this, "char6.png",  cc.p(285,140));
+        this.hero_list[3] = new projectSUS.Hero(this, "char2.png",  cc.p(280,100));
+        this.hero_list[4] = new projectSUS.Hero(this, "char12.png", cc.p(330,160));
+        this.hero_list[5] = new projectSUS.Hero(this, "char3.png",  cc.p(325,125));
+        this.hero_list[6] = new projectSUS.Hero(this, "char4.png",  cc.p(375,160));
+        this.hero_list[7] = new projectSUS.Hero(this, "char9.png",  cc.p(380,120));
+        this.hero_list[8] = new projectSUS.Hero(this, "char7.png",  cc.p(370,85));
+        this.hero_list[9] = new projectSUS.Hero(this, "char5.png",  cc.p(430,130));
 
         this.gui.informWhoIsPlayer(9);
 
@@ -41,7 +41,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         var y = 27;
         var y_ini = y;
         this.char_btn =[];
-        for (var i = 0; i < this.char_list.length; i++) {
+        for (var i = 0; i < this.hero_list.length; i++) {
             this.char_btn[i] = new cc.LayerColor(cc.color(130,200,200,0),47,18);
             this.char_btn[i].setPosition(x, y);
             this.addChild(this.char_btn[i], 1001);
@@ -108,27 +108,34 @@ projectSUS.BattleLayer = cc.Layer.extend({
         }
 
         if (this.magic_data.target != null) {
-            this.cast_time = (this.cast_time < this.magic_data.magic_ct) ? this.cast_time + dt : this.magic_data.magic_ct;
+            this.cast_time += dt;
+
+            if (this.cast_time >= this.magic_data.magic_ct){
+                this.cast_time = this.magic_data.magic_ct;
+            }
+
             this.gui.updateCastBar(this.cast_time, this.magic_data.magic_ct);
 
-            if (this.cast_time >= this.magic_data.magic_ct) {
+            if (this.cast_time === this.magic_data.magic_ct) {
+                console.log(this.cast_time,"***",this.magic_data.magic_ct);
+
                 var target = this.magic_data.target;
-                var heal = this.magic_data.heal;
+                var heal   = this.magic_data.heal;
 
                 if (target == "all") {
-                    for (var i = 0; i < this.char_list.length; i++) {
-                        this.char_list[i].addLife(heal);
-                        this.gui.updateCharLife(i, this.char_list[i]);
+                    for (var i = 0; i < this.hero_list.length; i++) {
+                        this.hero_list[i].addLife(heal);
+                        this.gui.updateCharLife(i, this.hero_list[i]);
                     }
                 } else {
-                    this.char_list[target].addLife(heal);
-                    this.gui.updateCharLife(target, this.char_list[target]);
+                    this.hero_list[target].addLife(heal);
+                    this.gui.updateCharLife(target, this.hero_list[target]);
                 }
 
                 this.cast_time = 0;
-                this.magic_data.target = null;
                 this.magic_data.heal = 0;
                 this.magic_data.mana_cost = 0;
+                this.magic_data.target   = null;
                 this.magic_data.magic_id = null;
                 this.magic_data.magic_ct = 0;
             }
@@ -147,10 +154,10 @@ projectSUS.BattleLayer = cc.Layer.extend({
         if (has_selection) {
             for (var i = 0; i < this.char_btn.length; i++) {
                 this.char_btn[i].setColor(cc.color(cc.color(200,200,200,0)));
-                this.char_list[i].setScale(1);
+                this.hero_list[i].setScale(1);
             }
             this.char_btn[this.char_selected].setColor(cc.color(200,100,100,100));
-            this.char_list[this.char_selected].setScale(1.3);
+            this.hero_list[this.char_selected].setScale(1.3);
         }
 
         if (cc.rectContainsPoint(this.spell_list[0].getBoundingBox(), e.getLocation())) {
@@ -215,24 +222,24 @@ projectSUS.BattleLayer = cc.Layer.extend({
 
     onKeyPressed: function (key, e) {
         if (key == 81) {
-            var target = Math.ceil(Math.random()*893) % this.char_list.length;
-            this.char_list[target].subtractLife(15);
-            this.gui.updateCharLife(target, this.char_list[target]);
+            var target = Math.ceil(Math.random()*893) % this.hero_list.length;
+            this.hero_list[target].subtractLife(15);
+            this.gui.updateCharLife(target, this.hero_list[target]);
         }
         else if (key == 87) {
             var target = Math.ceil(Math.random()*893) % 2;
-            this.char_list[target].subtractLife(20);
-            this.gui.updateCharLife(target, this.char_list[target]);
+            this.hero_list[target].subtractLife(20);
+            this.gui.updateCharLife(target, this.hero_list[target]);
         }
         else if (key == 69) {
-            var target = Math.ceil(Math.random()*893) % this.char_list.length;
-            this.char_list[target].subtractLife(15);
-            this.gui.updateCharLife(target, this.char_list[target]);
+            var target = Math.ceil(Math.random()*893) % this.hero_list.length;
+            this.hero_list[target].subtractLife(15);
+            this.gui.updateCharLife(target, this.hero_list[target]);
         }
         else if (key == 82) {
-            for (var i=0; i < this.char_list.length; i++) {
-                this.char_list[i].subtractLife(20);
-                this.gui.updateCharLife(i, this.char_list[i]);
+            for (var i=0; i < this.hero_list.length; i++) {
+                this.hero_list[i].subtractLife(20);
+                this.gui.updateCharLife(i, this.hero_list[i]);
             }
         }
     }

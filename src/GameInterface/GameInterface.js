@@ -18,11 +18,11 @@ projectSUS.GameInterface = cc.Node.extend({
         this.life_bar.setAnchorPoint(0.0, 0.5);
 
         this.cast_frame = pd.createSprite("player_health_bar.png", cc.p(312,48), this);
-        this.cast_bar   = pd.createSprite("player_mana_life.png", cc.p(268,48), this);
+        this.cast_bar   = pd.createSprite("player_mana_life.png", cc.p(268,43), this);
         this.cast_bar.setColor(cc.color(150,150,50));
         this.cast_bar.setScaleX(1);
-        this.cast_bar.setAnchorPoint(0,0.5);
-        this.cast_time_label = pd.label(this, "0/0", 1, 1);
+        this.cast_bar.setAnchorPoint(0,0);
+        this.cast_time_label = pd.label(this, "0", 1, 1);
         this.cast_time_label.setPosition(312,46);
         this.cast_time_label.setFontFillColor(cc.color(255,255,255,255));
         this.cast_time_label.setDimensions(92,15);
@@ -124,8 +124,8 @@ projectSUS.GameInterface = cc.Node.extend({
 
     updateCastBar: function (time, ct) {
         var perc = time / ct;
-        this.cast_time_label.setString(Math.floor((ct - time)*10)/10);
-
+        console.log(time,"-",ct,"-",perc);
         this.cast_bar.setScaleX(perc);
+        this.cast_time_label.setString(Math.floor((ct - time)*10)/10);
     }
 });

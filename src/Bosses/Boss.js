@@ -3,12 +3,12 @@ projectSUS.Boss = cc.Node.extend({
         this._super();
         if (parent) parent.addChild(this);
 
-        this.life = 1;
-        this.max_life = 1;
-
-        this.sprite = pd.createSprite("boss.png", cc.p(0,0), this);
-        this.sprite.flippedX = true;
-        this.sprite.setScale(0.6,0.6);
+        // this.life = 1;
+        // this.max_life = 1;
+        //
+        // this.sprite = pd.createSprite("boss.png", cc.p(0,0), this);
+        // this.sprite.flippedX = true;
+        // this.sprite.setScale(0.6,0.6);
     },
 
     addLife: function (qtd) {

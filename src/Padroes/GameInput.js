@@ -40,42 +40,44 @@ pd.gameInput = cc.Class.extend({
     },
 
     removeEventListener: function (caller_node) {
-        for (var i = 0; this.mouseDownListeners.length; i++) {
+        for (var i = this.mouseDownListeners.length - 1; i >=0; i--) {
             if (this.mouseDownListeners[i].caller === caller_node){
                 this.mouseDownListeners.splice(i, 1);
                 break;
             }
         }
 
-        for (var i = 0; this.mouseUpListeners.length; i++) {
+        for (var i = this.mouseUpListeners.length - 1; i >=0; i--) {
             if (this.mouseUpListeners[i].caller === caller_node){
                 this.mouseUpListeners.splice(i, 1);
+                i = -1;
                 break;
             }
         }
 
-        for (var i = 0; this.mouseMoveListeners.length; i++) {
-            if (this.mouseMoveListeners[i].caller === caller_node){
+
+        for (var i = this.mouseMoveListeners.length - 1; i >=0; i--) {
+            if (this.mouseMoveListeners[i].caller === caller_node) {
                 this.mouseMoveListeners.splice(i, 1);
                 break;
             }
         }
 
-        for (var i = 0; this.mouseScrollListeners.length; i++) {
+        for (var i = this.mouseScrollListeners.length - 1; i >=0; i--) {
             if (this.mouseScrollListeners[i].caller === caller_node){
                 this.mouseScrollListeners.splice(i, 1);
                 break;
             }
         }
 
-        for (var i = 0; this.keyDownListeners.length; i++) {
+        for (var i = this.keyDownListeners.length - 1; i >=0; i--) {
             if (this.keyDownListeners[i].caller === caller_node){
                 this.keyDownListeners.splice(i, 1);
                 break;
             }
         }
 
-        for (var i = 0; this.keyUpListeners.length; i++) {
+        for (var i = this.keyUpListeners.length - 1; i >=0; i--) {
             if (this.keyUpListeners[i].caller === caller_node){
                 this.keyUpListeners.splice(i, 1);
                 break;

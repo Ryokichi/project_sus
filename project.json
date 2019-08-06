@@ -25,7 +25,7 @@
     "src/Stage1.js",
 
     "src/Bosses/Boss.js",
-    "src/Chars/Char.js",
+    "src/Chars/Hero.js",
     "src/GameInterface/GameInterface.js",
     "src/PartySelect/PartySelect.js",
     "src/SpellBook/SpellBookScene.js",

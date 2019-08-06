@@ -1,9 +1,10 @@
-projectSUS.Char = cc.Node.extend({
+projectSUS.Hero = cc.Node.extend({
     ctor: function (parent, sprite, pos) {
         this._super();
         if (parent) parent.addChild(this);
         this.setPosition(pos);
 
+        this.class = null;
         this.life = 100;
         this.max_life = this.life;
 

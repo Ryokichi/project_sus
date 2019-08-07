@@ -12,7 +12,7 @@ projectSUS.BattleLayer = cc.Layer.extend({
         this.bg   = pd.createSprite("bg.png", cc.p(320,180), this);
         this.gui  = new projectSUS.GameInterface(this);
         this.boss = new projectSUS.current_boss(this);
-        this.boss.setPosition(320, 180);
+        this.boss.setPosition(320, 210);
 
         this.hero_list = [];
         this.hero_list[0] = new projectSUS.Hero(this, "char10.png", cc.p(250,150));
@@ -27,5 +27,8 @@ projectSUS.BattleLayer = cc.Layer.extend({
         this.hero_list[9] = new projectSUS.Hero(this, "char5.png",  cc.p(430,130));
         this.gui.informWhoIsPlayer(9);
 
+
+        this.boss.setHeroes(this.hero_list);
+        this.boss.init();
     }
 });

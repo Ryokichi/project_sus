@@ -148,7 +148,7 @@
         <key>outputFormat</key>
         <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>alphaHandling</key>
-        <enum type="SettingsBase::AlphaHandling">ClearTransparentPixels</enum>
+        <enum type="SettingsBase::AlphaHandling">KeepTransparentPixels</enum>
         <key>contentProtection</key>
         <struct type="ContentProtection">
             <key>key</key>
@@ -188,6 +188,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">interface/boss_health_bar.png</key>
+            <key type="filename">interface/boss_health_interface.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -213,21 +214,33 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">interface/boss_health_life.png</key>
+            <key type="filename">interface/cast_bar.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>104,3,208,6</rect>
+                <rect>20,3,39,6</rect>
                 <key>scale9Paddings</key>
-                <rect>104,3,208,6</rect>
+                <rect>20,3,39,6</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/cast_interface.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,4,47,7</rect>
+                <key>scale9Paddings</key>
+                <rect>24,4,47,7</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">interface/interface_background.png</key>
-            <key type="filename">interface/interface_background_mock.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -287,6 +300,33 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">interface/party_health_mockup.png</key>
+            <key type="filename">interface/party_hp_interface.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,1,23,3</rect>
+                <key>scale9Paddings</key>
+                <rect>11,1,23,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/party_hp_bar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,1,21,1</rect>
+                <key>scale9Paddings</key>
+                <rect>11,1,21,1</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">interface/party_icon_heal.png</key>
             <key type="filename">interface/party_icon_mage.png</key>
             <key type="filename">interface/party_icon_melee.png</key>
@@ -317,21 +357,37 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">interface/party_interface_life.png</key>
+            <key type="filename">interface/party_interface_background_target.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>12,5,23,9</rect>
+                <rect>13,5,25,10</rect>
                 <key>scale9Paddings</key>
-                <rect>12,5,23,9</rect>
+                <rect>13,5,25,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/party_interface_selected.png</key>
+            <key type="filename">interface/party_interface_unselected.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,5,25,9</rect>
+                <key>scale9Paddings</key>
+                <rect>12,5,25,9</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">interface/player_health_bar.png</key>
+            <key type="filename">interface/player_health_interface.png</key>
             <key type="filename">interface/player_mana_bar.png</key>
+            <key type="filename">interface/player_mana_interface.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -341,20 +397,6 @@
                 <rect>23,4,46,7</rect>
                 <key>scale9Paddings</key>
                 <rect>23,4,46,7</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">interface/player_health_life.png</key>
-            <key type="filename">interface/player_mana_life.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>22,3,44,5</rect>
-                <key>scale9Paddings</key>
-                <rect>22,3,44,5</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

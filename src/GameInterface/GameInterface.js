@@ -3,47 +3,52 @@ projectSUS.GameInterface = cc.Node.extend({
         this._super();
         if (parent) parent.addChild(this, 1000);
 
-        this.bg = pd.createSprite("interface_background_mock.png", cc.p(320,25), this);
-        this.mana_frame = pd.createSprite("player_mana_bar.png", cc.p(312,10), this);
-        this.mana_bar   = pd.createSprite("player_mana_life.png", cc.p(268,10), this);
+        this.bg = pd.createSprite("interface_background.png", cc.p(320,25), this);
+
+        this.mana_frame = pd.createSprite("player_mana_interface.png", cc.p(320,10), this);
+        this.mana_bar   = pd.createSprite("player_mana_bar.png", cc.p(276,10), this);
         this.mana_bar.setAnchorPoint(0.0, 0.5);
         this.mana_label = pd.label(this, "0/0", 1, 1);
-        this.mana_label.setPosition(312,8);
+        this.mana_label.setPosition(320,7);
         this.mana_label.setFontFillColor(cc.color(255,255,255,255));
         this.mana_label.setDimensions(92,15);
         this.mana_label.setAnchorPoint(0.5,0.5);
 
-        this.life_frame = pd.createSprite("player_health_bar.png", cc.p(312,26), this);
-        this.life_bar   = pd.createSprite("player_health_life.png", cc.p(268,26), this);
+        this.life_frame = pd.createSprite("player_health_interface.png", cc.p(320,26), this);
+        this.life_bar   = pd.createSprite("player_health_bar.png", cc.p(276,26), this);
         this.life_bar.setAnchorPoint(0.0, 0.5);
 
-        this.cast_frame = pd.createSprite("player_health_bar.png", cc.p(312,48), this);
-        this.cast_bar   = pd.createSprite("player_mana_life.png", cc.p(268,43), this);
-        this.cast_bar.setColor(cc.color(150,150,50));
+        this.cast_frame = pd.createSprite("cast_interface.png", cc.p(320,60), this);
+        this.cast_bar   = pd.createSprite("cast_bar.png", cc.p(14,1), this.cast_frame);
         this.cast_bar.setScaleX(1);
         this.cast_bar.setAnchorPoint(0,0);
-        this.cast_time_label = pd.label(this, "0", 1, 1);
-        this.cast_time_label.setPosition(312,46);
-        this.cast_time_label.setFontFillColor(cc.color(255,255,255,255));
+        this.cast_time_label = pd.label(this.cast_frame, "0", 1, 1);
+        this.cast_time_label.setPosition(45,4);
         this.cast_time_label.setDimensions(92,15);
         this.cast_time_label.setAnchorPoint(0.5,0.5);
 
-        this.boss_life_frame = pd.createSprite("boss_health_bar.png", cc.p(320,340), this);
-        this.boss_life_bar = pd.createSprite("boss_health_life.png", cc.p(3,3), this.boss_life_frame);
+        this.cast_frame.setCascadeOpacityEnabled(true);
+
+        this.boss_life_frame = pd.createSprite("boss_health_interface.png", cc.p(320,340), this);
+        this.boss_life_bar = pd.createSprite("boss_health_bar.png", cc.p(3,3), this.boss_life_frame);
         this.boss_life_bar.setAnchorPoint(0,0);
         this.boss_icon_frame = pd.createSprite("boss_health_icon.png", cc.p(-6,9), this.boss_life_frame);
 
         this.char_list = [];
-        var x = 5;
-        var y = 27;
+        var x = 11;
+        var y = 32;
         var y_ini = y;
 
         var char_bg;
         for (var i = 0; i < 10; i++) {
-            char_bg = pd.createSprite("party_interface_background.png", cc.p(x-1, y-1), this);
-            char_bg.setAnchorPoint(0,0);
-            this.char_list[i] = pd.createSprite("party_interface_life.png", cc.p(x,y), this);
+            this.char_list[i] = pd.createSprite("party_hp_bar.png", cc.p(x,y), this, 2);
             this.char_list[i].setAnchorPoint(0,0);
+
+            char_bg = pd.createSprite("party_hp_interface.png", cc.p(x-1, y-1), this, 1);
+            char_bg.setAnchorPoint(0,0);
+
+            this.char_list[i].bg = pd.createSprite("party_interface_unselected.png", cc.p(x+22, y+6), this, 0);
+            this.char_list[i].frame = pd.createSprite("party_interface_background.png", cc.p(x+22, y+6), this, 2);
 
             y -= 23;
             if (i % 2 == 1) {
@@ -51,25 +56,25 @@ projectSUS.GameInterface = cc.Node.extend({
                 y = y_ini;
             }
 
-            this.char_list[i].setColor(cc.color(0,128,0));
+            // this.char_list[i].setColor(cc.color(0,128,0));
             this.player_index = null;
         }
 
-        pd.createSprite("party_icon_tank.png", cc.p(10,40),this);
-        pd.createSprite("party_icon_tank.png", cc.p(10,16),this);
-        pd.createSprite("party_icon_melee.png", cc.p(62,40),this);
-        pd.createSprite("party_icon_melee.png", cc.p(62,16),this);
-        pd.createSprite("party_icon_range.png", cc.p(114,40),this);
-        pd.createSprite("party_icon_range.png", cc.p(114,16),this);
-        pd.createSprite("party_icon_mage.png", cc.p(166,40),this);
-        pd.createSprite("party_icon_mage.png", cc.p(166,16),this);
-        pd.createSprite("party_icon_mage.png", cc.p(218,40),this);
-        pd.createSprite("party_icon_heal.png", cc.p(218,16),this);
+        pd.createSprite("party_icon_tank.png",  cc.p(14, 42),this);
+        pd.createSprite("party_icon_tank.png",  cc.p(14, 18),this);
+        pd.createSprite("party_icon_melee.png", cc.p(66, 42),this);
+        pd.createSprite("party_icon_melee.png", cc.p(66, 18),this);
+        pd.createSprite("party_icon_range.png", cc.p(118,42),this);
+        pd.createSprite("party_icon_range.png", cc.p(118,18),this);
+        pd.createSprite("party_icon_mage.png",  cc.p(170,42),this);
+        pd.createSprite("party_icon_mage.png",  cc.p(170,18),this);
+        pd.createSprite("party_icon_mage.png",  cc.p(222,42),this);
+        pd.createSprite("party_icon_heal.png",  cc.p(222,18),this);
 
 
         var pos_mana = [], x;
         for (var i = 0; i < 4; i++) {
-            x = 383+47*i;
+            x = 393+47*i;
             pd.createSprite("interface_mana_icon.png", cc.p(x,6), this);
             pos_mana.push(x)
         }
@@ -84,6 +89,40 @@ projectSUS.GameInterface = cc.Node.extend({
         pd.createSprite("manacost_n5.png", cc.p(pos_mana[3]+11,6), this);
     },
 
+    setNewTarget: function(idx) {
+        if (idx == "all") {
+            for (var i = 0; i < this.char_list.length; i++) {
+                this.char_list[i].frame.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame("party_interface_background_target.png"));
+            }
+        }
+        else {
+            for (var i = 0; i < this.char_list.length; i++) {
+                if (i == idx) {
+                    this.char_list[i].frame.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame("party_interface_background_target.png"));
+                } else {
+                    this.char_list[i].frame.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame("party_interface_background.png"));
+                }
+            }
+        }
+    },
+
+    setNewSelection: function (idx) {
+        if (idx == "all") {
+            for (var i = 0; i < this.char_list.length; i++) {
+                this.char_list[i].bg.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame("party_interface_selected.png"));
+            }
+        }
+        else {
+            for (var i = 0; i < this.char_list.length; i++) {
+                if (i == idx) {
+                    this.char_list[i].bg.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame("party_interface_selected.png"));
+                } else {
+                    this.char_list[i].bg.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame("party_interface_unselected.png"));
+                }
+            }
+        }
+    },
+
     informWhoIsPlayer: function (index) {
         this.player_index = index;
     },
@@ -96,12 +135,12 @@ projectSUS.GameInterface = cc.Node.extend({
             this.updatePlayerLife(percent);
         }
 
-        if      (percent <= 0.26) color = cc.color(128,0,0);
-        else if (percent <= 0.51) color = cc.color(128,30,0);
-        else if (percent <= 0.76) color = cc.color(128,128,0);
-        else                      color = cc.color(0,128,0);
-
-        this.char_list[index].setColor(color);
+        // if      (percent <= 0.26) color = cc.color(128,0,0);
+        // else if (percent <= 0.51) color = cc.color(128,30,0);
+        // else if (percent <= 0.76) color = cc.color(128,128,0);
+        // else                      color = cc.color(0,128,0);
+        //
+        // this.char_list[index].setColor(color);
         this.char_list[index].setScaleX(percent);
     },
 
@@ -124,8 +163,18 @@ projectSUS.GameInterface = cc.Node.extend({
 
     updateCastBar: function (time, ct) {
         var perc = time / ct;
-        console.log(time,"-",ct,"-",perc);
         this.cast_bar.setScaleX(perc);
         this.cast_time_label.setString(Math.floor((ct - time)*10)/10);
+    },
+
+    showCastBar: function () {
+        this.cast_frame.stopAllActions();
+        this.cast_frame.runAction(cc.fadeIn(0.05));
+    },
+
+    hideCastBar: function () {
+        this.cast_frame.stopAllActions();
+        this.cast_frame.runAction(cc.fadeOut(0.2));
     }
+
 });

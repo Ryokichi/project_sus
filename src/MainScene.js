@@ -33,7 +33,7 @@ projectSUS.MainLayer = cc.Layer.extend({
             projectSUS.input.removeEventListener(this);
 
             projectSUS.current_boss = projectSUS.Petrerus;
-            pd.changeScene(new projectSUS.BattleScene, 1, 0);
+            pd.changeScene(new projectSUS.BattleScene_old, 1, 0);
             // pd.changeScene(new projectSUS.PartySelectionScene, 1, 0);
 
         }

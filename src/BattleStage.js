@@ -1,13 +1,13 @@
-projectSUS.BattleScene = cc.Scene.extend({
+projectSUS.BattleScene_old = cc.Scene.extend({
     onEnter:function () {
         this._super();
-        this.layer = new projectSUS.BattleLayer();
+        this.layer = new projectSUS.BattleLayer_old();
         this.addChild(this.layer);
         this.layer.init();
     }
 });
 
-projectSUS.BattleLayer = cc.Layer.extend({
+projectSUS.BattleLayer_old = cc.Layer.extend({
     init: function () {
         var size = cc.director.getWinSize();
 

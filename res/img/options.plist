@@ -11,11 +11,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{59,59}</string>
+                <string>{80,56}</string>
                 <key>spriteSourceSize</key>
-                <string>{59,59}</string>
+                <string>{80,56}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{59,59}}</string>
+                <string>{{0,0},{80,56}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{59,60}</string>
                 <key>textureRect</key>
-                <string>{{59,0},{59,60}}</string>
+                <string>{{80,0},{59,60}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,7 +45,7 @@
                 <key>spriteSourceSize</key>
                 <string>{500,24}</string>
                 <key>textureRect</key>
-                <string>{{118,0},{500,24}}</string>
+                <string>{{139,0},{500,24}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -60,7 +60,7 @@
                 <key>spriteSourceSize</key>
                 <string>{30,30}</string>
                 <key>textureRect</key>
-                <string>{{618,0},{30,30}}</string>
+                <string>{{639,0},{30,30}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -76,9 +76,9 @@
             <key>realTextureFileName</key>
             <string>options.png</string>
             <key>size</key>
-            <string>{648,60}</string>
+            <string>{669,60}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:46511a896bf5f70513975ddac5e05eaf:794db071ec72231f60b14e5cf242c9ae:c3323197272216b91c571a82f95baed2$</string>
+            <string>$TexturePacker:SmartUpdate:ec483339d53518b44b027acb182fad4a:217fc92e6ce211f9861170c40f5232bc:c3323197272216b91c571a82f95baed2$</string>
             <key>textureFileName</key>
             <string>options.png</string>
         </dict>

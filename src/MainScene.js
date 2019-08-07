@@ -31,6 +31,8 @@ projectSUS.MainLayer = cc.Layer.extend({
         }
         else if (cc.rectContainsPoint(this.btn_2.getBoundingBox(), e.getLocation())) {
             projectSUS.input.removeEventListener(this);
+
+            projectSUS.current_boss = projectSUS.Petrerus;
             pd.changeScene(new projectSUS.BattleScene, 1, 0);
             // pd.changeScene(new projectSUS.PartySelectionScene, 1, 0);
 

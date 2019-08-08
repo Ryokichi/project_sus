@@ -117,6 +117,10 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         this.boss_attack_code = null;
 
         cc.audioEngine.playMusic(res.bmg, true);
+
+        this.target_tank = 0;
+        this.tank_couter = 0;
+        this.boss_basic_atk_time = 2;
     },
 
     update: function(dt) {
@@ -129,6 +133,9 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         this.time_to_attack -= dt;
         this.damage_time -= dt;
         this.mana_time -= dt;
+        this.boss_basic_atk_time -= dt;
+
+
 
         for (var i = 0; i < this.spell_list.length; i++) {
             if (this.spell_list[i].timer > 0) {
@@ -155,30 +162,31 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             this.gui.updateBossLife(this.boss.getLifePerc());
         }
 
+
+        if (this.boss_basic_atk_time <= 0) {
+            this.boss_basic_atk_time = 2;
+            this.tank_couter ++;
+
+            if (this.tank_couter == 10){
+                this.target_tank = (this.target_tank == 0)? 1: 0;
+                this.tank_couter = 0;
+            }
+
+            this.onKeyPressed(81, null, this.target_tank);
+        }
+
         if (this.time_to_attack <=0) {
             this.onKeyPressed(this.boss_attack_code, null, this.boss_target);
             this.boss_attack_num = Math.floor(Math.random() * 1000);
 
-            if (this.boss_attack_num < 500) {
-                this.time_to_attack = 2;
-                this.boss_target = 0;
-                this.boss_attack_code = 81;
-                cc.log("Vou bater 20 no ", this.boss_target, " em:", this.time_to_attack);
-            }
-            else if (this.boss_attack_num < 800) {
-                this.time_to_attack = 2;
-                this.boss_target = 1;
-                this.boss_attack_code = 81;
-                cc.log("Vou bater 20 no ", this.boss_target, " em:", this.time_to_attack);
-            }
-            else if (this.boss_attack_num < 950) {
-                this.time_to_attack = 2;
+            if (this.boss_attack_num < 650) {
+                this.time_to_attack = 5 + Math.random()*3;
                 this.boss_target = Math.floor(2+(Math.random()*987)%8);
                 this.boss_attack_code = 69;
                 cc.log("Vou bater 60 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else {
-                this.time_to_attack = 2;
+                this.time_to_attack = this.time_to_attack = 5 + Math.random()*3;
                 this.boss_target = "all";
                 this.boss_attack_code = 82;
                 cc.log("Vou bater 35 em todos em:", this.time_to_attack);
@@ -324,25 +332,25 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
     onKeyPressed: function (key, e, target) {
         if (key == 81) {
             // var target = Math.ceil(Math.random()*893) % this.hero_list.length;
-            this.hero_list[target].subtractLife(20);
+            this.hero_list[target].subtractLife(15);
             this.gui.updateCharLife(target, this.hero_list[target]);
             cc.audioEngine.playEffect(res.sfx_hit_1, false);
         }
         else if (key == 87) {
             // var target = Math.ceil(Math.random()*893) % 2;
-            this.hero_list[target].subtractLife(20);
+            this.hero_list[target].subtractLife(15);
             this.gui.updateCharLife(target, this.hero_list[target]);
             cc.audioEngine.playEffect(res.sfx_hit_2, false);
         }
         else if (key == 69) {
             // var target = Math.ceil(Math.random()*893) % this.hero_list.length;
-            this.hero_list[target].subtractLife(60);
+            this.hero_list[target].subtractLife(45);
             this.gui.updateCharLife(target, this.hero_list[target]);
             cc.audioEngine.playEffect(res.sfx_hit_3, false);
         }
         else if (key == 82) {
             for (var i=0; i < this.hero_list.length; i++) {
-                this.hero_list[i].subtractLife(35);
+                this.hero_list[i].subtractLife(30);
                 this.gui.updateCharLife(i, this.hero_list[i]);
                 cc.audioEngine.playEffect(res.sfx_hit_4, false);
             }

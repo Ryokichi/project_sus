@@ -313,12 +313,13 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             }
         }
 
-        else if (key == 49) this.skill_1();
+        if (key == 49) this.skill_1();
         else if (key == 50) this.skill_2();
         else if (key == 51) this.skill_3();
         else if (key == 52) this.skill_4();
-        else if (key == 53) this.skill_5();5
+        else if (key == 53) this.skill_5();
 
+        this.gui.updatePlayerMana(this.mana, this.max_mana);
     },
 
     skill_1: function () {

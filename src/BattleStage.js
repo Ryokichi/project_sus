@@ -96,7 +96,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
 
 
         this.mana_time = 1;
-        this.mana = 300;
+        this.mana = 400;
         this.max_mana = this.mana;
 
         this.cast_time = 0;

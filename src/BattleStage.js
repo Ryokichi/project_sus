@@ -266,68 +266,22 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
 
         if (this.magic_data.magic_id != null) return;
         if (cc.rectContainsPoint(this.spell_list[0].getBoundingBox(), e.getLocation())) {
-            if (this.mana >=10 && this.spell_list[0].timer <= 0) {
-                this.magic_data.magic_id = 0;
-                // this.cast_time = 0.1;
-                this.magic_data.magic_ct = 2.5;
-                this.magic_data.mana_cost = 10;
-                this.magic_data.heal = 25;
-                this.magic_data.target = this.char_selected;
-
-                this.mana -= 10;
-                this.gui.showCastBar();
-            }
+            this.skill_1();
         }
         else if (cc.rectContainsPoint(this.spell_list[1].getBoundingBox(), e.getLocation())) {
-            if (this.mana >=20 && this.spell_list[1].timer <= 0) {
-                this.magic_data.magic_id = 1;
-                // this.cast_time = 1;
-                this.magic_data.magic_ct = 1;
-                this.magic_data.mana_cost = 20;
-                this.magic_data.heal = 25;
-                this.magic_data.target = this.char_selected;
-
-                this.mana -= this.magic_data.mana_cost;
-                this.gui.showCastBar();
-            }
+            this.skill_2();
         }
         else if (cc.rectContainsPoint(this.spell_list[2].getBoundingBox(), e.getLocation())) {
-            if (this.mana >=20 && this.spell_list[2].timer <= 0) {
-                this.magic_data.magic_id = 2;
-                // this.cast_time = 1.8;
-                this.magic_data.magic_ct = 1.5;
-                this.magic_data.mana_cost = 20;
-                this.magic_data.heal = 60;
-                this.magic_data.target = this.char_selected;
-
-                this.mana -= this.magic_data.mana_cost;
-                this.gui.showCastBar();
-            }
+            this.skill_3();
         }
         else if (cc.rectContainsPoint(this.spell_list[3].getBoundingBox(), e.getLocation())) {
-            if (this.mana >= 40 && this.spell_list[3].timer <= 0) {
-                this.magic_data.magic_id = 3;
-                // this.cast_time = 2.3;
-                this.magic_data.magic_ct = 0;
-                this.magic_data.mana_cost = 40;
-                this.magic_data.heal = 25;
-                this.magic_data.target = "all";
-
-                this.mana -= this.magic_data.mana_cost;
-                this.gui.showCastBar();
-            }
+            this.skill_4();
         }
         else if (cc.rectContainsPoint(this.spell_list[4].getBoundingBox(), e.getLocation())) {
-            if (this.spell_list[4].timer <= 0) {
-                this.magic_data.magic_id = 4;
-                // this.cast_time = 10;
-                this.magic_data.magic_ct = 3;
-                this.magic_data.mana_cost = 0;
-                this.magic_data.heal = 100;
-                this.magic_data.target = "all";
-                this.gui.showCastBar();
-            }
+            this.skill_5();
         }
+
+
         this.gui.updatePlayerMana(this.mana, this.max_mana);
 
     },
@@ -357,6 +311,86 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.gui.updateCharLife(i, this.hero_list[i]);
                 cc.audioEngine.playEffect(res.sfx_hit_4, false);
             }
+        }
+
+        else if (key == 49) this.skill_1();
+        else if (key == 50) this.skill_2();
+        else if (key == 51) this.skill_3();
+        else if (key == 52) this.skill_4();
+        else if (key == 53) this.skill_5();5
+
+    },
+
+    skill_1: function () {
+        if (this.magic_data.magic_id != null) return;
+        if (this.mana >=10 && this.spell_list[0].timer <= 0) {
+            this.magic_data.magic_id = 0;
+            // this.cast_time = 0.1;
+            this.magic_data.magic_ct = 2.5;
+            this.magic_data.mana_cost = 10;
+            this.magic_data.heal = 25;
+            this.magic_data.target = this.char_selected;
+
+            this.mana -= 10;
+            this.gui.showCastBar();
+        }
+    },
+
+    skill_2: function () {
+        if (this.magic_data.magic_id != null) return;
+        if (this.mana >=20 && this.spell_list[1].timer <= 0) {
+            this.magic_data.magic_id = 1;
+            // this.cast_time = 1;
+            this.magic_data.magic_ct = 1;
+            this.magic_data.mana_cost = 20;
+            this.magic_data.heal = 25;
+            this.magic_data.target = this.char_selected;
+
+            this.mana -= this.magic_data.mana_cost;
+            this.gui.showCastBar();
+        }
+    },
+
+    skill_3: function () {
+        if (this.magic_data.magic_id != null) return;
+        if (this.mana >=20 && this.spell_list[2].timer <= 0) {
+            this.magic_data.magic_id = 2;
+            // this.cast_time = 1.8;
+            this.magic_data.magic_ct = 1.5;
+            this.magic_data.mana_cost = 20;
+            this.magic_data.heal = 60;
+            this.magic_data.target = this.char_selected;
+
+            this.mana -= this.magic_data.mana_cost;
+            this.gui.showCastBar();
+        }
+    },
+
+    skill_4: function () {
+        if (this.magic_data.magic_id != null) return;
+        if (this.mana >= 40 && this.spell_list[3].timer <= 0) {
+            this.magic_data.magic_id = 3;
+            // this.cast_time = 2.3;
+            this.magic_data.magic_ct = 0;
+            this.magic_data.mana_cost = 40;
+            this.magic_data.heal = 25;
+            this.magic_data.target = "all";
+
+            this.mana -= this.magic_data.mana_cost;
+            this.gui.showCastBar();
+        }
+    },
+
+    skill_5: function () {
+        if (this.magic_data.magic_id != null) return;
+        if (this.spell_list[4].timer <= 0) {
+            this.magic_data.magic_id = 4;
+            // this.cast_time = 10;
+            this.magic_data.magic_ct = 3;
+            this.magic_data.mana_cost = 0;
+            this.magic_data.heal = 100;
+            this.magic_data.target = "all";
+            this.gui.showCastBar();
         }
     }
 });

@@ -23,11 +23,13 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.level_up_layer.setScale(0);
         this.level_up_layer.setLocalZOrder(1000);
 
-        this.open_up = new cc.LayerColor(cc.color(255,255,0, 255), 20, 20);
-        this.open_up.setPosition(280,300);
+        this.open_up = new cc.LayerColor(cc.color(0,0,0, 0), 200, 20);
+        this.open_up.setPosition(90,100);
         this.addChild(this.open_up, 900);
 
-        this.close_btn = cc.rect(594,311,25,14);
+        this.close_btn = new cc.LayerColor(cc.color(0,0,0,0), 25, 22);
+        this.close_btn.setPosition(549,300);
+        this.addChild(this.close_btn, 500);
 
         this.book = pd.createSprite(res.spell_book, cc.p(320,180), this);
 
@@ -36,17 +38,17 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
         this.spells_select = [];
 
         this.spell_description = this.std_label();
-        this.spell_description.setPosition(75,200);
-        this.spell_description.setDimensions(225, 85);
+        this.spell_description.setPosition(90,222);
+        this.spell_description.setDimensions(200, 85);
 
         this.life_label = this.std_label();
-        this.life_label.setPosition(100,110);
+        this.life_label.setPosition(103,144);
         this.mana_label = this.std_label();
-        this.mana_label.setPosition(100,82);
+        this.mana_label.setPosition(155,144);
         this.cast_label = this.std_label();
-        this.cast_label.setPosition(222,110);
+        this.cast_label.setPosition(213,144);
         this.cd_label   = this.std_label();
-        this.cd_label.setPosition(222,82);
+        this.cd_label.setPosition(260,144);
 
         this.mock_spell = pd.createSprite("cura1.png", cc.p(50,300), this, 100);
         this.mock_spell.is_active = false;
@@ -82,26 +84,26 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
             new projectSUS.Shield()
         ];
 
-        var x = 390, y = 310;
-        for (var i = 0; i < this.spells_list.length; i++) {
-            x += 130;
+        var x = 0, y = 327;
+        for (var i = 0; i < this.spells_list.length; i++, x += 109) {
             if (i%2 == 0) {
-                x = 390;
-                y -= 55;
+                x = 380;
+                y -= 47;
             }
             this.spells_box[i] = pd.createSprite("spell_box.png", cc.p(x, y), this);
+            this.spells_box[i]
             this.spells_box[i].spell = this.spells_list[i];
-            this.spells_box[i].spell.setPosition(25,25);
+            this.spells_box[i].spell.setPosition(16,16);
             this.spells_box[i].label = this.spellBoxLabel(this.spells_box[i], this.spells_box[i].spell.getName());
-            this.spells_box[i].addChild(this.spells_box[i].spell);
+            this.spells_box[i].addChild(this.spells_box[i].spell, -1);
         }
     },
 
     spellBoxLabel: function (parent, text) {
-        var label = new cc.LabelTTF(text, "Arial", 11, cc.TEXT_ALIGNMENT_CENTER, cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
+        var label = new cc.LabelTTF(text, "Arial", 10, cc.TEXT_ALIGNMENT_CENTER, cc.VERTICAL_TEXT_ALIGNMENT_CENTER);
         label.setFontFillColor(cc.color(0,0,0,255));
-        label.setPosition(47, 45);
-        label.setDimensions(73, 42);
+        label.setPosition(34, 30);
+        label.setDimensions(63, 40);
         label.setAnchorPoint(0,1);
 
         parent.addChild(label);
@@ -109,10 +111,17 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     createSelectedSpells: function () {
-        for (var i = 0; i < 4; i++) {
-            this.spells_select.push(pd.createSprite("btn_padrao.png", cc.p(0,0), this));
-            this.spells_select[i].setPosition(170+(80*i), 25);
+        var frame = pd.createSprite("spell_selection_frame.png", cc.p(312,0), this, 1);
+        frame.setAnchorPoint(0.5,0);
+
+        for (var i = 0; i < 5; i++) {
+            this.spells_select.push(pd.createSprite("spell_box2.png", cc.p(0,0), this));
             this.spells_select[i].spell_name = null;
+
+            this.spells_select[i].setPosition(204+(47*i), 24);
+            if (i == 4) {
+                this.spells_select[i].setPosition(411, 24);
+            }
         }
     },
 
@@ -254,8 +263,8 @@ projectSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     changeHotBarSprite: function (obj, name) {
-        name = (name) ? name : "btn_padrao.png";
+        name = (name) ? name : "spell_box2.png";
         obj.setSpriteFrame(cc.spriteFrameCache.getSpriteFrame(name));
-        obj.spell_name = (name != "btn_padrao.png") ? name : null;
+        obj.spell_name = (name != "spell_box2.png") ? name : null;
     }
 });

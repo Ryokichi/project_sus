@@ -101,7 +101,7 @@ projectSUS.SpellUp = cc.LayerColor.extend({
         else if (cc.rectContainsPoint(this.confirm_btn.getBoundingBox(), pto)) {
             this.spell.level ++;
             this.setStrings();
-            this.minimaze();
+            // this.minimaze();
         }
 
     },
@@ -128,5 +128,5 @@ projectSUS.SpellUp = cc.LayerColor.extend({
 
     resumeControl: function () {
         this.is_paused = false;
-    },
+    }
 });

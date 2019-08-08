@@ -16,9 +16,22 @@ var res = {
     spell_book_plist: "res/img/spell_book.plist",
     spell_book_png: "res/img/spell_book.png",
     options_plist: "res/img/options.plist",
-    options_book_png: "res/img/options.png"
+    options_book_png: "res/img/options.png",
 
     //audio
+    bmg: "res/audios/placeholders/editados/battle_theme_1_loop.mp3",
+    click: "res/audios/placeholders/editados/click_1.mp3",
+    sfx_spell_1: "res/audios/placeholders/editados/spell_cast_1.mp3",
+    sfx_spell_2: "res/audios/placeholders/editados/spell_cast_1.mp3",
+    sfx_spell_3: "res/audios/placeholders/editados/spell_cast_2.mp3",
+    sfx_spell_4: "res/audios/placeholders/editados/spell_cast_3.mp3",
+    sfx_spell_5: "res/audios/placeholders/editados/spell_cast_3.mp3",
+
+    sfx_hit_1: "res/audios/placeholders/editados/hit_fleshy.mp3",
+    sfx_hit_2: "res/audios/placeholders/editados/hit_low.mp3",
+    sfx_hit_3: "res/audios/placeholders/editados/hit_low2.mp3",
+    sfx_hit_4: "res/audios/placeholders/editados/hit_mid.mp3",
+
 };
 
 

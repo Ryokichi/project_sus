@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../Jogos/jogo2av4por1/jogo2av4por1 - Os sentidos das palavras/res/img/spell_book.plist</filename>
+                <filename>spell_book.plist</filename>
             </struct>
             <key>header</key>
             <key>source</key>
@@ -211,6 +211,19 @@
                 <rect>31,13,63,25</rect>
                 <key>scale9Paddings</key>
                 <rect>31,13,63,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">spell_book/spell_box2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9Paddings</key>
+                <rect>8,8,16,16</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

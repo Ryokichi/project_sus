@@ -64,17 +64,36 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         this.spell_list[3].setPosition(525,14);
         this.spell_list[4].setPosition(585,14);
 
-        this.spell_list[0].cd = 2;
-        this.spell_list[1].cd = 2;
-        this.spell_list[2].cd = 2;
-        this.spell_list[3].cd = 2;
-        this.spell_list[4].cd = 2;
+        this.spell_list[0].cd = 0.3;
+        this.spell_list[1].cd = 0.5;
+        this.spell_list[2].cd = 1;
+        this.spell_list[3].cd = 3;
+        this.spell_list[4].cd = 200;
 
         this.spell_list[0].timer = 0;
         this.spell_list[1].timer = 0;
         this.spell_list[2].timer = 0;
         this.spell_list[3].timer = 0;
         this.spell_list[4].timer = 0;
+
+        this.spell_list[0].timer_label = pd.label(this.spell_list[0], "0", 1, 1);
+        this.spell_list[1].timer_label = pd.label(this.spell_list[1], "0", 1, 1);
+        this.spell_list[2].timer_label = pd.label(this.spell_list[2], "0", 1, 1);
+        this.spell_list[3].timer_label = pd.label(this.spell_list[3], "0", 1, 1);
+        this.spell_list[4].timer_label = pd.label(this.spell_list[4], "0", 1, 1);
+
+        this.spell_list[0].timer_label.setDimensions(20,40);
+        this.spell_list[1].timer_label.setDimensions(20,40);
+        this.spell_list[2].timer_label.setDimensions(20,40);
+        this.spell_list[3].timer_label.setDimensions(20,40);
+        this.spell_list[4].timer_label.setDimensions(20,40);
+
+        this.spell_list[0].timer_label.setPosition(0,20);
+        this.spell_list[1].timer_label.setPosition(0,20);
+        this.spell_list[2].timer_label.setPosition(0,20);
+        this.spell_list[3].timer_label.setPosition(0,20);
+        this.spell_list[4].timer_label.setPosition(0,20);
+
 
         this.mana_time = 1;
         this.mana = 300;
@@ -96,6 +115,8 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         this.boss_target = null;
         this.boss_attack_num = 0;
         this.boss_attack_code = null;
+
+        cc.audioEngine.playMusic(res.bmg, true);
     },
 
     update: function(dt) {
@@ -109,9 +130,10 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.spell_list[i].setColor(cc.color(50,50,50,100));
             }
             else {
-                this.spell_list[i].timer -= 0;
+                this.spell_list[i].timer = 0;
                 this.spell_list[i].setColor(cc.color(200,200,200,100));
             }
+            this.spell_list[i].timer_label.setString(this.spell_list[i].timer.toFixed(1))
         }
 
         if (this.mana_time <= 0) {
@@ -171,6 +193,14 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             if (this.cast_time === this.magic_data.magic_ct) {
                 this.spell_list[this.magic_data.magic_id].timer = this.spell_list[this.magic_data.magic_id].cd;
 
+                if (this.magic_data.magic_id == 0) cc.audioEngine.playEffect(res.sfx_spell_1, false);
+                else if (this.magic_data.magic_id == 1) cc.audioEngine.playEffect(res.sfx_spell_2, false);
+                else if (this.magic_data.magic_id == 2) cc.audioEngine.playEffect(res.sfx_spell_3, false);
+                else if (this.magic_data.magic_id == 3) cc.audioEngine.playEffect(res.sfx_spell_4, false);
+                else if (this.magic_data.magic_id == 4) cc.audioEngine.playEffect(res.sfx_spell_5, false);
+
+
+
                 var target = this.magic_data.target;
                 var heal   = this.magic_data.heal;
 
@@ -192,8 +222,6 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.magic_data.magic_ct = 0;
 
                 this.gui.hideCastBar();
-
-
             }
         }
     },
@@ -208,6 +236,8 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             }
         }
         if (has_selection) {
+            cc.audioEngine.playEffect(res.click, false);
+
             for (var i = 0; i < this.char_btn.length; i++) {
                 this.char_btn[i].setColor(cc.color(cc.color(200,200,200,0)));
                 this.hero_list[i].setScale(1);
@@ -217,8 +247,6 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             this.gui.setNewSelection(this.char_selected);
         }
 
-
-        cc.log("m:", this.magic_data.magic_id);
         if (this.magic_data.magic_id != null) return;
         if (cc.rectContainsPoint(this.spell_list[0].getBoundingBox(), e.getLocation())) {
             if (this.mana >=30 && this.spell_list[0].timer <= 0) {
@@ -292,21 +320,25 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             // var target = Math.ceil(Math.random()*893) % this.hero_list.length;
             this.hero_list[target].subtractLife(5);
             this.gui.updateCharLife(target, this.hero_list[target]);
+            cc.audioEngine.playEffect(res.sfx_hit_1, false);
         }
         else if (key == 87) {
             // var target = Math.ceil(Math.random()*893) % 2;
             this.hero_list[target].subtractLife(15);
             this.gui.updateCharLife(target, this.hero_list[target]);
+            cc.audioEngine.playEffect(res.sfx_hit_2, false);
         }
         else if (key == 69) {
             // var target = Math.ceil(Math.random()*893) % this.hero_list.length;
             this.hero_list[target].subtractLife(30);
             this.gui.updateCharLife(target, this.hero_list[target]);
+            cc.audioEngine.playEffect(res.sfx_hit_3, false);
         }
         else if (key == 82) {
             for (var i=0; i < this.hero_list.length; i++) {
                 this.hero_list[i].subtractLife(20);
                 this.gui.updateCharLife(i, this.hero_list[i]);
+                cc.audioEngine.playEffect(res.sfx_hit_4, false);
             }
         }
     }

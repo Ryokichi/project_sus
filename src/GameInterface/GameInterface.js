@@ -86,8 +86,8 @@ projectSUS.GameInterface = cc.Node.extend({
         pd.createSprite("manacost_n0.png", cc.p(pos_mana[1]+11,6), this);
         pd.createSprite("manacost_n2.png", cc.p(pos_mana[2]+6,6), this);
         pd.createSprite("manacost_n0.png", cc.p(pos_mana[2]+11,6), this);
-        pd.createSprite("manacost_n7.png", cc.p(pos_mana[3]+6,6), this);
-        pd.createSprite("manacost_n5.png", cc.p(pos_mana[3]+11,6), this);
+        pd.createSprite("manacost_n4.png", cc.p(pos_mana[3]+6,6), this);
+        pd.createSprite("manacost_n0.png", cc.p(pos_mana[3]+11,6), this);
     },
 
     setNewTarget: function(idx) {

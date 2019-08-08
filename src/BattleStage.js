@@ -287,7 +287,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.magic_data.heal = 25;
                 this.magic_data.target = this.char_selected;
 
-                this.mana -= 20;
+                this.mana -= this.magic_data.mana_cost;
                 this.gui.showCastBar();
             }
         }
@@ -300,7 +300,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.magic_data.heal = 60;
                 this.magic_data.target = this.char_selected;
 
-                this.mana -= 20;
+                this.mana -= this.magic_data.mana_cost;
                 this.gui.showCastBar();
             }
         }
@@ -313,7 +313,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.magic_data.heal = 25;
                 this.magic_data.target = "all";
 
-                this.mana -= 75;
+                this.mana -= this.magic_data.mana_cost;
                 this.gui.showCastBar();
             }
         }

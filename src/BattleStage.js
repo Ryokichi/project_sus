@@ -37,8 +37,8 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
 
         this.gui.informWhoIsPlayer(9);
 
-        var x = 5;
-        var y = 27;
+        var x = 10;
+        var y = 29;
         var y_ini = y;
         this.char_btn =[];
         for (var i = 0; i < this.hero_list.length; i++) {
@@ -205,8 +205,6 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 else if (this.magic_data.magic_id == 3) cc.audioEngine.playEffect(res.sfx_spell_4, false);
                 else if (this.magic_data.magic_id == 4) cc.audioEngine.playEffect(res.sfx_spell_5, false);
 
-
-
                 var target = this.magic_data.target;
                 var heal   = this.magic_data.heal;
 
@@ -237,8 +235,10 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
 
         for (var i = 0; i < this.char_btn.length; i++) {
             if (cc.rectContainsPoint(this.char_btn[i].getBoundingBox(), e.getLocation())) {
-                has_selection = true;
-                this.char_selected = i;
+                if (this.hero_list[i].life > 0) {
+                    has_selection = true;
+                    this.char_selected = i;
+                }
             }
         }
         if (has_selection) {

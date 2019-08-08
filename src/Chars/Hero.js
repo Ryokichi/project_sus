@@ -28,6 +28,8 @@ projectSUS.Hero = cc.Node.extend({
         this.life -= qtd;
         if (this.life < 0) {
             this.life = 0;
+
+            // cc.audioEngine.playEffect(res.sfx_kia, false);
         }
 
     },

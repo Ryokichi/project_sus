@@ -143,6 +143,10 @@ projectSUS.GameInterface = cc.Node.extend({
         //
         // this.char_list[index].setColor(color);
         this.char_list[index].setScaleX(percent);
+
+        if (percent == 0) {
+            this.char_list[index].bg.setColor(cc.color(0,0,0,150));
+        }
     },
 
     updatePlayerLife: function (perc) {

@@ -305,11 +305,11 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             }
         }
         else if (cc.rectContainsPoint(this.spell_list[3].getBoundingBox(), e.getLocation())) {
-            if (this.mana >= 75 && this.spell_list[3].timer <= 0) {
+            if (this.mana >= 40 && this.spell_list[3].timer <= 0) {
                 this.magic_data.magic_id = 3;
                 // this.cast_time = 2.3;
                 this.magic_data.magic_ct = 0;
-                this.magic_data.mana_cost = 75;
+                this.magic_data.mana_cost = 40;
                 this.magic_data.heal = 25;
                 this.magic_data.target = "all";
 

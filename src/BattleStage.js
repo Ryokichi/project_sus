@@ -163,6 +163,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         }
 
 
+        this.gui.setNewTarget(this.target_tank);
         if (this.boss_basic_atk_time <= 0) {
             this.boss_basic_atk_time = 2;
             this.tank_couter ++;
@@ -171,6 +172,8 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.target_tank = (this.target_tank == 0)? 1: 0;
                 this.tank_couter = 0;
             }
+
+            this.gui.setNewTarget(this.target_tank);
 
             this.onKeyPressed(81, null, this.target_tank);
         }
@@ -192,7 +195,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 cc.log("Vou bater 35 em todos em:", this.time_to_attack);
             }
 
-            this.gui.setNewTarget(this.boss_target);
+            // this.gui.setNewTarget(this.boss_target);
         }
 
         if (this.magic_data.target != null) {

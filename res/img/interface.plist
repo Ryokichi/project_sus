@@ -390,7 +390,7 @@
                 <key>spriteSourceSize</key>
                 <string>{51,20}</string>
                 <key>textureRect</key>
-                <string>{{755,14},{51,20}}</string>
+                <string>{{704,14},{51,20}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -401,11 +401,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{51,20}</string>
+                <string>{51,22}</string>
                 <key>spriteSourceSize</key>
-                <string>{51,20}</string>
+                <string>{51,22}</string>
                 <key>textureRect</key>
-                <string>{{704,14},{51,20}}</string>
+                <string>{{755,14},{51,22}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -513,7 +513,7 @@
             <key>size</key>
             <string>{1024,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b829991a51d135c48122a4f1333ca0e3:611ac4cd47835bced61ead4f5a96c42a:1513040d590d63239b3d13eeff331df4$</string>
+            <string>$TexturePacker:SmartUpdate:a265a42da97fc7e95e400768a4e60986:5d775cb2d823b0de20f90a5594d1e724:1513040d590d63239b3d13eeff331df4$</string>
             <key>textureFileName</key>
             <string>interface.png</string>
         </dict>

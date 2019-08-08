@@ -120,6 +120,12 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
     },
 
     update: function(dt) {
+        if (this.boss.life <= 0) {
+            this.unscheduleUpdate();
+            cc.audioEngine.playEffect(res.sfx_boss, false);
+            alert("Boss morreu")
+        }
+
         this.time_to_attack -= dt;
         this.damage_time -= dt;
         this.mana_time -= dt;
@@ -157,25 +163,25 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.time_to_attack = 2;
                 this.boss_target = 0;
                 this.boss_attack_code = 81;
-                cc.log("Vou bater 5 no ", this.boss_target, " em:", this.time_to_attack);
+                cc.log("Vou bater 20 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else if (this.boss_attack_num < 800) {
                 this.time_to_attack = 2;
                 this.boss_target = 1;
                 this.boss_attack_code = 81;
-                cc.log("Vou bater 15 no ", this.boss_target, " em:", this.time_to_attack);
+                cc.log("Vou bater 20 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else if (this.boss_attack_num < 950) {
-                this.time_to_attack = 2
+                this.time_to_attack = 2;
                 this.boss_target = Math.floor(2+(Math.random()*987)%8);
-                this.boss_attack_code = 81;
-                cc.log("Vou bater 30 no ", this.boss_target, " em:", this.time_to_attack);
+                this.boss_attack_code = 69;
+                cc.log("Vou bater 60 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else {
                 this.time_to_attack = 2;
                 this.boss_target = "all";
                 this.boss_attack_code = 82;
-                cc.log("Vou bater 20 em todos em:", this.time_to_attack);
+                cc.log("Vou bater 35 em todos em:", this.time_to_attack);
             }
 
             this.gui.setNewTarget(this.boss_target);

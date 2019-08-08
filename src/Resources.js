@@ -32,6 +32,9 @@ var res = {
     sfx_hit_3: "res/audios/placeholders/editados/hit_low2.mp3",
     sfx_hit_4: "res/audios/placeholders/editados/hit_mid.mp3",
 
+    sfx_boss: "res/audios/placeholders/editados/boss_die.mp3",
+    sfx_kia: "res/audios/placeholders/editados/kia.mp3",
+
 };
 
 

@@ -266,7 +266,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
 
         if (this.magic_data.magic_id != null) return;
         if (cc.rectContainsPoint(this.spell_list[0].getBoundingBox(), e.getLocation())) {
-            if (this.mana >=30 && this.spell_list[0].timer <= 0) {
+            if (this.mana >=10 && this.spell_list[0].timer <= 0) {
                 this.magic_data.magic_id = 0;
                 // this.cast_time = 0.1;
                 this.magic_data.magic_ct = 2.5;
@@ -279,7 +279,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             }
         }
         else if (cc.rectContainsPoint(this.spell_list[1].getBoundingBox(), e.getLocation())) {
-            if (this.mana >=5 && this.spell_list[1].timer <= 0) {
+            if (this.mana >=20 && this.spell_list[1].timer <= 0) {
                 this.magic_data.magic_id = 1;
                 // this.cast_time = 1;
                 this.magic_data.magic_ct = 1;
@@ -292,7 +292,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             }
         }
         else if (cc.rectContainsPoint(this.spell_list[2].getBoundingBox(), e.getLocation())) {
-            if (this.mana >=10 && this.spell_list[2].timer <= 0) {
+            if (this.mana >=20 && this.spell_list[2].timer <= 0) {
                 this.magic_data.magic_id = 2;
                 // this.cast_time = 1.8;
                 this.magic_data.magic_ct = 1.5;
@@ -305,7 +305,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             }
         }
         else if (cc.rectContainsPoint(this.spell_list[3].getBoundingBox(), e.getLocation())) {
-            if (this.mana >= 25 && this.spell_list[3].timer <= 0) {
+            if (this.mana >= 75 && this.spell_list[3].timer <= 0) {
                 this.magic_data.magic_id = 3;
                 // this.cast_time = 2.3;
                 this.magic_data.magic_ct = 0;
@@ -352,7 +352,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             cc.audioEngine.playEffect(res.sfx_hit_3, false);
         }
         else if (key == 82) {
-            for (var i=0; i < this.hero_list.length; i++) {
+            for (var i=2; i < this.hero_list.length; i++) {
                 this.hero_list[i].subtractLife(30);
                 this.gui.updateCharLife(i, this.hero_list[i]);
                 cc.audioEngine.playEffect(res.sfx_hit_4, false);

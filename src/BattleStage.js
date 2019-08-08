@@ -19,7 +19,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         this.gui = new projectSUS.GameInterface(this);
 
         this.boss = new projectSUS.Boss(this);
-        this.boss.setInitialLife(10000);
+        this.boss.setInitialLife(1500);
         this.boss.setPosition(-800,-800);
 
         this.char_selected = 0;
@@ -64,11 +64,11 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
         this.spell_list[3].setPosition(525,14);
         this.spell_list[4].setPosition(585,14);
 
-        this.spell_list[0].cd = 0.3;
-        this.spell_list[1].cd = 0.5;
-        this.spell_list[2].cd = 1;
-        this.spell_list[3].cd = 3;
-        this.spell_list[4].cd = 200;
+        this.spell_list[0].cd = 0;
+        this.spell_list[1].cd = 0;
+        this.spell_list[2].cd = 6;
+        this.spell_list[3].cd = 10;
+        this.spell_list[4].cd = 60;
 
         this.spell_list[0].timer = 0;
         this.spell_list[1].timer = 0;
@@ -154,25 +154,25 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             this.boss_attack_num = Math.floor(Math.random() * 1000);
 
             if (this.boss_attack_num < 500) {
-                this.time_to_attack = 1.2;
+                this.time_to_attack = 2;
                 this.boss_target = 0;
                 this.boss_attack_code = 81;
                 cc.log("Vou bater 5 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else if (this.boss_attack_num < 800) {
-                this.time_to_attack = 2.5;
+                this.time_to_attack = 2;
                 this.boss_target = 1;
                 this.boss_attack_code = 81;
                 cc.log("Vou bater 15 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else if (this.boss_attack_num < 950) {
-                this.time_to_attack = 3;
+                this.time_to_attack = 2
                 this.boss_target = Math.floor(2+(Math.random()*987)%8);
                 this.boss_attack_code = 81;
                 cc.log("Vou bater 30 no ", this.boss_target, " em:", this.time_to_attack);
             }
             else {
-                this.time_to_attack = 3.5;
+                this.time_to_attack = 2;
                 this.boss_target = "all";
                 this.boss_attack_code = 82;
                 cc.log("Vou bater 20 em todos em:", this.time_to_attack);
@@ -252,12 +252,12 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             if (this.mana >=30 && this.spell_list[0].timer <= 0) {
                 this.magic_data.magic_id = 0;
                 // this.cast_time = 0.1;
-                this.magic_data.magic_ct = 0.2;
-                this.magic_data.mana_cost = 30;
-                this.magic_data.heal = 20;
+                this.magic_data.magic_ct = 2.5;
+                this.magic_data.mana_cost = 10;
+                this.magic_data.heal = 25;
                 this.magic_data.target = this.char_selected;
 
-                this.mana -= 30;
+                this.mana -= 10;
                 this.gui.showCastBar();
             }
         }
@@ -266,11 +266,11 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
                 this.magic_data.magic_id = 1;
                 // this.cast_time = 1;
                 this.magic_data.magic_ct = 1;
-                this.magic_data.mana_cost = 5;
-                this.magic_data.heal = 10;
+                this.magic_data.mana_cost = 20;
+                this.magic_data.heal = 25;
                 this.magic_data.target = this.char_selected;
 
-                this.mana -= 5;
+                this.mana -= 20;
                 this.gui.showCastBar();
             }
         }
@@ -278,12 +278,12 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             if (this.mana >=10 && this.spell_list[2].timer <= 0) {
                 this.magic_data.magic_id = 2;
                 // this.cast_time = 1.8;
-                this.magic_data.magic_ct = 1.8;
-                this.magic_data.mana_cost = 10;
-                this.magic_data.heal = 35;
+                this.magic_data.magic_ct = 1.5;
+                this.magic_data.mana_cost = 20;
+                this.magic_data.heal = 60;
                 this.magic_data.target = this.char_selected;
 
-                this.mana -= 10;
+                this.mana -= 20;
                 this.gui.showCastBar();
             }
         }
@@ -291,12 +291,12 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             if (this.mana >= 25 && this.spell_list[3].timer <= 0) {
                 this.magic_data.magic_id = 3;
                 // this.cast_time = 2.3;
-                this.magic_data.magic_ct = 2.3;
-                this.magic_data.mana_cost = 25;
-                this.magic_data.heal = 20;
+                this.magic_data.magic_ct = 0;
+                this.magic_data.mana_cost = 75;
+                this.magic_data.heal = 25;
                 this.magic_data.target = "all";
 
-                this.mana -= 25;
+                this.mana -= 75;
                 this.gui.showCastBar();
             }
         }
@@ -304,7 +304,7 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
             if (this.spell_list[4].timer <= 0) {
                 this.magic_data.magic_id = 4;
                 // this.cast_time = 10;
-                this.magic_data.magic_ct = 4;
+                this.magic_data.magic_ct = 3;
                 this.magic_data.mana_cost = 0;
                 this.magic_data.heal = 100;
                 this.magic_data.target = "all";
@@ -318,25 +318,25 @@ projectSUS.BattleLayer_old = cc.Layer.extend({
     onKeyPressed: function (key, e, target) {
         if (key == 81) {
             // var target = Math.ceil(Math.random()*893) % this.hero_list.length;
-            this.hero_list[target].subtractLife(5);
+            this.hero_list[target].subtractLife(20);
             this.gui.updateCharLife(target, this.hero_list[target]);
             cc.audioEngine.playEffect(res.sfx_hit_1, false);
         }
         else if (key == 87) {
             // var target = Math.ceil(Math.random()*893) % 2;
-            this.hero_list[target].subtractLife(15);
+            this.hero_list[target].subtractLife(20);
             this.gui.updateCharLife(target, this.hero_list[target]);
             cc.audioEngine.playEffect(res.sfx_hit_2, false);
         }
         else if (key == 69) {
             // var target = Math.ceil(Math.random()*893) % this.hero_list.length;
-            this.hero_list[target].subtractLife(30);
+            this.hero_list[target].subtractLife(60);
             this.gui.updateCharLife(target, this.hero_list[target]);
             cc.audioEngine.playEffect(res.sfx_hit_3, false);
         }
         else if (key == 82) {
             for (var i=0; i < this.hero_list.length; i++) {
-                this.hero_list[i].subtractLife(20);
+                this.hero_list[i].subtractLife(35);
                 this.gui.updateCharLife(i, this.hero_list[i]);
                 cc.audioEngine.playEffect(res.sfx_hit_4, false);
             }

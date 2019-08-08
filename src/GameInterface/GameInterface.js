@@ -28,6 +28,7 @@ projectSUS.GameInterface = cc.Node.extend({
         this.cast_time_label.setAnchorPoint(0.5,0.5);
 
         this.cast_frame.setCascadeOpacityEnabled(true);
+        this.cast_frame.setOpacity(0);
 
         this.boss_life_frame = pd.createSprite("boss_health_interface.png", cc.p(320,340), this);
         this.boss_life_bar = pd.createSprite("boss_health_bar.png", cc.p(3,3), this.boss_life_frame);
@@ -79,13 +80,13 @@ projectSUS.GameInterface = cc.Node.extend({
             pos_mana.push(x)
         }
 
-        pd.createSprite("manacost_n3.png", cc.p(pos_mana[0]+6,6), this);
+        pd.createSprite("manacost_n1.png", cc.p(pos_mana[0]+6,6), this);
         pd.createSprite("manacost_n0.png", cc.p(pos_mana[0]+11,6), this);
-        pd.createSprite("manacost_n0.png", cc.p(pos_mana[1]+6,6), this);
-        pd.createSprite("manacost_n5.png", cc.p(pos_mana[1]+11,6), this);
-        pd.createSprite("manacost_n1.png", cc.p(pos_mana[2]+6,6), this);
+        pd.createSprite("manacost_n2.png", cc.p(pos_mana[1]+6,6), this);
+        pd.createSprite("manacost_n0.png", cc.p(pos_mana[1]+11,6), this);
+        pd.createSprite("manacost_n2.png", cc.p(pos_mana[2]+6,6), this);
         pd.createSprite("manacost_n0.png", cc.p(pos_mana[2]+11,6), this);
-        pd.createSprite("manacost_n2.png", cc.p(pos_mana[3]+6,6), this);
+        pd.createSprite("manacost_n7.png", cc.p(pos_mana[3]+6,6), this);
         pd.createSprite("manacost_n5.png", cc.p(pos_mana[3]+11,6), this);
     },
 

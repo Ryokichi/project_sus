@@ -1,0 +1,27 @@
+{
+  "project_type": "javascript",
+  "debugMode": 1,
+  "showFPS": false,
+  "frameRate": 60,
+  "id": "gameCanvas",
+  "renderMode": 1,
+  "engineDir": "cocos2d-html5",
+  "modules": [
+    "cocos2d",
+    "editbox",
+    "ccui"
+  ],
+  "jsList": [
+    "src/Padroes/Snippets.js"
+    ,"src/Padroes/GameInput.js"
+    ,"src/Padroes/Button.js"
+
+    ,"src/Resources.js"
+    ,"src/MainScene.js"
+    ,"src/MainMenu.js"
+    ,"src/Map.js"
+
+    ,"src/SpellBook/SpellBook.js"
+    ,"src/SpellBook/SpellLevelUp.js"
+  ]
+}

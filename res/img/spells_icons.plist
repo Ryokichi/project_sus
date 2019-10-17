@@ -119,13 +119,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>spell_icons.png</string>
+            <string>spells_icons.png</string>
             <key>size</key>
             <string>{210,30}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:407d03f0721b7f1eb687f89dadd38b39:8ac2a1d662d48a25a6319fff53055030:18c03b8368dec48c5be99ddceb6ff433$</string>
+            <string>$TexturePacker:SmartUpdate:06d0335536b17ba33fd205008446cef7:8ac2a1d662d48a25a6319fff53055030:c84528c93c282c00ec58308af1f8d646$</string>
             <key>textureFileName</key>
-            <string>spell_icons.png</string>
+            <string>spells_icons.png</string>
         </dict>
     </dict>
 </plist>

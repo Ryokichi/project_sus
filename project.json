@@ -13,15 +13,27 @@
   ],
   "jsList": [
     "src/Padroes/Snippets.js"
-    ,"src/Padroes/GameInput.js"
     ,"src/Padroes/Button.js"
+    ,"src/Padroes/GameInput.js"
 
     ,"src/Resources.js"
     ,"src/MainScene.js"
     ,"src/MainMenu.js"
     ,"src/Map.js"
+    ,"src/Options.js"
+
+    ,"src/Save/SavedData.js"
 
     ,"src/SpellBook/SpellBook.js"
     ,"src/SpellBook/SpellLevelUp.js"
+
+    ,"src/Spells/Spell.js"
+    ,"src/Spells/FastHeal.js"
+    ,"src/Spells/GreatHeal.js"
+    ,"src/Spells/Heal.js"
+    ,"src/Spells/Renew.js"
+    ,"src/Spells/Shield.js"
+    ,"src/Spells/SuperHeal.js"
+
   ]
 }

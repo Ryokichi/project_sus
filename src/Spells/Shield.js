@@ -1,10 +1,10 @@
-projSUS.SuperHeal = projSUS.Spell.extend({
+projSUS.Shield = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.id = 6;
-        this.name = "Cura Suprema";
-        this.sprite_name = "super_heal.png";
+        this.id = 5;
+        this.name = "Bolha Protetora";
+        this.sprite_name = "shield.png";
 
         this.base_heal = 3;
         this.base_mana = 5;
@@ -21,7 +21,7 @@ projSUS.SuperHeal = projSUS.Spell.extend({
     },
 
     setDescription: function () {
-        this.description = "Cura muito todo mundo.";
+        this.description = "Lança uma bolha protetora sobre o aliado, ignorando o dano.";
     }
 
 });

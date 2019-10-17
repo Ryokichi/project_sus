@@ -4,65 +4,65 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>book_interface.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{3,-8}</string>
-                <key>spriteSize</key>
-                <string>{524,344}</string>
-                <key>spriteSourceSize</key>
-                <string>{640,360}</string>
-                <key>textureRect</key>
-                <string>{{1,1},{524,344}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>mock_sprite.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-14.5,14.5}</string>
-                <key>spriteSize</key>
-                <string>{3,3}</string>
-                <key>spriteSourceSize</key>
-                <string>{32,32}</string>
-                <key>textureRect</key>
-                <string>{{578,101},{3,3}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>spell_box.png</key>
+            <key>bandeira1.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{98,33}</string>
+                <string>{80,56}</string>
                 <key>spriteSourceSize</key>
-                <string>{98,33}</string>
+                <string>{80,56}</string>
                 <key>textureRect</key>
-                <string>{{578,1},{98,33}}</string>
+                <string>{{503,1},{80,56}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
-            <key>spell_selection_frame.png</key>
+            <key>bandeira2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{281,49}</string>
+                <string>{59,60}</string>
                 <key>spriteSourceSize</key>
-                <string>{281,49}</string>
+                <string>{59,60}</string>
                 <key>textureRect</key>
-                <string>{{527,1},{281,49}}</string>
+                <string>{{585,1},{59,60}}</string>
                 <key>textureRotated</key>
                 <true/>
+            </dict>
+            <key>vol_bar.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{500,24}</string>
+                <key>spriteSourceSize</key>
+                <string>{500,24}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{500,24}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>vol_btn.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{30,30}</string>
+                <key>spriteSourceSize</key>
+                <string>{30,30}</string>
+                <key>textureRect</key>
+                <string>{{1,27},{30,30}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
@@ -74,13 +74,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>spell_book.png</string>
+            <string>options.png</string>
             <key>size</key>
-            <string>{612,346}</string>
+            <string>{646,61}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a325eba57fe2e50cd882ca58b4c515c9:372d00789b45c035197bb77d3cf77b5f:f7c9503ad23ca554f2d5bc453c3891fd$</string>
+            <string>$TexturePacker:SmartUpdate:6d1ba7b552850187ce2a979215f6376b:217fc92e6ce211f9861170c40f5232bc:c3323197272216b91c571a82f95baed2$</string>
             <key>textureFileName</key>
-            <string>spell_book.png</string>
+            <string>options.png</string>
         </dict>
     </dict>
 </plist>

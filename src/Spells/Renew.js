@@ -1,10 +1,10 @@
-projSUS.SuperHeal = projSUS.Spell.extend({
+projSUS.Renew = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.id = 6;
-        this.name = "Cura Suprema";
-        this.sprite_name = "super_heal.png";
+        this.id = 4;
+        this.name = "Renovar";
+        this.sprite_name = "renew.png";
 
         this.base_heal = 3;
         this.base_mana = 5;
@@ -21,7 +21,8 @@ projSUS.SuperHeal = projSUS.Spell.extend({
     },
 
     setDescription: function () {
-        this.description = "Cura muito todo mundo.";
+        this.description = "Cura o aliado selecionado em " + this.curr_heal +
+            " a cada " + this.curr_tick + " seg, ao longo de " + this.curr_duration + " seg.";
     }
 
 });

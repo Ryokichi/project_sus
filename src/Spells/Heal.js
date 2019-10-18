@@ -2,7 +2,7 @@ projSUS.Heal = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.id = 3;
+        this.id = "Heal";
         this.name = "Cura";
         this.sprite_name = "heal.png";
 

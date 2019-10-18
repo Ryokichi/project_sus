@@ -2,7 +2,7 @@ projSUS.Shield = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.id = 5;
+        this.id = "Shield";
         this.name = "Bolha Protetora";
         this.sprite_name = "shield.png";
 

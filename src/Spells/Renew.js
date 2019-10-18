@@ -2,7 +2,7 @@ projSUS.Renew = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.id = 4;
+        this.id = "Renew";
         this.name = "Renovar";
         this.sprite_name = "renew.png";
 

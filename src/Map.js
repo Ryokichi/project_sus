@@ -22,6 +22,20 @@ projSUS.MapLayer = cc.Layer.extend({
         this.spell_txt.setDimensions(this.btn_spell.width,this.btn_spell.height);
         this.spell_txt.setPosition(0,this.btn_spell.height/1.5);
 
+        this.dungeon_pos = [
+            cc.p(165,20),
+            cc.p(380,120),
+            cc.p(260,240),
+        ];
+        this.btn_opacity = 192;
+        this.dungeon_list = [];
+        for (var i = 0; i < this.dungeon_pos.length; i++) {
+            var rect = new cc.LayerColor(cc.color(60,120,600,this.btn_opacity),40,60);
+            rect.setPosition(this.dungeon_pos[i]);
+            this.dungeon_list.push(rect);
+            this.addChild(rect);
+        }
+
         projSUS.input.addEventListener("onMouseDown", "onMouseDown", this);
     },
 
@@ -35,6 +49,14 @@ projSUS.MapLayer = cc.Layer.extend({
         else if (cc.rectContainsPoint(this.btn_opt.getBoundingBox(), e.getLocation())) {
             this.pauseControl();
             this.options = new projSUS.OptionsLayer(this);
+        }
+        else {
+            for (var i = 0; i < this.dungeon_list.length; i++) {
+                if (cc.rectContainsPoint(this.dungeon_list[i].getBoundingBox(), e.getLocation())) {
+                    projSUS.input.removeEventListener(this);
+                    pd.changeScene(new projSUS.BattleField(),0.5,1);
+                }
+            }
         }
     },
 

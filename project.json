@@ -12,28 +12,31 @@
     "ccui"
   ],
   "jsList": [
-    "src/Padroes/Snippets.js"
-    ,"src/Padroes/Button.js"
-    ,"src/Padroes/GameInput.js"
+    "src/Padroes/Snippets.js",
+    "src/Padroes/Button.js",
+    "src/Padroes/GameInput.js",
 
-    ,"src/Resources.js"
-    ,"src/MainScene.js"
-    ,"src/MainMenu.js"
-    ,"src/Map.js"
-    ,"src/Options.js"
+    "src/MainScene.js",
+    "src/BattleField.js",
+    "src/MainMenu.js",
+    "src/Map.js",
+    "src/Options.js",
+    "src/Resources.js",
 
-    ,"src/Save/SavedData.js"
+    "src/Chars/Hero.js",
+    "src/GameInterface/GameInterface.js",
 
-    ,"src/SpellBook/SpellBook.js"
-    ,"src/SpellBook/SpellLevelUp.js"
+    "src/Save/SavedData.js",
 
-    ,"src/Spells/Spell.js"
-    ,"src/Spells/FastHeal.js"
-    ,"src/Spells/GreatHeal.js"
-    ,"src/Spells/Heal.js"
-    ,"src/Spells/Renew.js"
-    ,"src/Spells/Shield.js"
-    ,"src/Spells/SuperHeal.js"
+    "src/SpellBook/SpellBook.js",
+    "src/SpellBook/SpellLevelUp.js",
 
+    "src/Spells/Spell.js",
+    "src/Spells/FastHeal.js",
+    "src/Spells/GreatHeal.js",
+    "src/Spells/Heal.js",
+    "src/Spells/Renew.js",
+    "src/Spells/Shield.js",
+    "src/Spells/SuperHeal.js"
   ]
 }

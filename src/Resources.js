@@ -10,6 +10,8 @@ var res = {
     ,spell_book_plist: "res/img/spell_book.plist"
     ,spells_icons_png: "res/img/spells_icons.png"
     ,spells_icons_plist: "res/img/spells_icons.plist"
+    ,teste_png: "res/img/priest.png"
+    ,teste_plist: "res/img/priest.plist"
 
     //audio
 

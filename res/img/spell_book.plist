@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>spell_selection_frame.png</key>
+            <key>spells_frame.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -78,7 +78,7 @@
             <key>size</key>
             <string>{612,346}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a325eba57fe2e50cd882ca58b4c515c9:372d00789b45c035197bb77d3cf77b5f:f7c9503ad23ca554f2d5bc453c3891fd$</string>
+            <string>$TexturePacker:SmartUpdate:f46124773851346b5a23d9c8aa0dfc5f:372d00789b45c035197bb77d3cf77b5f:f7c9503ad23ca554f2d5bc453c3891fd$</string>
             <key>textureFileName</key>
             <string>spell_book.png</string>
         </dict>

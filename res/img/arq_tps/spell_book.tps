@@ -232,7 +232,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../spell_book/spell_selection_frame.png</key>
+            <key type="filename">../spell_book/spells_frame.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

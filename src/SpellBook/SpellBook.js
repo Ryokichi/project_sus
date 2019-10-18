@@ -119,29 +119,28 @@ projSUS.SpellBookLayer = cc.Layer.extend({
             for (var i = 0; i < this.hot_bar_slot.length; i++) {
                 rect = this.hot_bar_slot[i].getBoundingBox();
                 if (cc.rectContainsPoint(rect, e.getLocation())) {
-                    this.updateHotBarSlot(i, this.mock_spell.linked_spell);
-                    
-                    
-                    // if (this.mock_spell.came_from_hot_bar !== false) {
-                    //     this.permutSprite(i, this.mock_spell.came_from_hot_bar);
-                    // } else {
-                    //     this.updateHotBarSlot(this.hot_bar_slot[i], this.hot_bar_slot[i].spell_name);
-                    // }
-                    //
-                    // this.checkDuplicates(i, this.mock_spell.name);                    
+                    if (this.mock_spell.came_from_hot_bar !== false) { ///came form hot bar deve ser um numero
+                        this.permutSprite(this.mock_spell.came_from_hot_bar, i);
+                    } else {
+                        this.updateHotBarSlot(i, this.mock_spell.linked_spell);
+                    }
+                    this.checkDuplicates(i, this.mock_spell.linked_spell);
                 }
             }
         }
         this.hideMockSpell();
-        //
-        // for (var i = 0; i < this.spells_box.length; i++) {
-        //     this.spells_box[i].spell.sprite.setColor(cc.color(255,255,255));
-        //     for (var j = 0; j < this.hot_bar_slot.length; j++) {
-        //         if (this.spells_box[i].spell.getSpriteName() == this.hot_bar_slot[j].spell_name) {
-        //             this.spells_box[i].spell.sprite.setColor(cc.color(150,150,150));
-        //         }
-        //     }
-        // }
+
+        /**
+         * Volta para a cor original os icones de magia que não estão na hot bar.
+         */
+        for (var i = 0; i < this.spells_box.length; i++) {
+            this.spells_box[i].spell.sprite.setColor(cc.color(255,255,255));
+            for (var j = 0; j < this.hot_bar_slot.length; j++) {
+                if (this.spells_box[i].spell === this.hot_bar_slot[j].linked_spell) {
+                    this.spells_box[i].spell.sprite.setColor(cc.color(150,150,150));
+                }
+            }
+        }
     },
 
     onMouseMove: function (e) {
@@ -190,15 +189,13 @@ projSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     createSelectedSpells: function () {
-        var frame = pd.createSprite("spell_selection_frame.png", cc.p(312,0), this, 1);
+        var frame = pd.createSprite("spells_frame.png", cc.p(312,0), this, 1);
         frame.setAnchorPoint(0.5,0);
 
         var slot;
         for (var i = 0; i < 5; i++) {
             slot = pd.createSprite("mock_sprite.png", cc.p(0,0), this);
-            slot.spell_name = null;
-            slot.spell_id = null;
-
+            slot.spell = null;
             slot.setPosition(204+(47*i), 24);
             if (i == 4) {
                 slot.setPosition(411, 24);
@@ -209,7 +206,7 @@ projSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     /**
-     *
+     *Atualiza uma magia na hot bar
      * @param idx
      * @param linked_spell
      */
@@ -218,17 +215,23 @@ projSUS.SpellBookLayer = cc.Layer.extend({
 
         this.hot_bar_slot[idx].setSpriteFrame(name);
         this.hot_bar_slot[idx].linked_spell = linked_spell;
+        this.saveData();
     },
 
-    permutSprite: function (curr_idx, old_idx) {
-        this.updateHotBarSlot(this.hot_bar_slot[old_idx], this.hot_bar_slot[curr_idx].spell_name);
-        this.updateHotBarSlot(this.hot_bar_slot[curr_idx], this.mock_spell.name);
+    /**
+     * Permuta as magias na hot bar
+     * @param idx_origin
+     * @param idx_dest
+     */
+    permutSprite: function (idx_origin, idx_dest) {
+        this.updateHotBarSlot(idx_origin, this.hot_bar_slot[idx_dest].linked_spell);
+        this.updateHotBarSlot(idx_dest, this.mock_spell.linked_spell);
     },
 
-    checkDuplicates: function (curr_idx, name) {
+    checkDuplicates: function (curr_idx, spell) {
         for (var i = 0; i < this.hot_bar_slot.length; i++) {
-            if (i !== curr_idx && this.hot_bar_slot[i].spell_name == name) {
-                this.updateHotBarSlot(this.hot_bar_slot[i], null);
+            if (i !== curr_idx && this.hot_bar_slot[i].linked_spell === spell) {
+                this.updateHotBarSlot(i, null);
             }
         }
     },
@@ -273,5 +276,12 @@ projSUS.SpellBookLayer = cc.Layer.extend({
         this.mock_spell.setVisible(false);
         this.mock_spell.setPosition(-100,-100);
         this.mock_spell.came_from_hot_bar = false;
+    },
+
+    saveData: function () {
+        for (var i = 0; i < this.hot_bar_slot.length; i++) {
+            var value = (this.hot_bar_slot[i].linked_spell)?this.hot_bar_slot[i].linked_spell.id : null;
+            projSUS.SavedData.spell["slot"+i] = value;
+        }
     }
 });

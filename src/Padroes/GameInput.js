@@ -1,11 +1,15 @@
 pd.gameInput = cc.Class.extend({
     ctor: function () {
-        this.mouseDownListeners =[];
-        this.mouseUpListeners =[];
-        this.mouseMoveListeners =[];
-        this.mouseScrollListeners =[];
-        this.keyUpListeners =[];
-        this.keyDownListeners =[];
+        this.pressedKeys = [];
+
+        this.mouseDownListeners = [];
+        this.mouseUpListeners = [];
+        this.mouseMoveListeners = [];
+        this.mouseScrollListeners = [];
+        this.keyUpListeners = [];
+        this.keyDownListeners = [];
+
+
 
         var controller = this;
 
@@ -181,6 +185,7 @@ pd.gameInput = cc.Class.extend({
     },
 
     onKeyPressed: function (key_code, event) {
+        this._setKeyPressed(key_code);
         var listener;
         var swallow = false;
         for (var i=0; i < this.keyDownListeners.length; i++) {
@@ -194,6 +199,7 @@ pd.gameInput = cc.Class.extend({
     },
 
     onKeyReleased: function (key_code, event) {
+        this._setKeyReleased(key_code);
         var listener;
         var swallow = false;
         for (var i=0; i < this.keyUpListeners.length; i++) {
@@ -204,5 +210,37 @@ pd.gameInput = cc.Class.extend({
                 return;
         }
 
-    }
+    },
+
+    /**
+     * Registra no vetor de teclas pressionadas o pressionar da tecla
+     * @param {Number} keyCode
+     * @private
+     */
+    _setKeyPressed: function (keyCode) {
+        if (this.pressedKeys.lastIndexOf(keyCode) < 0) {
+            this.pressedKeys.push(keyCode);
+        }
+    },
+
+    /**
+     * Registra no vetor de teclas pressionadas o liberar da tecla
+     * @param {Number} keyCode
+     * @private
+     */
+    _setKeyReleased: function (keyCode) {
+        var indexTecla = this.pressedKeys.lastIndexOf(keyCode);
+        if (indexTecla >= 0) {
+            this.pressedKeys.splice(indexTecla, 1);
+        }
+    },
+
+    /**
+     * Verifica se a tecla está pressionada no momento
+     * @param {Number} keyCode - O código da tecla
+     * @returns {boolean}
+     */
+    isKeyPressed: function (keyCode) {
+        return this.pressedKeys.lastIndexOf(keyCode) >= 0;
+    },
 });

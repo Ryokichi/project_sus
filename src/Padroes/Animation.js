@@ -101,7 +101,7 @@ pd.Animation = cc.Sprite.extend({/** @lends pd.Animation#**/
             frames.length,
             speed || this.defaultSpeed
         ));
-        pd.delegate.retain(animation);
+        pd.retain(animation);
     },
 
     /**
@@ -366,7 +366,7 @@ pd.Animation = cc.Sprite.extend({/** @lends pd.Animation#**/
         else {
             this.animAction = new cc.Sequence([action, new cc.CallFunc(this._onAnimCompleted, this)]);
         }
-        pd.delegate.retain(this.animAction);
+        pd.retain(this.animAction);
         this.runAction(this.animAction);
         this._setRunning(true);
     },
@@ -411,7 +411,7 @@ pd.Animation = cc.Sprite.extend({/** @lends pd.Animation#**/
         else {
             this.animAction = new cc.Sequence([pd.perfectCallFunc(this._setRunning, this, true), action, new cc.CallFunc(this._onAnimCompleted, this)]);
         }
-        pd.delegate.retain(this.animAction);
+        pd.retain(this.animAction);
         // this._setRunning(true);
         return this.animAction;
     },
@@ -449,7 +449,7 @@ pd.Animation = cc.Sprite.extend({/** @lends pd.Animation#**/
     _disposeAnimAction: function() {
         if(this.animAction != null) {
             this._stopAnimation();
-            pd.delegate.release(this.animAction);
+            pd.release(this.animAction);
             this.animAction = null;
         }
     },

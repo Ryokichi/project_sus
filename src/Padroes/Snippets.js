@@ -52,7 +52,20 @@ pd.addPlistAndPng = function () {
         }
     };
 
-    pd.createSprite = function (spriteName, position, parentNode, localZOrder) {
+/**
+ * Troca a posição de dois elementos de um array entre eles.
+ * @type {Function}
+ * @param {Array} array
+ * @param {Number} i - índice do primeiro elemento.
+ * @param {Number} j - índice do segundo elemento.
+ */
+pd.arraySwap = function(array, i, j) {
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+};
+
+pd.createSprite = function (spriteName, position, parentNode, localZOrder) {
         ////para plist
         //// return cc.spriteFrameCache.getSpriteFrame(spriteFrameName);
         var name = cc.spriteFrameCache.getSpriteFrame(spriteName) || spriteName;
@@ -64,7 +77,7 @@ pd.addPlistAndPng = function () {
         return obj;
     };
 
-    pd.createButtonFromPlist = function (spriteName, parent, zOrder) {
+pd.createButtonFromPlist = function (spriteName, parent, zOrder) {
         var spriteNormal  = spriteName+"n.png";
         var spritePressed = spriteName+"p.png";
         var spriteDisable = spriteName+"d.png";
@@ -75,7 +88,7 @@ pd.addPlistAndPng = function () {
         return button;
     };
 
-    pd.createButtonFromLocal  = function (spriteNormal, spritePressed, spriteDisable, parent, zOrder) {
+pd.createButtonFromLocal  = function (spriteNormal, spritePressed, spriteDisable, parent, zOrder) {
         var button = new ccui.Button();
         button.loadTextures(spriteNormal, spritePressed, spriteDisable, ccui.Widget.LOCAL_TEXTURE);
         if (parent)
@@ -83,7 +96,7 @@ pd.addPlistAndPng = function () {
         return button;
     };
 
-    pd.changeScene = function (scene, delay, type) {
+pd.changeScene = function (scene, delay, type) {
         var transition = [];
         transition.push(cc.TransitionCrossFade);
         transition.push(cc.TransitionFade);
@@ -104,28 +117,16 @@ pd.addPlistAndPng = function () {
 
         cc.director.runScene(new transition[type](delay, scene));
     };
-/**
- * Embaralha um array.
- * @type {Function}
- * @param {Array} array
- * @returns {Array}
- */
-pd.shuffle = function(array) {
-    for(var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
-    return array;
-};
 
-/**
- * Troca a posição de dois elementos de um array entre eles.
- * @type {Function}
- * @param {Array} array
- * @param {Number} i - índice do primeiro elemento.
- * @param {Number} j - índice do segundo elemento.
- */
-pd.arraySwap = function(array, i, j) {
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+pd.numberToString = function(number, minLength) {
+    if(minLength === undefined)
+        minLength = 4;
+
+    var str = number.toString();
+    for(var n = str.length ; n < minLength ; n++) {
+        str = "0" + str;
+    }
+    return str;
 };
 
 /**
@@ -162,4 +163,36 @@ pd.pointDistance = function(x1_or_p1, y1_or_p2, x2, y2) {
     y2 = typeof y1_or_p2 == "number" ? y2 : y1_or_p2.y;
 
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+pd.retain = function(target) {
+    if(!target.hasBeenRetained) {
+        target.retain();
+        target.hasBeenRetained = true;
+
+        this._retainedNodes = this._retainedNodes || [];
+        this._retainedNodes.push(target);
+    }
+};
+
+pd.release =  function(target) {
+    if(target && target.hasBeenRetained) {
+        const index = this._retainedNodes.lastIndexOf(target);
+        target.release();
+        if (index != -1) {
+            this._retainedNodes.splice(index, 1);
+        }
+        target.hasBeenRetained = false;
+    }
+};
+
+/**
+ * Embaralha um array.
+ * @type {Function}
+ * @param {Array} array
+ * @returns {Array}
+ */
+pd.shuffle = function(array) {
+    for(var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+    return array;
 };

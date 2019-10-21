@@ -13,6 +13,7 @@
   ],
   "jsList": [
     "src/Padroes/Snippets.js",
+    "src/Padroes/Animation.js",
     "src/Padroes/Button.js",
     "src/Padroes/GameInput.js",
 

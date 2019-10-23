@@ -12,8 +12,12 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         this.bg = pd.createSprite("bg.png", cc.p(320,180), this);
         this.spell_interface = new projSUS.GameInterface(this);
 
+        this.boss = new projSUS.Petrerus(this);
+        this.boss.setPosition(320,215);
+
         this.player = new projSUS.Hero(this);
         this.player.setPosition(200,200);
+
 
 
         projSUS.input.addEventListener("onKeyPressed", "onKeyDown", this);
@@ -56,6 +60,14 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
     },
 
     onKeyUp: function (key, e) {
+
+    },
+
+    addBoss: function () {
+
+    },
+
+    addChar: function () {
 
     }
 });

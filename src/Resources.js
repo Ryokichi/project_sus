@@ -2,6 +2,8 @@ var res = {
     //sprites
      bg_png: "res/img/bg.png"
     ,bg_plist: "res/img/bg.plist"
+    ,boss_png: "res/img/boss.png"
+    ,boss_plist: "res/img/boss.plist"
     ,buttons_png: "res/img/buttons.png"
     ,buttons_plist: "res/img/buttons.plist"
     ,options_png: "res/img/options.png"

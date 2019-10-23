@@ -2,8 +2,7 @@ projSUS.Petrerus = projSUS.Boss.extend({
     ctor: function (parent) {
         this._super(parent);
 
-        this.sprite = pd.createSprite("boss.png", cc.p(0,0), this);
-        this.sprite.setAnchorPoint(0.5,0);
+        this.setAnchorPoint(0.5, 0);
 
         this.life     = 1;
         this.max_life = 1;
@@ -16,10 +15,18 @@ projSUS.Petrerus = projSUS.Boss.extend({
             "julgar_codigo",
             "comitar_codigo"
         ];
+
+        this.createAnimations();
     },
 
-    init:function () {
+    createAnimations: function () {
+        this.addAnimation("idle", 15, 22, "boss_", 8);
+        this.addAnimation("attack", 1, 14, "boss_", 8);
 
+        this.changeAndLoop("idle");
+    },
+
+    init: function () {
         this.scheduleUpdate();
     },
 

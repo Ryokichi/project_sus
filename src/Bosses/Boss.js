@@ -1,7 +1,9 @@
-projSUS.Boss = cc.Sprite.extend({
+projSUS.Boss = pd.Animation.extend({
     ctor: function (parent) {
         this._super();
         if (parent) parent.addChild(this);
+
+        this.setAnchorPoint(0.5, 0);
 
         this.life     = 1;
         this.max_life = 1;

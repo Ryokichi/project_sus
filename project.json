@@ -24,6 +24,9 @@
     "src/Options.js",
     "src/Resources.js",
 
+    "src/Bosses/Boss.js",
+    "src/Bosses/Petrerus.js",
+
     "src/Chars/Hero.js",
     "src/GameInterface/GameInterface.js",
 

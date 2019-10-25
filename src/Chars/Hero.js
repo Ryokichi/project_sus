@@ -10,7 +10,7 @@ projSUS.Hero = pd.Animation.extend({
 
         this.curr_speed = cc.p(0,0);
         this.last_speed = cc.p(0,0);
-        this.max_speed = cc.p(1,1);
+        this.max_speed = cc.p(2,2);
 
 
         this.setAnchorPoint(0.5, 0);

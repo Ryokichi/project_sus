@@ -17,6 +17,20 @@ projSUS.Petrerus = projSUS.Boss.extend({
         ];
 
         this.createAnimations();
+
+        this.runAction(cc.repeatForever(
+            cc.sequence(
+                cc.delayTime(3),
+                cc.callFunc(function(){
+                    this.changeAndPlay("attack");
+                }, this),
+                cc.delayTime(1),
+                cc.callFunc(function(){
+                    this.changeAndLoop("idle");
+                },this),
+                cc.delayTime(2)
+            )
+        ))
     },
 
     createAnimations: function () {

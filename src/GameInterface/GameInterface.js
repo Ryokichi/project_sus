@@ -2,7 +2,15 @@ projSUS.GameInterface = cc.Node.extend({
     ctor: function (parent) {
         this._super();
         if (parent) parent.addChild(this, 1000);
-        this.bg = pd.createSprite("spells_frame.png", cc.p(320, 25), this, 1);
+
+        this.boss_frame = pd.createSprite("boss_health_interface.png", cc.p(320,340), this);
+        this.boss_helth = pd.createSprite("boss_health_bar.png", cc.p(320,340), this);
+        this.boss_icon = pd.createSprite("boss_health_icon.png", cc.p(110,340), this);
+
+        this.mana_frame = pd.createSprite("player_mana_interface.png", cc.p(320,58), this);
+        this.mana_bar = pd.createSprite("player_mana_bar.png", cc.p(320,58), this);
+
+        this.spell_frame = pd.createSprite("spells_frame.png", cc.p(320, 25), this, 1);
 
 
         this.slot = [];

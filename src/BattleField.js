@@ -10,7 +10,7 @@ projSUS.BattleField = cc.Scene.extend({
 projSUS.BattleFieldLayer = cc.Layer.extend({
     init: function () {
         this.bg = pd.createSprite("bg.png", cc.p(320,180), this);
-        this.spell_interface = new projSUS.GameInterface(this);
+        this.game_interface = new projSUS.GameInterface(this);
 
         this.boss = new projSUS.Petrerus(this);
         this.boss.setPosition(320,215);
@@ -18,10 +18,9 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         this.player = new projSUS.Hero(this);
         this.player.setPosition(200,200);
 
-
-
         projSUS.input.addEventListener("onKeyPressed", "onKeyDown", this);
         projSUS.input.addEventListener("onKeyReleased", "onKeyUp", this);
+        projSUS.input.addEventListener("onMouseDown", "onMouseDown", this);
         this.scheduleUpdate();
     },
 
@@ -29,7 +28,19 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
 
     },
 
+    onMouseDown: function (e) {
+        if (e.getButton() === cc.EventMouse.BUTTON_RIGHT){
+            cc.log("clicou com direito")
+            this.player.runAction(cc.moveTo(3,e.getLocation()));
+        }
+        else if (e.getButton() === cc.EventMouse.BUTTON_LEFT) {
+            cc.log("clicou com esquerdo")
+        }
+    },
+
     onKeyDown: function (key, e) {
+        cc.log(e);
+
         if (projSUS.gameConfig.spell_btn_a0 == key || projSUS.gameConfig.spell_btn_b0 == key) {
             cc.log("spell_0");
         }else if (projSUS.gameConfig.spell_btn_a1 == key|| projSUS.gameConfig.spell_btn_b1 == key) {

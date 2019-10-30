@@ -12,8 +12,13 @@ projSUS.Hero = pd.Animation.extend({
         this.last_speed = cc.p(0,0);
         this.max_speed = cc.p(2,2);
 
+        this.max_mana = 100;
+        this.curr_mana = this.max_mana;
 
-        this.setAnchorPoint(0.5, 0);
+        this.health_bar = new projSUS.HealthBar(this);
+        this.health_bar.setPosition(0,40);
+
+        this.setAnchorPoint(0.5,0);
         this.createAnimations();
     },
 
@@ -80,6 +85,21 @@ projSUS.Hero = pd.Animation.extend({
             this.curr_state = "idle";
         }
         this.changeAndLoop(this.curr_state+"_"+this.curr_direction, 10);
+    },
+
+    moveTo: function (pos) {
+        this.stopAllActions();
+        var dist = pd.pointDistance(this.getPosition(), pos);
+        var time = dist/(this.max_speed.x*60);
+
+        this.curr_state = "walk";
+        this.runAction(cc.sequence(
+            cc.moveTo(time,pos),
+            cc.callFunc(function () {
+                this.curr_state = "idle";
+                this.speed
+            },this)
+        ));
     }
 
 });

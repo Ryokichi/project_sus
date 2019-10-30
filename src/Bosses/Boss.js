@@ -5,8 +5,9 @@ projSUS.Boss = pd.Animation.extend({
 
         this.setAnchorPoint(0.5, 0);
 
-        this.life     = 1;
-        this.max_life = 1;
+        this.max_life = 100;
+        this.life = this.max_life;
+
         this.heroes_list = null;
         this.time_next_attack = 0;
         this.next_attack = null;
@@ -39,6 +40,5 @@ projSUS.Boss = pd.Animation.extend({
     getLifePerc: function () {
         return this.life / this.max_life;
     }
-
 
 });

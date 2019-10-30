@@ -28,7 +28,9 @@
     "src/Bosses/Petrerus.js",
 
     "src/Chars/Hero.js",
+    "src/Chars/Warrior.js",
     "src/GameInterface/GameInterface.js",
+    "src/GameInterface/HealthBar.js",
 
     "src/Save/SavedData.js",
 

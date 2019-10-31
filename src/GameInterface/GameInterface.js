@@ -47,5 +47,6 @@ projSUS.GameInterface = cc.Node.extend({
 
     setBoss: function (boss) {
         this.boss = boss;
-    }
+    },
+
 });

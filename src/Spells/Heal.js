@@ -20,6 +20,9 @@ projSUS.Heal = projSUS.Spell.extend({
 
     setDescription: function () {
         this.description = "Após " + this.curr_cast + " seg, cura o aliado selecionado em " + this.curr_heal + ".";
-    }
+    },
+
+
+
 
 });

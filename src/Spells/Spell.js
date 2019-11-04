@@ -29,6 +29,10 @@ projSUS.Spell = cc.Node.extend({
         this.setDescription();
     },
 
+    execute: function (target) {
+        cc.warn("Sobrescrever funcao");
+    },
+
     setValues: function () {
         this.curr_heal = this.base_heal;
         this.curr_mana = this.base_mana;

@@ -1,25 +1,36 @@
-projSUS.Hero = pd.Animation.extend({
+projSUS.Hero = projSUS.Char.extend({
     ctor: function (parent) {
-        this._super();
-        if (parent) parent.addChild(this);
+        this._super(parent);
+        this.setAnchorPoint(0.5,0);
+
+        this.curr_speed = cc.p(0,0);
+        this.last_speed = cc.p(0,0);
+        this.max_speed = cc.p(2,2);
 
         this.has_control = true;
         this.is_casting = false;
         this.curr_state = "idle";
         this.curr_direction = "down";
 
-        this.curr_speed = cc.p(0,0);
-        this.last_speed = cc.p(0,0);
-        this.max_speed = cc.p(2,2);
-
         this.max_mana = 100;
         this.curr_mana = this.max_mana;
+        this.mana_regen = 2;
 
-        this.health_bar = new projSUS.HealthBar(this);
-        this.health_bar.setPosition(0,40);
+        this.curr_spell = null;
+        this.spell_target = null;
+        this.spell_cast_time = 1;
+        this.spell_curr_ct = 0;
 
-        this.setAnchorPoint(0.5,0);
-        this.createAnimations();
+        this.timer = 0;
+
+        this.cast_frame = new cc.LayerColor(cc.color(255,255,255),32,4);
+        this.cast_frame.setPosition(this.width/2-16, this.height + 9);
+        this.cast_frame.setVisible(false);
+        this.addChild(this.cast_frame, 2);
+        this.cast_bar = new cc.LayerColor(cc.color(218,165,32),30,2);
+        this.cast_bar.setAnchorPoint(0,0.5);
+        this.cast_bar.setPosition(1,1);
+        this.cast_frame.addChild(this.cast_bar);
     },
 
     createAnimations: function () {
@@ -42,12 +53,61 @@ projSUS.Hero = pd.Animation.extend({
         this.scheduleUpdate();
     },
 
+    regenMana: function () {
+        this.curr_mana += this.mana_regen;
+        if (this.curr_mana > this.max_mana) {
+            this.curr_mana = this.max_mana;
+        }
+        this.updateMana();
+    },
+
+    updateMana: function () {
+        projSUS.controller.updatePlayerMana(this.curr_mana / this.max_mana);
+    },
+
     update: function(dt) {
+        this.timer += dt;
+        if (this.timer >= 1) {
+            this.timer -= 1;
+            this.regenMana();
+        }
+
+        if (this.is_casting) {
+            this.cast_bar.setScale(this.spell_curr_ct / this.spell_cast_time, 1);
+            if (this.spell_curr_ct < this.spell_cast_time) {
+                this.spell_curr_ct += dt;
+            }
+            else {
+                this.spell_curr_ct = 0;
+                this.executeCast();
+            }
+
+        }
+
         this.checkKeyboardState();
         this.updateAnimations();
 
         this.x += this.speed.x;
         this.y += this.speed.y;
+    },
+
+    beginCast: function (spell, target) {
+        this.is_casting = true;
+        this.curr_spell = spell;
+        this.spell_target = target;
+        this.spell_cast_time = spell.base_cast;
+        this.cast_frame.setVisible(true);
+    },
+
+    executeCast: function () {
+        ////Mas e se a magia é um cleanse, a magia quem deve chamar o controller?
+        ////Quais tipos de modificadores eu posso utilizar?
+
+        this.curr_mana -= this.curr_spell.base_mana;
+        var amount = this.curr_spell.base_heal;
+        projSUS.controller.spellHeal(this.spell_target, amount);
+        this.is_casting = false;
+        this.cast_frame.setVisible(false);
     },
 
     checkKeyboardState: function () {

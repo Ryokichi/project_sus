@@ -1,4 +1,4 @@
-projSUS.GameInterface = cc.Node.extend({
+projSUS.GameHUD = cc.Node.extend({
     ctor: function (parent) {
         this._super();
         if (parent) parent.addChild(this, 1000);
@@ -11,7 +11,8 @@ projSUS.GameInterface = cc.Node.extend({
 
         this.player = null;
         this.mana_frame = pd.createSprite("player_mana_interface.png", cc.p(320,58), this);
-        this.mana_bar = pd.createSprite("player_mana_bar.png", cc.p(320,58), this);
+        this.mana_bar = pd.createSprite("player_mana_bar.png", cc.p(2,7.5), this.mana_frame);
+        this.mana_bar.setAnchorPoint(0,0.5);
         this.spell_frame = pd.createSprite("spells_frame.png", cc.p(320, 25), this, 1);
 
         this.slot = [];
@@ -37,8 +38,7 @@ projSUS.GameInterface = cc.Node.extend({
     },
 
     update: function (dt) {
-        this.mana_bar.setScaleX(this.player.curr_mana / this.player.max_mana);
-        this.boss_helth.setScaleX(this.boss.getLifePerc());
+
     },
 
     setPlayer: function (player) {
@@ -48,5 +48,13 @@ projSUS.GameInterface = cc.Node.extend({
     setBoss: function (boss) {
         this.boss = boss;
     },
+
+    updatePlayerMana: function (perc) {
+        this.mana_bar.setScaleX(perc);
+    },
+
+    updateBossLife: function (perc) {
+        this.boss_helth.setScaleX(perc);
+    }
 
 });

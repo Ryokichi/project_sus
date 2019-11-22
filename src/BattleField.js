@@ -9,6 +9,12 @@ projSUS.BattleField = cc.Scene.extend({
 
 projSUS.BattleFieldLayer = cc.Layer.extend({
     init: function () {
+        this.delegate = new projSUS.Delegate();
+        this.game_hud = new projSUS.GameHUD(this);
+        this.game_hud.setLocalZOrder(100000);
+        this.game_hud.setBoss(this.boss);
+        this.game_hud.setPlayer(this.player);
+
         this.bg = pd.createSprite("bg.png", cc.p(320,180), this);
         this.allies_list = [];
         this.target = null;
@@ -25,15 +31,17 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         this.paladin = new projSUS.Warrior(this);
         this.paladin.setPosition(350,155);
 
-        this.game_interface = new projSUS.GameInterface(this);
-        this.game_interface.setLocalZOrder(100000);
-        this.game_interface.setBoss(this.boss);
-        this.game_interface.setPlayer(this.player);
 
         this.allies_list = [this.player, this.tanker, this.paladin];
         this.game_elements = [
             this.boss, this.player, this.tanker, this.paladin
         ];
+
+        this.boss.setHeroes(this.allies_list);
+        delegate.setPlayer(this.player);
+        delegate.setBoss(this.boss);
+        delegate.setHUD(this.game_hud);
+
         projSUS.input.addEventListener("onKeyPressed", "onKeyDown", this);
         projSUS.input.addEventListener("onKeyReleased", "onKeyUp", this);
         projSUS.input.addEventListener("onMouseDown", "onMouseDown", this);
@@ -42,7 +50,7 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
 
     update: function (dt) {
         for (var i = 0; i < this.game_elements.length; i++) {
-            this.game_elements[i].setLocalZOrder(this.game_interface.getLocalZOrder() - this.game_elements[i].y);
+            this.game_elements[i].setLocalZOrder(this.game_hud.getLocalZOrder() - this.game_elements[i].y);
         }
     },
 

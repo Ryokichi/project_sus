@@ -246,13 +246,25 @@ projSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     closeAndResumeParent: function () {
-        this.runAction(cc.sequence(
-            cc.fadeOut(0.3),
-            cc.callFunc(function () {
-                this.getParent().resumeControl();
-                this.removeFromParent();
-            }, this)
-        ));
+        var has_at_least_one = false;
+        for (var i = 0; i < this.hot_bar_slot.length && !has_at_least_one ; i++) {
+            if (this.hot_bar_slot[i].linked_spell != null) {
+                has_at_least_one = true;
+            }
+        }
+
+        if (has_at_least_one) {
+            this.runAction(cc.sequence(
+                cc.fadeOut(0.3),
+                cc.callFunc(function () {
+                    this.getParent().resumeControl();
+                    this.removeFromParent();
+                }, this)
+            ));
+        }
+        else {
+            cc.log("selecione ao menos uma magia");
+        }
     },
 
     pauseControl: function () {

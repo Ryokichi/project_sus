@@ -2,13 +2,10 @@ projSUS.Petrerus = projSUS.Boss.extend({
     ctor: function (parent) {
         this._super(parent);
 
+        this.setInitialLife(10000);
         this.setAnchorPoint(0.5, 0);
 
-        this.max_life = 1000;
-        this.life     = this.max_life;
-
-        this.heroes_list = null;
-        this.time_next_attack = 0;
+        this.time_next_attack = 3;
         this.next_attack = null;
         this.attack_list = [
             "basic",
@@ -24,6 +21,7 @@ projSUS.Petrerus = projSUS.Boss.extend({
                 cc.delayTime(3),
                 cc.callFunc(function(){
                     this.changeAndPlay("attack");
+                    this.ataqueBasico(this.heroes_list[1]);
                 }, this),
                 cc.delayTime(1),
                 cc.callFunc(function(){
@@ -66,8 +64,9 @@ projSUS.Petrerus = projSUS.Boss.extend({
         }
     },
 
-    ataqueBasico: function () {
+    ataqueBasico: function (target) {
         cc.log("Ataque padrao");
+        delegate.attackAnAlly(target, 5);
     },
 
     criticarCodigo: function () {
@@ -81,5 +80,9 @@ projSUS.Petrerus = projSUS.Boss.extend({
 
     comitarCodigo: function () {
         cc.log("Comitando codigo");
+    },
+
+    takingHit: function (amount, type) {
+        this.subtractLife(amount);
     }
 });

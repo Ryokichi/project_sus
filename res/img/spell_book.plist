@@ -4,6 +4,21 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>book_icon.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{208,217}</string>
+                <key>spriteSourceSize</key>
+                <string>{208,217}</string>
+                <key>textureRect</key>
+                <string>{{527,1},{208,217}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>book_interface.png</key>
             <dict>
                 <key>aliases</key>
@@ -30,7 +45,7 @@
                 <key>spriteSourceSize</key>
                 <string>{32,32}</string>
                 <key>textureRect</key>
-                <string>{{578,101},{3,3}}</string>
+                <string>{{627,220},{3,3}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,9 +60,9 @@
                 <key>spriteSourceSize</key>
                 <string>{98,33}</string>
                 <key>textureRect</key>
-                <string>{{578,1},{98,33}}</string>
+                <string>{{527,220},{98,33}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>spells_frame.png</key>
             <dict>
@@ -60,7 +75,7 @@
                 <key>spriteSourceSize</key>
                 <string>{281,49}</string>
                 <key>textureRect</key>
-                <string>{{527,1},{281,49}}</string>
+                <string>{{737,1},{281,49}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -76,9 +91,9 @@
             <key>realTextureFileName</key>
             <string>spell_book.png</string>
             <key>size</key>
-            <string>{612,346}</string>
+            <string>{787,346}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f46124773851346b5a23d9c8aa0dfc5f:372d00789b45c035197bb77d3cf77b5f:f7c9503ad23ca554f2d5bc453c3891fd$</string>
+            <string>$TexturePacker:SmartUpdate:b0bfdedd3a8e96ce42521c49ef780955:87646fa8a2550dedd67bab0e5bc33df7:f7c9503ad23ca554f2d5bc453c3891fd$</string>
             <key>textureFileName</key>
             <string>spell_book.png</string>
         </dict>

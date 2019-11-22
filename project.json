@@ -15,10 +15,12 @@
     "src/Padroes/Snippets.js",
     "src/Padroes/Animation.js",
     "src/Padroes/Button.js",
+
     "src/Padroes/GameInput.js",
 
     "src/MainScene.js",
     "src/BattleField.js",
+    "src/Delegate.js",
     "src/MainMenu.js",
     "src/Map.js",
     "src/Options.js",
@@ -27,10 +29,11 @@
     "src/Bosses/Boss.js",
     "src/Bosses/Petrerus.js",
 
+    "src/Chars/Char.js",
     "src/Chars/Hero.js",
     "src/Chars/Warrior.js",
-    "src/GameInterface/GameInterface.js",
-    "src/GameInterface/HealthBar.js",
+    "src/GameHUD/GameHUD.js",
+    "src/GameHUD/HealthBar.js",
 
     "src/Save/SavedData.js",
 

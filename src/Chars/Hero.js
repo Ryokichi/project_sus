@@ -1,7 +1,8 @@
-projSUS.Hero = pd.Animation.extend({
+projSUS.Hero = projSUS.Char.extend({
     ctor: function (parent) {
-        this._super();
-        if (parent) parent.addChild(this);
+        this._super(parent);
+
+        this.health_bar.setPosition(0,40);
 
         this.has_control = true;
         this.is_casting = false;
@@ -10,16 +11,19 @@ projSUS.Hero = pd.Animation.extend({
 
         this.curr_speed = cc.p(0,0);
         this.last_speed = cc.p(0,0);
-        this.max_speed = cc.p(2,2);
+        this.max_speed  = cc.p(2,2);
 
-        this.max_mana = 100;
-        this.curr_mana = this.max_mana;
-
-        this.health_bar = new projSUS.HealthBar(this);
-        this.health_bar.setPosition(0,40);
+        this.max_mana   = 100;
+        this.curr_mana  = this.max_mana;
+        this.mana_regen = 0.5;
+        this.time_regen = 0;
 
         this.setAnchorPoint(0.5,0);
         this.createAnimations();
+    },
+
+    setHole: function () {
+        this.hole = "healer";
     },
 
     createAnimations: function () {
@@ -43,6 +47,14 @@ projSUS.Hero = pd.Animation.extend({
     },
 
     update: function(dt) {
+        this.time_regen += dt;
+        if (this.time_regen >= 1) {
+            this.time_regen -= 1;
+            this.curr_mana += this.mana_regen;
+            if (this.curr_mana > this.max_mana)
+                this.curr_mana = this.max_mana;
+        }
+
         this.checkKeyboardState();
         this.updateAnimations();
 

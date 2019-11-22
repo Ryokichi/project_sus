@@ -1,3 +1,5 @@
+delegate = new projSUS.Delegate();
+
 projSUS.MainMenu = cc.Scene.extend({
     onEnter:function () {
         this._super();

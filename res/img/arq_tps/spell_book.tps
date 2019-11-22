@@ -187,6 +187,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../spell_book/book_icon.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>52,54,104,109</rect>
+                <key>scale9Paddings</key>
+                <rect>52,54,104,109</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../spell_book/book_interface.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -202,6 +217,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../spell_book/mock_sprite.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9Paddings</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../spell_book/spell_box.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -214,21 +244,6 @@
                 <rect>25,8,49,17</rect>
                 <key>scale9Paddings</key>
                 <rect>25,8,49,17</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../spell_book/spell_box2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>8,8,16,16</rect>
-                <key>scale9Paddings</key>
-                <rect>8,8,16,16</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

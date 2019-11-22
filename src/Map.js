@@ -1,3 +1,5 @@
+projSUS.controller = new projSUS.Controller();
+
 projSUS.MapScene = cc.Scene.extend({
     onEnter:function () {
         this._super();

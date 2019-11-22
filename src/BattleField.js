@@ -16,6 +16,7 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         this.game_hud.setPlayer(this.player);
 
         this.bg = pd.createSprite("bg.png", cc.p(320,180), this);
+        this.controller = projSUS.controller;
         this.allies_list = [];
         this.target = null;
         
@@ -71,18 +72,19 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
 
     onKeyDown: function (key, e) {
         if (projSUS.gameConfig.spell_btn_a0 == key || projSUS.gameConfig.spell_btn_b0 == key) {
+            this.controller.castSpell(0, this.target);
 
         }else if (projSUS.gameConfig.spell_btn_a1 == key|| projSUS.gameConfig.spell_btn_b1 == key) {
-
+            this.controller.castSpell(1, this.target);
         }
         else if (projSUS.gameConfig.spell_btn_a2 == key || projSUS.gameConfig.spell_btn_b2 == key) {
-
+            this.controller.castSpell(2, this.target);
         }
         else if (projSUS.gameConfig.spell_btn_a3 == key|| projSUS.gameConfig.spell_btn_b3 == key) {
-
+            this.controller.castSpell(3, this.target);
         }
         else if (projSUS.gameConfig.spell_btn_a4 == key || projSUS.gameConfig.spell_btn_b4 == key) {
-
+            this.controller.castSpell(4, this.target);
         }
 
         if (projSUS.gameConfig.btn_a_left  == key|| projSUS.gameConfig.btn_b_left == key) {

@@ -65,7 +65,7 @@ projSUS.Petrerus = projSUS.Boss.extend({
     },
 
     ataqueBasico: function (target) {
-        cc.log("Ataque padrao");
+        // cc.log("Ataque padrao");
         delegate.attackAnAlly(target, 5);
     },
 

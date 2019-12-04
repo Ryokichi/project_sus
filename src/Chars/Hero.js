@@ -18,6 +18,8 @@ projSUS.Hero = projSUS.Char.extend({
         this.mana_regen = 0.5;
         this.time_regen = 0;
 
+        this.target_ally = null;
+
         this.setAnchorPoint(0.5,0);
         this.createAnimations();
     },
@@ -74,25 +76,6 @@ projSUS.Hero = projSUS.Char.extend({
         this.y += this.speed.y;
     },
 
-    beginCast: function (spell, target) {
-        this.is_casting = true;
-        this.curr_spell = spell;
-        this.spell_target = target;
-        this.spell_cast_time = spell.base_cast;
-        this.cast_frame.setVisible(true);
-    },
-
-    executeCast: function () {
-        ////Mas e se a magia é um cleanse, a magia quem deve chamar o controller?
-        ////Quais tipos de modificadores eu posso utilizar?
-
-        this.curr_mana -= this.curr_spell.base_mana;
-        var amount = this.curr_spell.base_heal;
-        projSUS.controller.spellHeal(this.spell_target, amount);
-        this.is_casting = false;
-        this.cast_frame.setVisible(false);
-    },
-
     checkKeyboardState: function () {
         this.speed = cc.p(0,0);
 
@@ -143,6 +126,18 @@ projSUS.Hero = projSUS.Char.extend({
                 this.speed
             },this)
         ));
+    },
+
+    setTargetAlly: function (target) {
+        this.target_ally = target;
+    },
+
+    getTargetAlly: function () {
+        return this.target_ally;
+    },
+
+    getMana: function () {
+        return this.curr_mana;
     }
 
 });

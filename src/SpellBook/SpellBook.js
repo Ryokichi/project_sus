@@ -119,7 +119,7 @@ projSUS.SpellBookLayer = cc.Layer.extend({
             for (var i = 0; i < this.hot_bar_slot.length; i++) {
                 rect = this.hot_bar_slot[i].getBoundingBox();
                 if (cc.rectContainsPoint(rect, e.getLocation())) {
-                    if (this.mock_spell.came_from_hot_bar !== false) { ///came form hot bar deve ser um numero
+                    if (this.mock_spell.came_from_hot_bar !== false) { ///came from hot bar deve ser um numero
                         this.permutSprite(this.mock_spell.came_from_hot_bar, i);
                     } else {
                         this.updateHotBarSlot(i, this.mock_spell.linked_spell);

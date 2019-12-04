@@ -18,15 +18,57 @@ projSUS.GameHUD = cc.Node.extend({
 
         this.slot = [];
         for (var i=0; i < 5; i++) {
+            var spell = null;
+            if (projSUS.SavedData.spell["slot"+i] != null) {
+                spell = new projSUS[projSUS.SavedData.spell["slot"+i]];
+            }
+            else {
+                spell = new projSUS.Spell();
+            }
+
             var pos = cc.p(212+47*i, 25);
             if (i==4) pos = cc.p(419,25);
 
-            this.slot.push(pd.createSprite("mock_sprite.png", pos, this));
+            spell.img = pd.createSprite(spell.sprite_name, pos, this);
+            this.slot.push(spell);
         }
+
+        projSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
+        projSUS.input.addEventListener("onKeyPressed", "onKeyPressed", this, 1);
     },
 
     update: function (dt) {
 
+    },
+
+    onMouseDown: function (e) {
+        for (var i = 0;  i < this.slot.length; i++) {
+            if (cc.rectContainsPoint(this.slot[i].img.getBoundingBox(), e.getLocation())) {
+                this.castSpell(i);
+            }
+        }
+    },
+
+    onKeyPressed: function (key) {
+        if (key == projSUS.gameConfig.spell_btn_a0 || key == projSUS.gameConfig.spell_btn_b0) {
+            this.castSpell(0);
+        }
+        if (key == projSUS.gameConfig.spell_btn_a1 || key == projSUS.gameConfig.spell_btn_b1) {
+            this.castSpell(1);
+        }
+        if (key == projSUS.gameConfig.spell_btn_a2 || key == projSUS.gameConfig.spell_btn_b2) {
+            this.castSpell(2);
+        }
+        if (key == projSUS.gameConfig.spell_btn_a3 || key == projSUS.gameConfig.spell_btn_b3) {
+            this.castSpell(3);
+        }
+        if (key == projSUS.gameConfig.spell_btn_a4 || key == projSUS.gameConfig.spell_btn_b4) {
+            this.castSpell(4);
+        }
+    },
+
+    castSpell: function (idx) {
+        this.slot[idx].beginCast(projSUS.controller.getPlayerTarget())
     },
 
     setPlayer: function (player) {
@@ -44,5 +86,4 @@ projSUS.GameHUD = cc.Node.extend({
     updateBossLife: function (perc) {
         this.boss_helth.setScaleX(perc);
     }
-
 });

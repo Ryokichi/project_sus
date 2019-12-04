@@ -2,10 +2,10 @@ projSUS.Spell = cc.Node.extend({
     ctor: function() {
         this._super();
 
-        this.id = 0;
+        this.id = null;
         this.name = "";
         this.description = "";
-        this.sprite_name = "";
+        this.sprite_name = "mock_sprite.png";
         this.level = 1;
 
         this.base_heal = 0;
@@ -60,15 +60,9 @@ projSUS.Spell = cc.Node.extend({
 
     setDescription: function () {
         cc.warn("Sobrescrever de funcao spell: " + this.name);
+    },
+
+    beginCast: function (target) {
+        cc.warn("sobrescrever função beginCast de " + this.name);
     }
-
 });
-
-projSUS.spellList = [
-     "FastHeal"
-    ,"GreatHeal"
-    ,"Heal"
-    ,"Renew"
-    ,"Shield"
-    ,"SuperHeal"
-];

@@ -11,20 +11,23 @@
     "editbox",
     "ccui"
   ],
+
   "jsList": [
     "src/Padroes/Snippets.js",
     "src/Padroes/Animation.js",
     "src/Padroes/Button.js",
-
     "src/Padroes/GameInput.js",
 
     "src/MainScene.js",
     "src/BattleField.js",
+    "src/Controller.js",
     "src/Delegate.js",
     "src/MainMenu.js",
     "src/Map.js",
     "src/Options.js",
     "src/Resources.js",
+
+    "src/Global/GameConfig.js",
 
     "src/Bosses/Boss.js",
     "src/Bosses/Petrerus.js",

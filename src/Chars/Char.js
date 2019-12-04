@@ -42,12 +42,11 @@ projSUS.Char = pd.Animation.extend({
     },
 
     subtractLife: function (qtd) {
-        cc.log("tomando dano", qtd);
+        // cc.log("tomando dano", qtd);
         this.curr_life -= qtd;
         if (this.curr_life < 0) {
             this.curr_life = 0;
         }
-        cc.log(this.curr_life / this.max_life);
         this.health_bar.setLifePerc(this.curr_life / this.max_life);
     },
 

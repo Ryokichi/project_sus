@@ -4,26 +4,12 @@ projSUS.Controller = cc.Class.extend({
         this.boss;
         this.interface;
 
-        this.spells = [];
     },
 
-    loadElements: function (player, boss, interface) {
+    setElements: function (player, boss, interface) {
         this.setPlayer(player);
         this.setBoss(boss);
         this.setInterface(interface);
-
-        this.spells = [];
-        var spell, spell_name;
-        for (var slot in projSUS.SavedData.spell) {
-            spell_name = projSUS.SavedData.spell[slot];
-
-            spell = null;
-            if (spell_name !== null) {
-                spell = new projSUS[spell_name];
-            }
-            this.spells.push(spell);
-        }
-        this.interface.setSpellSprites(this.spells);
     },
 
     setPlayer: function (player) {
@@ -46,14 +32,12 @@ projSUS.Controller = cc.Class.extend({
         this.interface.updatePlayerMana(perc);
     },
 
-    castSpell: function (num, target) {
-        cc.log("target", target);
-        if (this.spells[num] != null && target != null) {
-            this.player.beginCast(this.spells[num], target);
-        }
+    getPlayerTarget: function () {
+        return this.player.getTargetAlly();
     },
 
-    spellHeal: function (target, amount) {
-        target.heal(amount);
+    playerHasMana: function (amount) {
+        return (this.player.getMana() >= amount);
     }
+
 });

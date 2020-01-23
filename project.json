@@ -11,31 +11,53 @@
     "editbox",
     "ccui"
   ],
+
   "jsList": [
     "src/Padroes/Snippets.js",
-    "src/Padroes/GameInput.js",
+    "src/Padroes/Animation.js",
     "src/Padroes/Button.js",
+    "src/Padroes/GameInput.js",
 
+    "src/Controller.js",
     "src/Resources.js",
-    "src/StartScene.js",
 
-    "src/Options.js",
-    "src/MainScene.js",
-    "src/BattleStage.js",
+    "src/Global/GameConfig.js",
+
+    "src/Levels/BattleField.js",
+    "src/Levels/Level_0.js",
+
+    "src/Scenes/IntroScene.js",
+    "src/Scenes/MainMenu.js",
+    "src/Scenes/Map.js",
+    "src/Scenes/Settings.js"
+  ],
+
+  "ajustar": [
     "src/BattleField.js",
+    "src/Resources.js",
+
+
 
     "src/Bosses/Boss.js",
     "src/Bosses/Petrerus.js",
-    "src/Chars/Hero.js",
-    "src/GameInterface/GameInterface.js",
-    "src/PartySelect/PartySelect.js",
-    "src/SpellBook/SpellBookScene.js",
-    "src/SpellBook/SpellLevelUp.js",
-    "src/Spells/Spell.js",
-    "src/Spells/Heal.js",
-    "src/Spells/FastHeal.js",
-    "src/Spells/GreatHeal.js",
-    "src/Spells/Renew.js",
-    "src/Spells/Shield.js"
+
+        "src/Chars/Char.js",
+        "src/Chars/Hero.js",
+        "src/Chars/Warrior.js",
+        "src/GameHUD/GameHUD.js",
+        "src/GameHUD/HealthBar.js",
+
+        "src/Save/SavedData.js",
+
+        "src/SpellBook/SpellBook.js",
+        "src/SpellBook/SpellLevelUp.js",
+
+        "src/Spells/Spell.js",
+        "src/Spells/FastHeal.js",
+        "src/Spells/GreatHeal.js",
+        "src/Spells/Heal.js",
+        "src/Spells/Renew.js",
+        "src/Spells/Shield.js",
+        "src/Spells/SuperHeal.js"
   ]
 }

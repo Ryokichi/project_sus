@@ -1,10 +1,10 @@
-projectSUS.Renew = projectSUS.Spell.extend({
+projSUS.Renew = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.code = "SPS2";
+        this.id = "Renew";
         this.name = "Renovar";
-        this.sprite_name = "cura4.png";
+        this.sprite_name = "renew.png";
 
         this.base_heal = 3;
         this.base_mana = 5;

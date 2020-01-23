@@ -8,7 +8,7 @@ cc.game.onStart = function(){
 
     //load resources
     cc.LoaderScene.preload(game_resources, function () {
-        cc.director.runScene(new projectSUS.StartScene());
+        cc.director.runScene(new projSUS.IntroScene());
         pd.addPlistAndPng();
     }, this);
 

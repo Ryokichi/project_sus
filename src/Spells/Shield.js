@@ -1,10 +1,10 @@
-projectSUS.Shield = projectSUS.Spell.extend({
+projSUS.Shield = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.code = "SPS2";
+        this.id = "Shield";
         this.name = "Bolha Protetora";
-        this.sprite_name = "cura5.png";
+        this.sprite_name = "shield.png";
 
         this.base_heal = 3;
         this.base_mana = 5;

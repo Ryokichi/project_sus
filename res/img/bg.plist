@@ -11,26 +11,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{640,384}</string>
+                <string>{640,360}</string>
                 <key>spriteSourceSize</key>
-                <string>{640,384}</string>
+                <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{640,384}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>bg_2.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{640,384}</string>
-                <key>spriteSourceSize</key>
-                <string>{640,384}</string>
-                <key>textureRect</key>
-                <string>{{640,0},{640,384}}</string>
+                <string>{{1,1},{640,360}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,7 +30,22 @@
                 <key>spriteSourceSize</key>
                 <string>{640,360}</string>
                 <key>textureRect</key>
-                <string>{{1280,0},{640,360}}</string>
+                <string>{{643,1},{640,360}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>map_bg.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{640,360}</string>
+                <key>spriteSourceSize</key>
+                <string>{640,360}</string>
+                <key>textureRect</key>
+                <string>{{1285,1},{640,360}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -61,9 +61,9 @@
             <key>realTextureFileName</key>
             <string>bg.png</string>
             <key>size</key>
-            <string>{2048,512}</string>
+            <string>{1926,362}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ec2bea8a19d3a46c08665490a5cc5b55:6f1478b4648cdedea6d763477895db9d:ba3351e848913f852cb04737e7054a9e$</string>
+            <string>$TexturePacker:SmartUpdate:5bec95acd61b08f88fb927fd5e2f265d:2264caf127ef474269c8837597117b86:ba3351e848913f852cb04737e7054a9e$</string>
             <key>textureFileName</key>
             <string>bg.png</string>
         </dict>

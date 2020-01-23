@@ -1,11 +1,11 @@
-projectSUS.Spell = cc.Node.extend({
+projSUS.Spell = cc.Node.extend({
     ctor: function() {
         this._super();
 
-        this.code = null;
+        this.id = null;
         this.name = "";
         this.description = "";
-        this.sprite_name = "";
+        this.sprite_name = "mock_sprite.png";
         this.level = 1;
 
         this.base_heal = 0;
@@ -27,6 +27,10 @@ projectSUS.Spell = cc.Node.extend({
         this.sprite = pd.createSprite(this.sprite_name, cc.p(0,0), this, 1);
         this.setValues();
         this.setDescription();
+    },
+
+    execute: function (target) {
+        cc.warn("Sobrescrever funcao");
     },
 
     setValues: function () {
@@ -56,6 +60,9 @@ projectSUS.Spell = cc.Node.extend({
 
     setDescription: function () {
         cc.warn("Sobrescrever de funcao spell: " + this.name);
-    }
+    },
 
+    beginCast: function (target) {
+        cc.warn("sobrescrever função beginCast de " + this.name);
+    }
 });

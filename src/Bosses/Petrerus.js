@@ -1,14 +1,11 @@
-projectSUS.Petrerus = projectSUS.Boss.extend({
+projSUS.Petrerus = projSUS.Boss.extend({
     ctor: function (parent) {
         this._super(parent);
 
-        this.sprite = pd.createSprite("boss.png", cc.p(0,0), this);
-        this.sprite.setAnchorPoint(0.5,0);
+        this.setInitialLife(10000);
+        this.setAnchorPoint(0.5, 0);
 
-        this.life     = 1;
-        this.max_life = 1;
-        this.heroes_list = null;
-        this.time_next_attack = 0;
+        this.time_next_attack = 3;
         this.next_attack = null;
         this.attack_list = [
             "basic",
@@ -16,10 +13,33 @@ projectSUS.Petrerus = projectSUS.Boss.extend({
             "julgar_codigo",
             "comitar_codigo"
         ];
+
+        this.createAnimations();
+
+        this.runAction(cc.repeatForever(
+            cc.sequence(
+                cc.delayTime(3),
+                cc.callFunc(function(){
+                    this.changeAndPlay("attack");
+                    this.ataqueBasico(this.heroes_list[1]);
+                }, this),
+                cc.delayTime(1),
+                cc.callFunc(function(){
+                    this.changeAndLoop("idle");
+                },this),
+                cc.delayTime(2)
+            )
+        ))
     },
 
-    init:function () {
+    createAnimations: function () {
+        this.addAnimation("idle", 15, 22, "boss_", 8);
+        this.addAnimation("attack", 1, 14, "boss_", 8);
 
+        this.changeAndLoop("idle");
+    },
+
+    init: function () {
         this.scheduleUpdate();
     },
 
@@ -44,8 +64,9 @@ projectSUS.Petrerus = projectSUS.Boss.extend({
         }
     },
 
-    ataqueBasico: function () {
-        cc.log("Ataque padrao");
+    ataqueBasico: function (target) {
+        // cc.log("Ataque padrao");
+        delegate.attackAnAlly(target, 5);
     },
 
     criticarCodigo: function () {
@@ -59,5 +80,9 @@ projectSUS.Petrerus = projectSUS.Boss.extend({
 
     comitarCodigo: function () {
         cc.log("Comitando codigo");
+    },
+
+    takingHit: function (amount, type) {
+        this.subtractLife(amount);
     }
 });

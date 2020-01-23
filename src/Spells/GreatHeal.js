@@ -1,10 +1,10 @@
-projectSUS.GreatHeal = projectSUS.Spell.extend({
+projSUS.GreatHeal = projSUS.Spell.extend({
     ctor: function () {
         this._super();
 
-        this.code = "SPS1";
+        this.id = "GreatHeal";
         this.name = "Grande Cura";
-        this.sprite_name = "cura3.png";
+        this.sprite_name = "great_heal.png";
 
         this.base_heal = 30;
         this.base_mana = 10;

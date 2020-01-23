@@ -1,4 +1,4 @@
-projectSUS.SpellUp = cc.LayerColor.extend({
+projSUS.SpellUp = cc.LayerColor.extend({
     ctor: function (color, w, h, parent) {
         this._super(color, w, h);
         this.is_paused = true;
@@ -38,8 +38,8 @@ projectSUS.SpellUp = cc.LayerColor.extend({
         this.duration_lbl = this.std_label();
         this.duration_lbl.setPosition(50, 150);
 
-        projectSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
-        projectSUS.input.addEventListener("onMouseUp", "onMouseUp", this, 1);
+        projSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
+        projSUS.input.addEventListener("onMouseUp", "onMouseUp", this, 1);
     },
 
     std_label: function () {

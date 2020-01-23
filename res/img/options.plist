@@ -15,7 +15,7 @@
                 <key>spriteSourceSize</key>
                 <string>{80,56}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{80,56}}</string>
+                <string>{{503,1},{80,56}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,9 +30,9 @@
                 <key>spriteSourceSize</key>
                 <string>{59,60}</string>
                 <key>textureRect</key>
-                <string>{{80,0},{59,60}}</string>
+                <string>{{585,1},{59,60}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>vol_bar.png</key>
             <dict>
@@ -45,7 +45,7 @@
                 <key>spriteSourceSize</key>
                 <string>{500,24}</string>
                 <key>textureRect</key>
-                <string>{{139,0},{500,24}}</string>
+                <string>{{1,1},{500,24}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -60,7 +60,7 @@
                 <key>spriteSourceSize</key>
                 <string>{30,30}</string>
                 <key>textureRect</key>
-                <string>{{639,0},{30,30}}</string>
+                <string>{{1,27},{30,30}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -76,9 +76,9 @@
             <key>realTextureFileName</key>
             <string>options.png</string>
             <key>size</key>
-            <string>{669,60}</string>
+            <string>{646,61}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ec483339d53518b44b027acb182fad4a:217fc92e6ce211f9861170c40f5232bc:c3323197272216b91c571a82f95baed2$</string>
+            <string>$TexturePacker:SmartUpdate:6d1ba7b552850187ce2a979215f6376b:217fc92e6ce211f9861170c40f5232bc:c3323197272216b91c571a82f95baed2$</string>
             <key>textureFileName</key>
             <string>options.png</string>
         </dict>

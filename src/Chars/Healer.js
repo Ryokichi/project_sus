@@ -1,8 +1,8 @@
-projSUS.Hero = projSUS.Char.extend({
+projSUS.Healer = projSUS.Char.extend({
     ctor: function (parent) {
         this._super(parent);
 
-        this.health_bar.setPosition(0,40);
+        this.health_bar.setPosition(15,40);
 
         this.has_control = true;
         this.is_casting = false;

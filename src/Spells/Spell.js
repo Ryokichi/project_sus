@@ -21,6 +21,9 @@ projSUS.Spell = cc.Node.extend({
         this.curr_cd   = 0;
         this.curr_tick = 0;
         this.curr_duration = 0;
+
+        this.setCascadeColorEnabled(true);
+        this.setCascadeOpacityEnabled(true);
     },
 
     init: function () {

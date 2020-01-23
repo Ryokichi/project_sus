@@ -4,6 +4,11 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         this.init();
     },
     init: function () {
-        cc.log("old");
+        this.boss = null;
+        this.healer = null;
+        this.allies = [];
+
+        this.hud = new projSUS.BattleHUD(this);
+
     }
 });

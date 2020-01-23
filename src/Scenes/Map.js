@@ -59,6 +59,7 @@ projSUS.MapLayer = cc.Layer.extend({
                     projSUS.input.removeEventListener(this);
 
                     var lvl = "Level_"+i;
+                    cc.log(lvl);
                     pd.changeScene(new projSUS[lvl],0.5,1);
 
                 }

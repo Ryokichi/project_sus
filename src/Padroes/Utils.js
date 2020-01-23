@@ -55,3 +55,36 @@ pd.Button = cc.Node.extend ({
     }
 
 });
+
+
+pd.ComplexBar = cc.Node.extend({
+    ctor: function (mainImg, backgroundImg, parentNode, localZOrder) {
+        this._super();
+
+        this.bg_img      = null;
+        this.main_img    = pd.createSprite(mainImg);
+        this.progressBar = new cc.ProgressTimer(this.main_img);
+        this.progressBar.setType(cc.ProgressTimer.TYPE_BAR);
+        this.progressBar.setMidpoint(cc.p(0,0.5));
+        this.progressBar.setBarChangeRate(cc.p(1,0));
+        this.progressBar.setPercentage(100);
+        this.addChild(this.progressBar);
+
+        this.width = this.main_img.width;
+        this.height = this.main_img.height;
+
+        if (backgroundImg) {
+            this.bg_img = pd.createSprite(backgroundImg, cc.p(0,0), this, -1);
+            this.width = this.bg_img.width;
+            this.height = this.bg_img.height;
+        }
+
+        if (parentNode) {
+            parentNode.addChild(this, localZOrder || 0);
+        }
+    },
+
+    setPercentage: function (perc) {
+        this.progressBar.setPercentage(perc);
+    }
+});

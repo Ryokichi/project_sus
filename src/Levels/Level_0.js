@@ -9,8 +9,14 @@ projSUS.Level_0 = cc.Scene.extend({
 projSUS.Level_0_Layer = projSUS.BattleFieldLayer.extend({
     init: function () {
         this._super();
-        cc.log("new");
+
+        this.bg = pd.createSprite("bg.png", cc.p(320,180), this);
+
+        this.player = new projSUS.Healer(this);
+
+
+
+
 
     }
-
 });

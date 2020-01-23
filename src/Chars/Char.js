@@ -2,7 +2,8 @@ projSUS.Char = pd.Animation.extend({
     ctor: function (parent) {
         this._super();
         if (parent) parent.addChild(this);
-        this.health_bar = new projSUS.HealthBar(this);
+
+        this.health_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this);
 
         this.hole      = null;
         this.max_life  = null;
@@ -39,7 +40,7 @@ projSUS.Char = pd.Animation.extend({
         if (this.curr_life > this.max_life) {
             this.curr_life = this.max_life;
         }
-        this.health_bar.setLifePerc(this.curr_life / this.max_life);
+        this.health_bar.setPercentage(100 * this.curr_life / this.max_life);
     },
 
     subtractLife: function (qtd) {
@@ -48,7 +49,7 @@ projSUS.Char = pd.Animation.extend({
         if (this.curr_life < 0) {
             this.curr_life = 0;
         }
-        this.health_bar.setLifePerc(this.curr_life / this.max_life);
+        this.health_bar.setPercentage(100 * this.curr_life / this.max_life);
     },
 
 });

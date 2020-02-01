@@ -1,7 +1,7 @@
 {
   "project_type": "javascript",
   "debugMode": 1,
-  "showFPS": false,
+  "showFPS": true,
   "frameRate": 60,
   "id": "gameCanvas",
   "renderMode": 1,
@@ -27,6 +27,7 @@
 
     "src/Chars/Char.js",
     "src/Chars/Healer.js",
+    "src/Chars/Archer.js",
     "src/Chars/Warrior.js",
 
     "src/Global/GameConfig.js",

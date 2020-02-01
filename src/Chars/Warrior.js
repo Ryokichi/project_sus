@@ -2,12 +2,9 @@ projSUS.Warrior = projSUS.Char.extend({
     ctor: function (parent) {
         this._super(parent);
 
-        this.health_bar.setPosition(-3,35);
-        this.setScale(1.5);
         this.setAnchorPoint(0.5, 0);
         this.setInitialLife(100);
-        this.createAnimations();
-        this.attack();
+        // this.attack();
     },
 
     setHole: function () {
@@ -15,7 +12,22 @@ projSUS.Warrior = projSUS.Char.extend({
     },
 
     createAnimations: function () {
-        this.addAnimation("idle", 1, 1, "warrior_");
+        this.addAnimation("idle_down",  1, 1, "Warrior_");
+        this.addAnimation("idle_left",  2, 2, "Warrior_");
+        this.addAnimation("idle_up",    3, 3, "Warrior_");
+        this.addAnimation("idle_right", 4, 4, "Warrior_");
+
+        this.addAnimation("walk_down",   5,  6, "Warrior_");
+        this.addAnimation("walk_left",   7,  8, "Warrior_");
+        this.addAnimation("walk_up",     9, 10, "Warrior_");
+        this.addAnimation("walk_right", 11, 12, "Warrior_");
+
+        this.addAnimation("cast_down",  14, 14, "Warrior_");
+        this.addAnimation("cast_left",  16, 16, "Warrior_");
+        this.addAnimation("cast_up",    18, 18, "Warrior_");
+        this.addAnimation("cast_right", 20, 20, "Warrior_");
+
+        this.changeAndLoop("idle_up");
     },
 
     attack: function () {

@@ -2,8 +2,6 @@ projSUS.Healer = projSUS.Char.extend({
     ctor: function (parent) {
         this._super(parent);
 
-        this.health_bar.setPosition(15,40);
-
         this.has_control = true;
         this.is_casting = false;
         this.curr_state = "idle";
@@ -19,9 +17,6 @@ projSUS.Healer = projSUS.Char.extend({
         this.time_regen = 0;
 
         this.target_ally = null;
-
-        this.setAnchorPoint(0.5,0);
-        this.createAnimations();
     },
 
     setHole: function () {

@@ -8,8 +8,7 @@ var res = {
     ,buttons_plist: "res/img/buttons.plist"
     ,chars_png: "res/img/chars.png"
     ,chars_plist: "res/img/chars.plist"
-    // ,interface_png: "res/img/chars.png"
-    // ,interface_plist: "res/img/chars.plist"
+
     ,options_png: "res/img/options.png"
     ,options_plist: "res/img/options.plist"
     ,spell_book_png: "res/img/spell_book.png"
@@ -17,8 +16,15 @@ var res = {
     ,spells_icons_png: "res/img/spells_icons.png"
     ,spells_icons_plist: "res/img/spells_icons.plist"
     //
-    ,teste_png: "res/img/priest.png"
-    ,teste_plist: "res/img/priest.plist"
+    ,char_01_png: "res/img/priest.png"
+    ,char_01_plist: "res/img/priest.plist"
+    ,char_02_png: "res/img/archer.png"
+    ,char_02_plist: "res/img/archer.plist"
+    ,char_03_png: "res/img/warrior.png"
+    ,char_03_plist: "res/img/warrior.plist"
+    ,selection : "res/img/selection.png"
+
+
     ,interface_png: "res/img/interface.png"
     ,interface_plist: "res/img/interface.plist"
 

@@ -3,20 +3,26 @@ projSUS.Char = pd.Animation.extend({
         this._super();
         if (parent) parent.addChild(this);
 
-        this.health_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this);
-
         this.hole      = null;
         this.max_life  = null;
         this.curr_life = null;
         this.curr_state = "idle";
         this.curr_direction = "up";
 
-
         this.setHole();
+        this.setAnchorPoint(0.5,0);
+        this.createAnimations();
+
+        this.health_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this);
+        this.health_bar.setPosition(this.width/2, this.height + 5);
     },
 
     setHole: function () {
         cc.warn("função setHole deve ser sobrescrita");
+    },
+
+    createAnimations: function () {
+        cc.warn("função createAnimations deve ser sobrescrita");
     },
 
     setInitialLife: function (qtd) {

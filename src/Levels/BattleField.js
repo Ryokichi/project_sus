@@ -10,5 +10,14 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
 
         this.hud = new projSUS.BattleHUD(this);
 
+        this.selection = pd.createSprite(res.selection, cc.p(0,0), this);
+
+    },
+
+    update: function (dt) {
+        cc.log("está rodando")
+
     }
+
+
 });

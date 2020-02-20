@@ -97,6 +97,7 @@ projSUS.SpellBookLayer = cc.Layer.extend({
             if (cc.rectContainsPoint(rect, e.getLocation())) {
                 this.showSpellData(this.spells_box[i].spell);
                 this.changeMockSpell(this.spells_box[i].spell);
+                this.mock_spell.setPosition(e.getLocation());
                 this.spells_box[i].spell.sprite.setColor(cc.color(150,150,150));
             }
         }
@@ -189,6 +190,7 @@ projSUS.SpellBookLayer = cc.Layer.extend({
     },
 
     createSelectedSpells: function () {
+        var frame_bg = pd.createSprite("spells_frame_bg.png", cc.p(312,25), this, 0);
         var frame = pd.createSprite("spells_frame.png", cc.p(312,0), this, 1);
         frame.setAnchorPoint(0.5,0);
 
@@ -267,6 +269,14 @@ projSUS.SpellBookLayer = cc.Layer.extend({
         }
     },
 
+    previousPage: function () {
+
+    },
+
+    nextPage: function () {
+
+    },
+
     pauseControl: function () {
         this.is_paused = true;
     },
@@ -293,7 +303,7 @@ projSUS.SpellBookLayer = cc.Layer.extend({
     saveData: function () {
         for (var i = 0; i < this.hot_bar_slot.length; i++) {
             var value = (this.hot_bar_slot[i].linked_spell)?this.hot_bar_slot[i].linked_spell.id : null;
-            projSUS.SavedData.spell["slot"+i] = value;
+            projSUS.SavedData.spells["slot"+i] = value;
         }
     }
 });

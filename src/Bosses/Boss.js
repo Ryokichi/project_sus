@@ -12,10 +12,12 @@ projSUS.Boss = pd.Animation.extend({
         this.time_next_attack = 0;
         this.next_attack = null;
         this.attack_list = [];
+
+        this.setHeroes();
     },
 
-    setHeroes: function (heroes_list) {
-        this.heroes_list = heroes_list;
+    setHeroes: function () {
+        this.heroes_list = projSUS.controller.allies;
     },
 
     setInitialLife: function (qtd) {
@@ -45,7 +47,7 @@ projSUS.Boss = pd.Animation.extend({
     },
 
     informLifeChange: function () {
-        delegate.updateBossLife(this.getLifePerc());
+        projSUS.controller.updateBossLife(this.getLifePerc());
     },
 
     ////criar regra para amplicação e mitigação de dano

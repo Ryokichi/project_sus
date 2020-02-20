@@ -68,8 +68,9 @@ projSUS.MapLayer = cc.Layer.extend({
     },
 
     openSpellBook: function () {
-        // this.pauseControl();
-        // this.spell_book = new projSUS.SpellBookLayer(this);
+        cc.log("abrindo spellbook");
+        this.pauseControl();
+        this.spell_book = new projSUS.SpellBookLayer(this);
     },
 
     openSettings: function () {

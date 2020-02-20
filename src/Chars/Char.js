@@ -6,6 +6,7 @@ projSUS.Char = pd.Animation.extend({
         this.hole      = null;
         this.max_life  = null;
         this.curr_life = null;
+        this.status = "alive";
         this.curr_state = "idle";
         this.curr_direction = "up";
 
@@ -54,6 +55,7 @@ projSUS.Char = pd.Animation.extend({
         this.curr_life -= qtd;
         if (this.curr_life < 0) {
             this.curr_life = 0;
+            this.status = "dead";
         }
         this.health_bar.setPercentage(100 * this.curr_life / this.max_life);
     },

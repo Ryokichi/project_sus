@@ -1,11 +1,18 @@
 projSUS.Spell = cc.Node.extend({
     ctor: function() {
         this._super();
+        this.status={
+            "ready": 0,
+            "onCast": 1,
+            "onCD": 2
+        };
+
 
         this.id = null;
         this.name = "";
         this.description = "";
         this.sprite_name = "mock_sprite.png";
+        this.curr_status = this.status["ready"];
         this.level = 1;
 
         this.base_heal = 0;
@@ -22,6 +29,10 @@ projSUS.Spell = cc.Node.extend({
         this.curr_tick = 0;
         this.curr_duration = 0;
 
+        this.cd_label = pd.label(this, "80.8", 2, 1, "monospace");
+        this.cd_label.setPosition(-12, 3);
+        this.cd_label.setLocalZOrder(2);
+
         this.setCascadeColorEnabled(true);
         this.setCascadeOpacityEnabled(true);
     },
@@ -30,6 +41,32 @@ projSUS.Spell = cc.Node.extend({
         this.sprite = pd.createSprite(this.sprite_name, cc.p(0,0), this, 1);
         this.setValues();
         this.setDescription();
+    },
+
+    update: function (dt) {
+        if (this.curr_status == this.status["onCast"]) {
+            this.cast_timer += dt;
+            if (this.cast_timer >= this.base_cast) {
+
+            }
+        }
+        else if (this.curr_status == this.status["onCD"]) {
+            this.curr_cd -= dt;
+            if (this.curr_cd <= 0) {
+                terminar aqui
+            }
+            this.updateCDLabel();
+        }
+    },
+
+    updateCDLabel: function (dt) {
+        this.cd_label.setVisible(true);
+        if (this.curr_cd > 0) {
+            this.cd_label.setString(Math.round(this.curr_cd*10)/10);
+        }
+        else {
+            this.cd_label.setVisible(false);
+        }
     },
 
     execute: function (target) {

@@ -28,8 +28,8 @@ projSUS.Heal = projSUS.Spell.extend({
     },
 
     update : function (dt) {
-        this.cast_timer += dt;
-        cc.log(this.cast_timer);
+        this._super(dt);
+
         if (this.cast_timer >= this.base_cast) {
             this.target.addLife(this.base_heal);
             this.finishCast();
@@ -47,8 +47,10 @@ projSUS.Heal = projSUS.Spell.extend({
     },
 
     finishCast: function () {
-        this.unscheduleUpdate();
+        // this.unscheduleUpdate();
         this.target = null;
         this.cast_timer = 0;
+        this.curr_cd = this.base_cd;
+        this.curr_status = this.status["onCD"];
     }
 });

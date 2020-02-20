@@ -22,11 +22,13 @@ var res = {
     ,char_02_plist: "res/img/archer.plist"
     ,char_03_png: "res/img/warrior.png"
     ,char_03_plist: "res/img/warrior.plist"
-    ,selection : "res/img/selection.png"
+    ,selection : "res/img/seletor.png"
 
 
     ,interface_png: "res/img/interface.png"
     ,interface_plist: "res/img/interface.plist"
+    ,selector_png : "res/img/selector.png"
+    ,selector_plist : "res/img/selector.plist"
 
     //audio
 

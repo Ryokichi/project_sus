@@ -5,6 +5,8 @@ projSUS.Petrerus = projSUS.Boss.extend({
         this.setInitialLife(10000);
         this.setAnchorPoint(0.5, 0);
 
+        this.target = null;
+
         this.time_next_attack = 3;
         this.next_attack = null;
         this.attack_list = [
@@ -66,7 +68,7 @@ projSUS.Petrerus = projSUS.Boss.extend({
 
     ataqueBasico: function (target) {
         // cc.log("Ataque padrao");
-        delegate.attackAnAlly(target, 5);
+        projSUS.controller.attackAnAlly(target, 5);
     },
 
     criticarCodigo: function () {

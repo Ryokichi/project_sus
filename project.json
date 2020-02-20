@@ -1,7 +1,7 @@
 {
   "project_type": "javascript",
   "debugMode": 1,
-  "showFPS": true,
+  "showFPS": false,
   "frameRate": 60,
   "id": "gameCanvas",
   "renderMode": 1,
@@ -11,7 +11,6 @@
     "editbox",
     "ccui"
   ],
-
   "jsList": [
     "src/Padroes/Snippets.js",
     "src/Padroes/Animation.js",
@@ -20,7 +19,6 @@
 
     "src/Controller.js",
     "src/Resources.js",
-
 
     "src/Bosses/Boss.js",
     "src/Bosses/Petrerus.js",
@@ -52,24 +50,9 @@
     "src/Spells/Heal.js",
     "src/Spells/Renew.js",
     "src/Spells/Shield.js",
-    "src/Spells/SuperHeal.js"
-  ],
+    "src/Spells/SuperHeal.js",
 
-  "ajustar": [
-
-
-    "src/BattleField.js",
-    "src/Resources.js",
-
-
-
-
-
-
-
-        "src/SpellBook/SpellBook.js",
-        "src/SpellBook/SpellLevelUp.js"
-
-
+    "src/SpellBook/SpellBook.js",
+    "src/SpellBook/SpellLevelUp.js"
   ]
 }

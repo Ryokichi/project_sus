@@ -9,6 +9,10 @@ projSUS.BattleHUD = cc.Layer.extend({
         this.boss_life = new pd.ComplexBar("boss_health_bar_2.png", "boss_health_interface.png", this);
         this.boss_life.setPosition(cc.winSize.width/2, cc.winSize.height-20);
 
+        this.player_mana = new pd.ComplexBar("player_mana_bar.png", "player_mana_interface.png", this);
+        this.player_mana.setPosition(cc.winSize.width/2, 65);
+
+
         var box = this.boss_life.getBoundingBox();
         this.boss_icon = pd.createSprite("boss_health_icon.png", cc.p(-box.width/2,0), this.boss_life);
 
@@ -17,6 +21,17 @@ projSUS.BattleHUD = cc.Layer.extend({
 
         this.spells = [];
         this.loadSpells();
+
+        projSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
+        projSUS.input.addEventListener("onKeyPressed", "onKeyPressed", this, 1);
+    },
+
+    onMouseDown: function (e) {
+
+    },
+
+    onKeyPressed: function (key) {
+
     },
 
     loadSpells: function () {

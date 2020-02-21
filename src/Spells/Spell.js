@@ -14,6 +14,7 @@ projSUS.Spell = cc.Node.extend({
         this.sprite_name = "mock_sprite.png";
         this.curr_status = this.status["ready"];
         this.level = 1;
+        this.target = null;
 
         this.base_heal = 0;
         this.base_mana = 0;
@@ -47,13 +48,13 @@ projSUS.Spell = cc.Node.extend({
         if (this.curr_status == this.status["onCast"]) {
             this.cast_timer += dt;
             if (this.cast_timer >= this.base_cast) {
-
+                this.finishCast(this.target);
             }
         }
         else if (this.curr_status == this.status["onCD"]) {
             this.curr_cd -= dt;
             if (this.curr_cd <= 0) {
-                terminar aqui
+                this.finishCoolDown();
             }
             this.updateCDLabel();
         }
@@ -67,10 +68,6 @@ projSUS.Spell = cc.Node.extend({
         else {
             this.cd_label.setVisible(false);
         }
-    },
-
-    execute: function (target) {
-        cc.warn("Sobrescrever funcao");
     },
 
     setValues: function () {
@@ -104,5 +101,15 @@ projSUS.Spell = cc.Node.extend({
 
     beginCast: function (target) {
         cc.warn("sobrescrever função beginCast de " + this.name);
+    },
+
+    finishCast: function (target) {
+        cc.warn("sobrescrever função finishCast de " + this.name);
+    },
+
+    finishCoolDown: function () {
+        this.curr_cd = 0;
+        this.curr_status = this.status["ready"];
+        this.unscheduleUpdate();
     }
 });

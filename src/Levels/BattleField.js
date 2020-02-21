@@ -1,14 +1,15 @@
 projSUS.BattleFieldLayer = cc.Layer.extend({
+    objOrder : {
+        "bg": -10,
+        "selection": -9
+    },
+
     ctor: function () {
         this._super();
         this.init();
     },
-    init: function () {
-        this.objOrder = {
-            "bg": -10,
-            "selection": -9
-        };
 
+    init: function () {
         this.boss = null;
         this.healer = null;
         this.healer_target = null;
@@ -33,7 +34,7 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         }
 
         for (var i = 0; i < this.allies.length; i++) {
-            this.allies[i].setLocalZOrder(cc.view.getDesignResolutionSize().height - this.allies[i].getPosition().y);
+            this.allies[i].setLocalZOrder(cc.winSize.height - this.allies[i].getPosition().y);
         }
     },
 

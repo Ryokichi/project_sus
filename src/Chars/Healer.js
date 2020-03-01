@@ -51,6 +51,11 @@ projSUS.Healer = projSUS.Char.extend({
         this.updateMana();
     },
 
+    consumeMana: function (amount) {
+        this.curr_mana -= amount;
+        this.updateMana();
+    },
+
     updateMana: function () {
         projSUS.controller.updatePlayerMana(this.curr_mana / this.max_mana);
     },
@@ -62,6 +67,7 @@ projSUS.Healer = projSUS.Char.extend({
             this.curr_mana += this.mana_regen;
             if (this.curr_mana > this.max_mana)
                 this.curr_mana = this.max_mana;
+            this.updateMana();
         }
 
         this.checkKeyboardState();

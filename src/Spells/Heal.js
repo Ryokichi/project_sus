@@ -29,6 +29,7 @@ projSUS.Heal = projSUS.Spell.extend({
     beginCast: function (target) {
         this.target = target;
         if (projSUS.controller.playerHasMana(this.base_mana)) {
+            projSUS.controller.player.consumeMana();
             this.scheduleUpdate();
         }
         else {

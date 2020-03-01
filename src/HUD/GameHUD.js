@@ -30,8 +30,12 @@ projSUS.BattleHUD = cc.Layer.extend({
 
     },
 
-    onKeyPressed: function (key) {
-
+    onKeyPressed: function (key, event, first_press) {
+        if (first_press) {
+            if (projSUS.gameConfig.spell_btn_a0 == key || projSUS.gameConfig.spell_btn_b0 == key) {
+                this.spells[0].
+            }
+        }
     },
 
     loadSpells: function () {
@@ -57,5 +61,9 @@ projSUS.BattleHUD = cc.Layer.extend({
 
     updateBossLife: function (perc) {
         this.boss_life.setPercentage(perc);
+    },
+
+    updatePlayerMana: function (perc) {
+        this.player_mana.setPercentage(perc);
     }
 });

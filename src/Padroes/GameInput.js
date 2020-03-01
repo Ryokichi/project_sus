@@ -9,8 +9,6 @@ pd.gameInput = cc.Class.extend({
         this.keyUpListeners = [];
         this.keyDownListeners = [];
 
-
-
         var controller = this;
 
         var mouseListener = cc.EventListener.create({
@@ -185,15 +183,12 @@ pd.gameInput = cc.Class.extend({
     },
 
     onKeyPressed: function (key_code, event) {
-        this._setKeyPressed(key_code);
+        var first_press = this._setKeyPressed(key_code);
         var listener;
         var swallow = false;
-        for (var i=0; i < this.keyDownListeners.length; i++) {
+        for (var i=0; i < this.keyDownListeners.length && !swallow; i++) {
             listener = this.keyDownListeners[i];
-            swallow = listener.caller[listener.func](key_code, event);
-
-            if (swallow)
-                return;
+            swallow = listener.caller[listener.func](key_code, event, first_press);
         }
 
     },
@@ -202,12 +197,9 @@ pd.gameInput = cc.Class.extend({
         this._setKeyReleased(key_code);
         var listener;
         var swallow = false;
-        for (var i=0; i < this.keyUpListeners.length; i++) {
+        for (var i=0; i < this.keyUpListeners.length && !swallow; i++) {
             listener = this.keyUpListeners[i];
             swallow = listener.caller[listener.func](key_code, event);
-
-            if (swallow)
-                return;
         }
 
     },
@@ -220,7 +212,9 @@ pd.gameInput = cc.Class.extend({
     _setKeyPressed: function (keyCode) {
         if (this.pressedKeys.lastIndexOf(keyCode) < 0) {
             this.pressedKeys.push(keyCode);
+            return true;
         }
+        return false;
     },
 
     /**
@@ -232,7 +226,9 @@ pd.gameInput = cc.Class.extend({
         var indexTecla = this.pressedKeys.lastIndexOf(keyCode);
         if (indexTecla >= 0) {
             this.pressedKeys.splice(indexTecla, 1);
+            return true;
         }
+        return false;
     },
 
     /**

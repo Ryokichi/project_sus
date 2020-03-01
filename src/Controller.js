@@ -31,6 +31,14 @@ projSUS.Controller = cc.Class.extend ({
 
     playerHasMana: function (manaAmount) {
         return (this.player.curr_mana >= manaAmount);
+    },
+
+    updatePlayerMana: function (perc) {
+        this.hud.updatePlayerMana();
+    },
+
+    triggerSpell: function (index) {
+        this.hud.
     }
 
 });

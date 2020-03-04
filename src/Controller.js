@@ -33,13 +33,15 @@ projSUS.Controller = cc.Class.extend ({
         return (this.player.curr_mana >= manaAmount);
     },
 
+    playerTargetAlly: function () {
+        return this.player.getTargetAlly();
+    },
+
     updatePlayerMana: function (perc) {
         this.hud.updatePlayerMana();
     },
 
-    triggerSpell: function (index) {
-        this.hud.
-    }
+
 
 });
 

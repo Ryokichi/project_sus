@@ -32,8 +32,21 @@ projSUS.BattleHUD = cc.Layer.extend({
 
     onKeyPressed: function (key, event, first_press) {
         if (first_press) {
+            var target = projSUS.controller.playerTargetAlly();
             if (projSUS.gameConfig.spell_btn_a0 == key || projSUS.gameConfig.spell_btn_b0 == key) {
-                this.spells[0].
+                this.spells[0].beginCast(target);
+            }
+            else if (projSUS.gameConfig.spell_btn_a1 == key || projSUS.gameConfig.spell_btn_b1 == key) {
+                this.spells[1].beginCast(target);
+            }
+            else if (projSUS.gameConfig.spell_btn_a2 == key || projSUS.gameConfig.spell_btn_b2 == key) {
+                this.spells[2].beginCast(target);
+            }
+            else if (projSUS.gameConfig.spell_btn_a3 == key || projSUS.gameConfig.spell_btn_b3 == key) {
+                this.spells[3].beginCast(target);
+            }
+            else if (projSUS.gameConfig.spell_btn_a4 == key || projSUS.gameConfig.spell_btn_b4 == key) {
+                this.spells[4].beginCast(target);
             }
         }
     },

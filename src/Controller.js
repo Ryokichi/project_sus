@@ -4,21 +4,23 @@ projSUS.input = new pd.gameInput();
 projSUS.Controller = cc.Class.extend ({
     hud: null,
     boss: null,
-    player: null,
+    healer: null,
     allies: null,
 
     resetData: function () {
         this.hud = null;
         this.boss = null;
-        this.player = null;
+        this.healer = null;
         this.allies = null
     },
 
-    setGameElements: function (hud, boss, player, allies) {
+    setGameElements : function (hud, boss, healer, allies) {
         this.hud = hud;
         this.boss = boss;
-        this.player = player;
+        this.healer = healer;
         this.allies = allies;
+
+        this.boss.setHeroes();
     },
 
     updateBossLife: function (perc) {
@@ -29,18 +31,18 @@ projSUS.Controller = cc.Class.extend ({
         target.takingHit(amount);
     },
 
-    playerHasMana: function (manaAmount) {
-        return (this.player.curr_mana >= manaAmount);
+    healerHasMana: function (manaAmount) {
+        cc.log(manaAmount, this.healer.curr_mana);
+        return (this.healer.curr_mana >= manaAmount);
     },
 
-    playerTargetAlly: function () {
-        return this.player.getTargetAlly();
+    healerTargetAlly: function () {
+        return this.healer.getTargetAlly();
     },
 
-    updatePlayerMana: function (perc) {
-        this.hud.updatePlayerMana();
+    updateHealerMana: function (perc) {
+        this.hud.updateHealerMana(perc);
     },
-
 
 
 });

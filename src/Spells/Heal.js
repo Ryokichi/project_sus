@@ -17,7 +17,7 @@ projSUS.Heal = projSUS.Spell.extend({
         this.init();
     },
 
-    leveUP: function () {
+    levelUP: function () {
 
     },
 
@@ -25,11 +25,11 @@ projSUS.Heal = projSUS.Spell.extend({
         this.description = "Após " + this.curr_cast + " seg, cura o aliado selecionado em " + this.curr_heal + ".";
     },
 
-
     beginCast: function (target) {
         this.target = target;
-        if (projSUS.controller.playerHasMana(this.base_mana)) {
-            projSUS.controller.player.consumeMana();
+        if (projSUS.controller.healerHasMana(this.base_mana)) {
+            projSUS.controller.healer.consumeMana(this.base_mana);
+            this.curr_status = this.status["onCast"];
             this.scheduleUpdate();
         }
         else {
@@ -38,6 +38,9 @@ projSUS.Heal = projSUS.Spell.extend({
     },
 
     finishCast: function () {
+        this.target.takingHeal(this.base_heal);
+
+
         this.target = null;
         this.cast_timer = 0;
         this.curr_cd = this.base_cd;

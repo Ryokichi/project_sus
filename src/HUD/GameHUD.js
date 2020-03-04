@@ -9,8 +9,8 @@ projSUS.BattleHUD = cc.Layer.extend({
         this.boss_life = new pd.ComplexBar("boss_health_bar_2.png", "boss_health_interface.png", this);
         this.boss_life.setPosition(cc.winSize.width/2, cc.winSize.height-20);
 
-        this.player_mana = new pd.ComplexBar("player_mana_bar.png", "player_mana_interface.png", this);
-        this.player_mana.setPosition(cc.winSize.width/2, 65);
+        this.healer_mana = new pd.ComplexBar("player_mana_bar.png", "player_mana_interface.png", this);
+        this.healer_mana.setPosition(cc.winSize.width/2, 65);
 
 
         var box = this.boss_life.getBoundingBox();
@@ -32,7 +32,7 @@ projSUS.BattleHUD = cc.Layer.extend({
 
     onKeyPressed: function (key, event, first_press) {
         if (first_press) {
-            var target = projSUS.controller.playerTargetAlly();
+            var target = projSUS.controller.healerTargetAlly();
             if (projSUS.gameConfig.spell_btn_a0 == key || projSUS.gameConfig.spell_btn_b0 == key) {
                 this.spells[0].beginCast(target);
             }
@@ -76,7 +76,7 @@ projSUS.BattleHUD = cc.Layer.extend({
         this.boss_life.setPercentage(perc);
     },
 
-    updatePlayerMana: function (perc) {
-        this.player_mana.setPercentage(perc);
+    updateHealerMana: function (perc) {
+        this.healer_mana.setPercentage(perc);
     }
 });

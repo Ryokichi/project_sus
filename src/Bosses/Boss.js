@@ -13,7 +13,6 @@ projSUS.Boss = pd.Animation.extend({
         this.next_attack = null;
         this.attack_list = [];
 
-        this.setHeroes();
     },
 
     setHeroes: function () {

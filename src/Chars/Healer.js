@@ -57,7 +57,7 @@ projSUS.Healer = projSUS.Char.extend({
     },
 
     updateMana: function () {
-        projSUS.controller.updatePlayerMana(this.curr_mana / this.max_mana);
+        projSUS.controller.updateHealerMana(100 * this.curr_mana / this.max_mana);
     },
 
     update: function(dt) {

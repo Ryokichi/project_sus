@@ -4,17 +4,17 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         "selection": -9
     },
 
+    boss: null,
+    healer: null,
+    healer_target: null,
+    allies : [],
+
     ctor: function () {
         this._super();
         this.init();
     },
 
     init: function () {
-        this.boss = null;
-        this.healer = null;
-        this.healer_target = null;
-        this.allies = [];
-
         this.hud = new projSUS.BattleHUD(this);
 
         this.selection = new pd.Animation();
@@ -23,8 +23,6 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
         this.addChild(this.selection, this.objOrder["selection"]);
 
         projSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
-
-        projSUS.controller.setGameElements(this.hud, this.boss, this.player, this.allies);
     },
 
     update: function (dt) {
@@ -44,6 +42,7 @@ projSUS.BattleFieldLayer = cc.Layer.extend({
             if (cc.rectContainsPoint(this.allies[i].getBoundingBox(), e.getLocation())) {
                 found = true;
                 this.healer_target = this.allies[i];
+                this.healer.setTargetAlly(this.healer_target);
             }
         }
     }

@@ -45,6 +45,7 @@ projSUS.Spell = cc.Node.extend({
     },
 
     update: function (dt) {
+        cc.log(this.curr_status, this.cast_timer, this.base_cast);
         if (this.curr_status == this.status["onCast"]) {
             this.cast_timer += dt;
             if (this.cast_timer >= this.base_cast) {

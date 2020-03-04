@@ -15,18 +15,19 @@ projSUS.Level_0_Layer = projSUS.BattleFieldLayer.extend({
         this.boss = new projSUS.Petrerus(this);
         this.boss.setPosition(320, 215);
 
-        this.player = new projSUS.Healer(this);
+        this.healer = new projSUS.Healer(this);
         this.warrior = new projSUS.Warrior(this);
         this.archer = new projSUS.Archer(this);
 
         this.warrior.setPosition(280,150);
         this.archer.setPosition(380,150);
-        this.player.setPosition(330,100);
+        this.healer.setPosition(330,100);
 
-        this.allies.push (this.player);
+        this.allies.push (this.healer);
         this.allies.push (this.warrior);
         this.allies.push (this.archer);
 
+        projSUS.controller.setGameElements(this.hud, this.boss, this.healer, this.allies);
         this.scheduleUpdate();
     },
 

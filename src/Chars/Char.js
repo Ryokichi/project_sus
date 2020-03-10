@@ -22,6 +22,10 @@ projSUS.Char = pd.Animation.extend({
         cc.warn("função setHole deve ser sobrescrita");
     },
 
+    getHole: function () {
+        return this.hole;
+    },
+
     createAnimations: function () {
         cc.warn("função createAnimations deve ser sobrescrita");
     },
@@ -42,7 +46,6 @@ projSUS.Char = pd.Animation.extend({
     },
 
     addLife: function (qtd) {
-        cc.log("aumentando vida");
         this.curr_life += qtd;
         if (this.curr_life > this.max_life) {
             this.curr_life = this.max_life;

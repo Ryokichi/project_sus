@@ -17,6 +17,10 @@ projSUS.Healer = projSUS.Char.extend({
         this.time_regen = 0;
 
         this.target_ally = null;
+
+        this.cast_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this);
+        this.cast_bar.setPercentage(0);
+        this.cast_bar.setPosition(this.width/2, this.height + 11);
     },
 
     setHole: function () {

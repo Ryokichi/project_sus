@@ -30,8 +30,14 @@ projSUS.Spell = cc.Node.extend({
         this.curr_tick = 0;
         this.curr_duration = 0;
 
-        this.cd_label = pd.label(this, "80.8", 2, 1, "monospace");
-        this.cd_label.setPosition(-12, 3);
+
+        this.label_bg = new cc.LayerColor(cc.color(91,110,255), 28, 10);
+        this.label_bg.setPosition(-14,-13);
+        this.addChild(this.label_bg, 2);
+
+        this.cd_label = pd.label(this.label_bg, "80.8", 2, 1, "monospace");
+        this.cd_label.setFontFillColor(cc.color(255,225,255));
+        this.cd_label.setPosition(12, 3);
         this.cd_label.setLocalZOrder(2);
 
         this.setCascadeColorEnabled(true);
@@ -51,6 +57,7 @@ projSUS.Spell = cc.Node.extend({
             if (this.cast_timer >= this.base_cast) {
                 this.finishCast(this.target);
             }
+            this.updateCastTimer();
         }
         else if (this.curr_status == this.status["onCD"]) {
             this.curr_cd -= dt;
@@ -59,6 +66,12 @@ projSUS.Spell = cc.Node.extend({
             }
             this.updateCDLabel();
         }
+    },
+
+    updateCastTimer: function () {
+        cc.log("--");
+        projSUS.controller.healer.cast_bar.setPercentage(100 * this.cast_timer / this.base_cast);
+
     },
 
     updateCDLabel: function (dt) {

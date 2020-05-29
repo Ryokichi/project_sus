@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>a_shield.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{22,40}</string>
+                <key>spriteSourceSize</key>
+                <string>{22,40}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{22,40}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>ability_effect.png</string>
+            <key>size</key>
+            <string>{24,42}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:406595a56df682a010b183eb471fdcce:a86c4975d01f52469fb87e95db067a0f:d2e8ac63081a96f7123aae2b5a9ce796$</string>
+            <key>textureFileName</key>
+            <string>ability_effect.png</string>
+        </dict>
+    </dict>
+</plist>

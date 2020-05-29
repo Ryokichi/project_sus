@@ -7,7 +7,6 @@ projSUS.Spell = cc.Node.extend({
             "onCD": 2
         };
 
-
         this.id = null;
         this.name = "";
         this.description = "";
@@ -30,15 +29,21 @@ projSUS.Spell = cc.Node.extend({
         this.curr_tick = 0;
         this.curr_duration = 0;
 
-
         this.label_bg = new cc.LayerColor(cc.color(91,110,255), 28, 10);
         this.label_bg.setPosition(-14,-13);
-        this.addChild(this.label_bg, 2);
+        // this.addChild(this.label_bg, 2);
 
         this.cd_label = pd.label(this.label_bg, "80.8", 2, 1, "monospace");
         this.cd_label.setFontFillColor(cc.color(255,225,255));
         this.cd_label.setPosition(12, 3);
         this.cd_label.setLocalZOrder(2);
+
+        this.cd_mask = new cc.ProgressTimer(pd.createSprite("spell_mask.png"));
+        this.cd_mask.setType(cc.ProgressTimer.TYPE_RADIAL);
+        this.cd_mask.setOpacity(150);
+        this.cd_mask.setPercentage(30);
+        this.cd_mask.setVisible(false);
+        this.addChild(this.cd_mask, 3);
 
         this.setCascadeColorEnabled(true);
         this.setCascadeOpacityEnabled(true);
@@ -51,7 +56,7 @@ projSUS.Spell = cc.Node.extend({
     },
 
     update: function (dt) {
-        cc.log(this.curr_status, this.cast_timer, this.base_cast);
+        // cc.log(this.curr_status, this.cast_timer, this.base_cast);
         if (this.curr_status == this.status["onCast"]) {
             this.cast_timer += dt;
             if (this.cast_timer >= this.base_cast) {
@@ -69,18 +74,19 @@ projSUS.Spell = cc.Node.extend({
     },
 
     updateCastTimer: function () {
-        cc.log("--");
-        projSUS.controller.healer.cast_bar.setPercentage(100 * this.cast_timer / this.base_cast);
-
+        projSUS.controller.healer.updateCastBar(this.cast_timer, this.base_cast);
     },
 
     updateCDLabel: function (dt) {
-        this.cd_label.setVisible(true);
         if (this.curr_cd > 0) {
+            cc.log(this.curr_cd,this.base_cd, "=",this.curr_cd/this.base_cd*100)
+            this.cd_mask.setVisible(true);
+            this.cd_mask.setPercentage(this.curr_cd/this.base_cd*100);
             this.cd_label.setString(Math.round(this.curr_cd*10)/10);
         }
         else {
-            this.cd_label.setVisible(false);
+            this.cd_mask.setPercentage(0);
+            this.cd_mask.setVisible(false);
         }
     },
 
@@ -88,7 +94,6 @@ projSUS.Spell = cc.Node.extend({
         this.curr_heal = this.base_heal;
         this.curr_mana = this.base_mana;
         this.curr_cast = this.base_cast;
-        this.curr_cd   = this.base_cd;
         this.curr_tick = this.base_tick;
         this.curr_duration = this.base_duration;
     },

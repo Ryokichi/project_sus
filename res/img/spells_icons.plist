@@ -94,7 +94,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>super_heal.png</key>
+            <key>spell_mask.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -106,6 +106,21 @@
                 <string>{28,28}</string>
                 <key>textureRect</key>
                 <string>{{181,1},{28,28}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>super_heal.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{28,28}</string>
+                <key>spriteSourceSize</key>
+                <string>{28,28}</string>
+                <key>textureRect</key>
+                <string>{{211,1},{28,28}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -121,9 +136,9 @@
             <key>realTextureFileName</key>
             <string>spells_icons.png</string>
             <key>size</key>
-            <string>{210,30}</string>
+            <string>{240,30}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:06d0335536b17ba33fd205008446cef7:8ac2a1d662d48a25a6319fff53055030:c84528c93c282c00ec58308af1f8d646$</string>
+            <string>$TexturePacker:SmartUpdate:06694650e1f7daca3ddc1ea1f36d9514:acaffec22f753e6020e86cd40051e718:c84528c93c282c00ec58308af1f8d646$</string>
             <key>textureFileName</key>
             <string>spells_icons.png</string>
         </dict>

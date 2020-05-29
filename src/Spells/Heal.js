@@ -40,7 +40,6 @@ projSUS.Heal = projSUS.Spell.extend({
     finishCast: function () {
         this.target.takingHeal(this.base_heal);
 
-
         this.target = null;
         this.cast_timer = 0;
         this.curr_cd = this.base_cd;

@@ -15,11 +15,71 @@
                 <key>spriteSourceSize</key>
                 <string>{24,29}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{24,29}}</string>
+                <string>{{1,35},{24,29}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>jonas_0001.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,-1}</string>
+                <key>spriteSize</key>
+                <string>{32,30}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,32}</string>
+                <key>textureRect</key>
+                <string>{{69,1},{32,30}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>warrior_0001.png</key>
+            <key>jonas_0002.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{32,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,32}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{32,32}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>jonas_0003.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,-1}</string>
+                <key>spriteSize</key>
+                <string>{32,30}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,32}</string>
+                <key>textureRect</key>
+                <string>{{69,33},{32,30}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>jonas_0004.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{32,32}</string>
+                <key>spriteSourceSize</key>
+                <string>{32,32}</string>
+                <key>textureRect</key>
+                <string>{{35,1},{32,32}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>warrior.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -30,9 +90,9 @@
                 <key>spriteSourceSize</key>
                 <string>{24,29}</string>
                 <key>textureRect</key>
-                <string>{{27,1},{24,29}}</string>
+                <string>{{32,35},{24,29}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
         </dict>
         <key>metadata</key>
@@ -46,9 +106,9 @@
             <key>realTextureFileName</key>
             <string>chars.png</string>
             <key>size</key>
-            <string>{52,31}</string>
+            <string>{102,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:85c62c7cff7c824e1ea279a414af3f7b:a369011b503c058c855f67ab939c6a75:7fdb2fa3d645950a8f8d0015672d332b$</string>
+            <string>$TexturePacker:SmartUpdate:9600684c644bced6f27666b3d316aa0c:8a4140a9e7b5d2859172708c93f5b66e:7fdb2fa3d645950a8f8d0015672d332b$</string>
             <key>textureFileName</key>
             <string>chars.png</string>
         </dict>

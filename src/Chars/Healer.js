@@ -13,12 +13,12 @@ projSUS.Healer = projSUS.Char.extend({
 
         this.max_mana   = 100;
         this.curr_mana  = this.max_mana;
-        this.mana_regen = 0.5;
+        this.mana_regen = 0.8;
         this.time_regen = 0;
 
         this.target_ally = null;
 
-        this.cast_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this);
+        this.cast_bar = new pd.ComplexBar("mini_cast_bar.png", "mini_cast_bar_frame.png", this);
         this.cast_bar.setPercentage(0);
         this.cast_bar.setPosition(this.width/2, this.height + 11);
     },
@@ -28,20 +28,36 @@ projSUS.Healer = projSUS.Char.extend({
     },
 
     createAnimations: function () {
-        this.addAnimation("idle_down",  1, 1, "Priest_");
-        this.addAnimation("idle_left",  2, 2, "Priest_");
-        this.addAnimation("idle_up",    3, 3, "Priest_");
-        this.addAnimation("idle_right", 4, 4, "Priest_");
+        // this.addAnimation("idle_down",  1, 1, "Priest_");
+        // this.addAnimation("idle_left",  2, 2, "Priest_");
+        // this.addAnimation("idle_up",    3, 3, "Priest_");
+        // this.addAnimation("idle_right", 4, 4, "Priest_");
 
-        this.addAnimation("walk_down",   5,  6, "Priest_");
-        this.addAnimation("walk_left",   7,  8, "Priest_");
-        this.addAnimation("walk_up",     9, 10, "Priest_");
-        this.addAnimation("walk_right", 11, 12, "Priest_");
+        // this.addAnimation("walk_down",   5,  6, "Priest_");
+        // this.addAnimation("walk_left",   7,  8, "Priest_");
+        // this.addAnimation("walk_up",     9, 10, "Priest_");
+        // this.addAnimation("walk_right", 11, 12, "Priest_");
 
-        this.addAnimation("cast_down",  14, 14, "Priest_");
-        this.addAnimation("cast_left",  16, 16, "Priest_");
-        this.addAnimation("cast_up",    18, 18, "Priest_");
-        this.addAnimation("cast_right", 20, 20, "Priest_");
+        // this.addAnimation("cast_down",  14, 14, "Priest_");
+        // this.addAnimation("cast_left",  16, 16, "Priest_");
+        // this.addAnimation("cast_up",    18, 18, "Priest_");
+        // this.addAnimation("cast_right", 20, 20, "Priest_");
+
+
+        this.addAnimation("idle_down",  1, 1, "jonas_");
+        this.addAnimation("idle_left",  1, 1, "jonas_");
+        this.addAnimation("idle_up",    3, 3, "jonas_");
+        this.addAnimation("idle_right", 3, 3, "jonas_");
+
+        this.addAnimation("walk_down",   1,  2, "jonas_");
+        this.addAnimation("walk_left",   1,  2, "jonas_");
+        this.addAnimation("walk_up",     3,  4, "jonas_");
+        this.addAnimation("walk_right",  3,  4, "jonas_");
+
+        this.addAnimation("cast_down",  14, 14, "jonas_");
+        this.addAnimation("cast_left",  16, 16, "jonas_");
+        this.addAnimation("cast_up",    18, 18, "jonas_");
+        this.addAnimation("cast_right", 20, 20, "jonas_");
 
         this.changeAndLoop("idle_down");
         this.scheduleUpdate();
@@ -58,6 +74,11 @@ projSUS.Healer = projSUS.Char.extend({
     consumeMana: function (amount) {
         this.curr_mana -= amount;
         this.updateMana();
+    },
+
+    updateCastBar: function  (spell_cast_timer, spell_base_cast){
+        this.cast_bar.setVisible(spell_cast_timer > 0);
+        this.cast_bar.setPercentage(100 * spell_cast_timer / spell_base_cast);
     },
 
     updateMana: function () {

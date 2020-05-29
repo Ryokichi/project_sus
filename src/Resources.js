@@ -1,6 +1,8 @@
 var res = {
     //sprites
-     bg_png: "res/img/bg.png"
+    ability_effect_png :"res/img/ability_effect.png"
+    ,ability_effect_plist :"res/img/ability_effect.plist"
+    ,bg_png: "res/img/bg.png"
     ,bg_plist: "res/img/bg.plist"
     ,boss_png: "res/img/boss.png"
     ,boss_plist: "res/img/boss.plist"

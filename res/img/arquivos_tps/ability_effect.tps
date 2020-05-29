@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../spells_icons.plist</filename>
+                <filename>../ability_effect.plist</filename>
             </struct>
             <key>header</key>
             <key>source</key>
@@ -187,30 +187,23 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../spells_icons/fast_heal.png</key>
-            <key type="filename">../spells_icons/great_heal.png</key>
-            <key type="filename">../spells_icons/heal.png</key>
-            <key type="filename">../spells_icons/mass_heal.png</key>
-            <key type="filename">../spells_icons/renew.png</key>
-            <key type="filename">../spells_icons/shield.png</key>
-            <key type="filename">../spells_icons/spell_mask.png</key>
-            <key type="filename">../spells_icons/super_heal.png</key>
+            <key type="filename">../ability_effect/shield.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>7,7,14,14</rect>
+                <rect>6,10,11,20</rect>
                 <key>scale9Paddings</key>
-                <rect>7,7,14,14</rect>
+                <rect>6,10,11,20</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>../spells_icons</filename>
+            <filename>../ability_effect</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

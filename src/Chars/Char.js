@@ -4,11 +4,14 @@ projSUS.Char = pd.Animation.extend({
         if (parent) parent.addChild(this);
 
         this.hole      = null;
-        this.max_life  = null;
-        this.curr_life = null;
+        this.max_life  = 100;
+        this.curr_life = 100;
         this.status = "alive";
         this.curr_state = "idle";
         this.curr_direction = "up";
+
+        this.buffs_on_me = [];
+        this.debuffs_on_me = [];
 
         this.setHole();
         this.setAnchorPoint(0.5,0);
@@ -38,11 +41,13 @@ projSUS.Char = pd.Animation.extend({
     takingHeal: function (amount, type) {
         ////Setar mitigação heal devido debuff
         cc.warn("sobrescrever este método");
+        this.addLife(amount);
     },
 
     takingHit: function (amount, type) {
         ////Setar mitigação de dano
         cc.warn("sobrescrever este método");
+        this.subtractLife(amount);
     },
 
     addLife: function (qtd) {
@@ -55,12 +60,20 @@ projSUS.Char = pd.Animation.extend({
 
     subtractLife: function (qtd) {
         // cc.log("tomando dano", qtd);
+        if (this.status == "dead")
+            return;
+
         this.curr_life -= qtd;
-        if (this.curr_life < 0) {
+        if (this.curr_life <= 0) {
             this.curr_life = 0;
             this.status = "dead";
         }
+        cc.log("---", this.curr_life ,  this.max_life)
         this.health_bar.setPercentage(100 * this.curr_life / this.max_life);
+    },
+
+    addAnBuff: function (buff) {
+        this.buffs_on_me.push(buff);
     },
 
 });

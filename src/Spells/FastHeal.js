@@ -28,7 +28,10 @@ projSUS.FastHeal = projSUS.Spell.extend({
 
     beginCast: function (target) {
         this.target = target;
-        if (projSUS.controller.healerHasMana(this.base_mana)) {
+        if (this.curr_cd > 0) {
+            cc.log("Magia ainda em cooldown:", this.curr_cd);
+        }
+        else if (projSUS.controller.healerHasMana(this.base_mana)) {
             projSUS.controller.healer.consumeMana(this.base_mana);
             this.curr_status = this.status["onCast"];
             this.scheduleUpdate();

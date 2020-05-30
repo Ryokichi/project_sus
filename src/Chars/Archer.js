@@ -2,6 +2,9 @@ projSUS.Archer = projSUS.Char.extend({
     ctor: function (parent) {
         this._super(parent);
 
+        this.setAnchorPoint(0.5, 0);
+        this.setInitialLife(70);
+
     },
 
     setHole: function () {
@@ -26,4 +29,5 @@ projSUS.Archer = projSUS.Char.extend({
 
         this.changeAndLoop("idle_up");
     },
+
 });

@@ -45,7 +45,8 @@ pd.label = function (parent, text, hor, ver, font_name) {
 };
 
 pd.labelBM = function (parent, text, font_name, width, alignment) {
-    font_name = font_name || res.OperatorSC;
+    // font_name = font_name || res.OperatorSC;
+    font_name = font_name || res.mirrila;
     width = width || "0px";
     var hor_align = cc.TEXT_ALIGNMENT_LEFT;
 

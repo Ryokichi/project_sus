@@ -23,7 +23,8 @@ projSUS.Petrerus = projSUS.Boss.extend({
                 cc.delayTime(3),
                 cc.callFunc(function(){
                     this.changeAndPlay("attack");
-                    this.ataqueBasico(this.heroes_list[1]);
+                    // this.ataqueBasico(this.heroes_list[1]);
+                    this.draftAttack();
                 }, this),
                 cc.delayTime(1),
                 cc.callFunc(function(){
@@ -32,6 +33,17 @@ projSUS.Petrerus = projSUS.Boss.extend({
                 cc.delayTime(2)
             )
         ))
+    },
+
+    draftAttack: function () {
+        var numb = Math.round(Math.random()*100);
+
+        if (numb < 60) {
+            this.ataqueBasico(this.heroes_list[1]);
+        }
+        else {
+            this.criticarCodigo();
+        }
     },
 
     createAnimations: function () {
@@ -73,6 +85,12 @@ projSUS.Petrerus = projSUS.Boss.extend({
 
     criticarCodigo: function () {
         cc.log("Criticando codigo");
+        var allies  = projSUS.controller.allies;
+        
+        for (var i = 0; i < allies.length;  i++) {
+            console.log(allies[i]);
+            projSUS.controller.attackAnAlly(allies[i], 15);
+        }
 
     },
 

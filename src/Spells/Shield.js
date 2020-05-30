@@ -16,7 +16,7 @@ projSUS.Shield = projSUS.Spell.extend({
         this.cast_timer = 0;
         this.cd_timer   = 0;
 
-        this.shilds_list = [];
+        this.shilds_list = [];4
 
         this.init();
     },
@@ -72,7 +72,7 @@ projSUS.SpellShield = cc.Node.extend({
 
     update: function (dt) {
         this.timer += dt;
-        if  (this.timer  > 10) {
+        if  (this.timer  > 5) {
             this.image.stopAllActions();
             this.removeFromParent();
         }
@@ -86,8 +86,5 @@ projSUS.SpellShield = cc.Node.extend({
             )
         ));
     }
-
-
-
-
+    
 });

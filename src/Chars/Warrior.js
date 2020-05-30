@@ -45,13 +45,5 @@ projSUS.Warrior = projSUS.Char.extend({
     },
 
 
-    ////setar
-    takingHeal: function (amount) {
-        this.addLife(amount);
-    },
 
-    ////Setar mitigação de dano
-    takingHit: function (amount, type) {
-        this.subtractLife(amount);
-    }
 });

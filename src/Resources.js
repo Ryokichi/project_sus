@@ -38,6 +38,7 @@ var res = {
     ,OperatorSC: "res/fonts/OperatorSC.fnt"
     ,splitter: "res/fonts/splitter.fnt"
     ,outline: "res/fonts/outline.fnt"
+    ,mirrila: "res/fonts/mirrila.fnt"
 
 };
 

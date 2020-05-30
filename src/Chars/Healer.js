@@ -21,6 +21,9 @@ projSUS.Healer = projSUS.Char.extend({
         this.cast_bar = new pd.ComplexBar("mini_cast_bar.png", "mini_cast_bar_frame.png", this);
         this.cast_bar.setPercentage(0);
         this.cast_bar.setPosition(this.width/2, this.height + 11);
+
+        this.setAnchorPoint(0.5, 0);
+        this.setInitialLife(50);
     },
 
     setHole: function () {
@@ -44,15 +47,15 @@ projSUS.Healer = projSUS.Char.extend({
         // this.addAnimation("cast_right", 20, 20, "Priest_");
 
 
-        this.addAnimation("idle_down",  1, 1, "jonas_");
-        this.addAnimation("idle_left",  1, 1, "jonas_");
-        this.addAnimation("idle_up",    3, 3, "jonas_");
-        this.addAnimation("idle_right", 3, 3, "jonas_");
+        this.addAnimation("idle_down",  1, 1, "alberto_");
+        this.addAnimation("idle_left",  3, 3, "alberto_");
+        this.addAnimation("idle_up",    5, 5, "alberto_");
+        this.addAnimation("idle_right", 7, 7, "alberto_");
 
-        this.addAnimation("walk_down",   1,  2, "jonas_");
-        this.addAnimation("walk_left",   1,  2, "jonas_");
-        this.addAnimation("walk_up",     3,  4, "jonas_");
-        this.addAnimation("walk_right",  3,  4, "jonas_");
+        this.addAnimation("walk_down",   1,  2, "alberto_");
+        this.addAnimation("walk_left",   3,  4, "alberto_");
+        this.addAnimation("walk_up",     5,  6, "alberto_");
+        this.addAnimation("walk_right",  7,  8, "alberto_");
 
         this.addAnimation("cast_down",  14, 14, "jonas_");
         this.addAnimation("cast_left",  16, 16, "jonas_");
@@ -164,6 +167,8 @@ projSUS.Healer = projSUS.Char.extend({
 
     getMana: function () {
         return this.curr_mana;
-    }
+    },
+
+
 
 });

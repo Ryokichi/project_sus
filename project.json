@@ -45,6 +45,7 @@
     "src/Scenes/Settings.js",
 
     "src/Spells/Spell.js",
+    "src/Spells/Buff.js",
     "src/Spells/FastHeal.js",
     "src/Spells/GreatHeal.js",
     "src/Spells/Heal.js",

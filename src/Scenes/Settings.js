@@ -41,6 +41,7 @@ projSUS.SettingsLayer = cc.Layer.extend({
             label.setScale(1);
             label.setPosition(this.labels_pos[i]);
             label.setAnchorPoint(1,0.5);
+            label.setColor(cc.color(255,255,255));
             this.labels.push(label);
         }
         this.labels[0].setAnchorPoint(0.5,0.5);
@@ -66,6 +67,7 @@ projSUS.SettingsLayer = cc.Layer.extend({
         projSUS.input.addEventListener("onMouseDown", "onMouseDown", this, 1);
         projSUS.input.addEventListener("onMouseUp",   "onMouseUp",   this, 1);
         projSUS.input.addEventListener("onMouseMove", "onMouseMove", this, 1);
+        projSUS.input.addEventListener("onKeyPressed", "onKeyDown", this, 1);
     },
 
     updateLanguage: function () {
@@ -80,9 +82,9 @@ projSUS.SettingsLayer = cc.Layer.extend({
         this.labels_txt = [
             (this.selected_lang == 0) ? "VOLUME"   : "VOLUME",
             (this.selected_lang == 0) ? "IDIOMA"   : "LANGUAGE",
-            (this.selected_lang == 0) ? "CIMA"     : "UP",
+            (this.selected_lang == 0) ? "CIMa"     : "UP",
             (this.selected_lang == 0) ? "BAIXO"    : "DOWN",
-            (this.selected_lang == 0) ? "ESQUERDA" : "LEFT",
+            (this.selected_lang == 0) ? "ESQUERDa" : "LEFT",
             (this.selected_lang == 0) ? "DIREITA"  : "RIGHT",
             (this.selected_lang == 0) ? "MAGIA 1"  : "SPELL 1",
             (this.selected_lang == 0) ? "MAGIA 2"  : "SPELL 2",
@@ -147,5 +149,9 @@ projSUS.SettingsLayer = cc.Layer.extend({
         if (this.vol_bar.is_active) {
             this.changeVolume(e.getLocation());
         }
-    }
+    },
+
+    onKeyDown: function (key) {
+        cc.log(key);
+    },
 });

@@ -16,7 +16,7 @@ projSUS.IntroLayer = cc.Layer.extend({
         this.nomeJogo.setPosition(320,250);
         this.nomeJogo.setColor(cc.color(255,255,255));
 
-        this.texto = pd.labelBM(this, "TOQUE PARA INICIAR", "", "",1);
+        this.texto = pd.labelBM(this, "TOQUE PARA INICIAR", res.OperatorSC, "",1);
         this.texto.setPosition(320,125);
         this.texto.setColor(cc.color(255,255,255));
 

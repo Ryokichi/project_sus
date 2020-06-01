@@ -88,7 +88,6 @@ projSUS.Petrerus = projSUS.Boss.extend({
         var allies  = projSUS.controller.allies;
         
         for (var i = 0; i < allies.length;  i++) {
-            console.log(allies[i]);
             projSUS.controller.attackAnAlly(allies[i], 15);
         }
 

@@ -22,12 +22,14 @@ projSUS.SuperHeal = projSUS.Spell.extend({
     },
 
     beginCast: function (target) {
+        this.target = target;
         if (this.curr_cd > 0) {
             cc.log("Magia ainda em cooldown:", this.curr_cd);
         }
         else if (projSUS.controller.healerHasMana(this.base_mana)) {
             projSUS.controller.healer.consumeMana(this.base_mana);
             this.curr_status = this.status["onCast"];
+            cc.log("chameio o update");
             this.scheduleUpdate();
         }
         else {
@@ -35,11 +37,10 @@ projSUS.SuperHeal = projSUS.Spell.extend({
         }
     },
 
-    finishCast: function () {
+    finishCast: function (target) {
         var allies = projSUS.controller.allies;
 
-        for (var i = 0; i < allies.lenght;  i++) {
-            cc.log("curando  os manolo");
+        for (var i = 0; i < allies.length;  i++) {
             allies[i].takingHeal(this.base_heal);
         }
 

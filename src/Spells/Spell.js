@@ -79,7 +79,6 @@ projSUS.Spell = cc.Node.extend({
 
     updateCDLabel: function (dt) {
         if (this.curr_cd > 0) {
-            cc.log(this.curr_cd,this.base_cd, "=",this.curr_cd/this.base_cd*100)
             this.cd_mask.setVisible(true);
             this.cd_mask.setPercentage(this.curr_cd/this.base_cd*100);
             this.cd_label.setString(Math.round(this.curr_cd*10)/10);
@@ -95,6 +94,7 @@ projSUS.Spell = cc.Node.extend({
         this.curr_mana = this.base_mana;
         this.curr_cast = this.base_cast;
         this.curr_tick = this.base_tick;
+        this.curr_cd   = this.base_cd;
         this.curr_duration = this.base_duration;
     },
 
@@ -130,5 +130,7 @@ projSUS.Spell = cc.Node.extend({
         this.curr_cd = 0;
         this.curr_status = this.status["ready"];
         this.unscheduleUpdate();
-    }
+    },
+
+
 });

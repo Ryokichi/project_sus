@@ -23,18 +23,22 @@ projSUS.MainMenuLayer = cc.Layer.extend({
         this.btn3 = pd.createSprite("btn120x40_n.png", cc.p(320,130), this);
         this.btn4 = pd.createSprite("btn120x40_n.png", cc.p(320, 60), this);
 
-        this.txt1 = pd.labelBM(this.btn1, "NEW GAME");
+        this.txt1 = pd.labelBM(this.btn1, "NEW GAME", res.OperatorSC);
         this.txt1.setPosition(60,20);
         this.txt1.setScale(0.8);
-        this.txt2 = pd.labelBM(this.btn2, "LOAD GAME");
+        this.txt1.setColor(cc.color(0,0,0));
+        this.txt2 = pd.labelBM(this.btn2, "LOAD GAME", res.OperatorSC);
         this.txt2.setPosition(60,20);
         this.txt2.setScale(0.8);
-        this.txt3 = pd.labelBM(this.btn3, "SETTINGS");
+        this.txt2.setColor(cc.color(0,0,0));
+        this.txt3 = pd.labelBM(this.btn3, "SETTINGS", res.OperatorSC);
         this.txt3.setPosition(60,20);
         this.txt3.setScale(0.8);
-        this.txt4 = pd.labelBM(this.btn4, "CREDITS");
+        this.txt3.setColor(cc.color(0,0,0));
+        this.txt4 = pd.labelBM(this.btn4, "CREDITS", res.OperatorSC);
         this.txt4.setPosition(60,20);
         this.txt4.setScale(0.8);
+        this.txt4.setColor(cc.color(0,0,0));
     },
 
     onMouseDown: function (e) {

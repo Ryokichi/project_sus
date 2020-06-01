@@ -17,7 +17,7 @@ projSUS.Char = pd.Animation.extend({
         this.setAnchorPoint(0.5,0);
         this.createAnimations();
 
-        this.health_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this);
+        this.health_bar = new pd.ComplexBar("party_hp_bar.png", "party_hp_interface.png", this, 50);
         this.health_bar.setPosition(this.width/2, this.height + 5);
     },
 
@@ -42,6 +42,7 @@ projSUS.Char = pd.Animation.extend({
         ////Setar mitigação heal devido debuff
         cc.warn("sobrescrever este método");
         this.addLife(amount);
+        this.createHealFeed(amount);
     },
 
     takingHit: function (amount, type) {
@@ -68,7 +69,6 @@ projSUS.Char = pd.Animation.extend({
             this.curr_life = 0;
             this.status = "dead";
         }
-        cc.log("---", this.curr_life ,  this.max_life)
         this.health_bar.setPercentage(100 * this.curr_life / this.max_life);
     },
 
@@ -76,4 +76,7 @@ projSUS.Char = pd.Animation.extend({
         this.buffs_on_me.push(buff);
     },
 
+    createHealFeed: function (amount) {
+        projSUS.controller.createHealFeed(this, amount);
+    }
 });

@@ -40,9 +40,17 @@ projSUS.Controller = cc.Class.extend ({
         return this.healer.getTargetAlly();
     },
 
-    updateHealerMana: function (perc) {
-        this.hud.updateHealerMana(perc);
+    updateHealerMana: function (curr_mana, max_mana) {
+        this.hud.updateHealerMana(curr_mana, max_mana);
     },
+
+    updateHealerMana: function (curr_mana, max_mana) {
+        this.hud.updateHealerMana(curr_mana, max_mana);
+    },
+
+    createHealFeed: function (target, amount) {
+        this.hud.createHealFeed(target, amount);
+    }
 
 
 });

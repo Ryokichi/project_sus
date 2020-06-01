@@ -65,8 +65,7 @@ pd.labelBM = function (parent, text, font_name, width, alignment) {
     }
 
     var label = new cc.LabelBMFont(text, font_name, width, hor_align);
-    label.setColor(cc.color(0, 0, 0, 255));
-    label.setAnchorPoint(0.5,0.5);
+    // label.setAnchorPoint(0.5,0.5);
 
     if (parent)
         parent.addChild(label);

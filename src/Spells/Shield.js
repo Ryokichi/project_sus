@@ -6,12 +6,11 @@ projSUS.Shield = projSUS.Spell.extend({
         this.name = "Bolha Protetora";
         this.sprite_name = "shield.png";
 
-        this.base_heal = 3;
-        this.base_mana = 5;
-        this.base_cast = 1;
-        this.base_cd   = 0.8;
-        this.base_tick = 0.8;
-        this.base_duration = 3;
+        this.base_mana      = 5;
+        this.base_cast      = 1;
+        this.base_cd        = 0.8;
+        this.base_duration  = 3;
+        this.mitigation_dmg = 25;
 
         this.cast_timer = 0;
         this.cd_timer   = 0;
@@ -49,7 +48,9 @@ projSUS.Shield = projSUS.Spell.extend({
     },
 
     setDescription: function () {
-        this.description = "Lança uma bolha protetora sobre o aliado, ignorando uma quantidade de dano.";
+        this.description = "Lança uma bolha protetora sobre o aliado, que " +
+                           "absorve até " + this.mitigation_dmg + " de dano durante " +
+                           this.base_duration + " segundos."
     },
 
     createNewShield: function (target) {
@@ -63,7 +64,9 @@ projSUS.SpellShield = cc.Node.extend({
         this._super();
         parent.addChild(this);
 
-        this.image  =  pd.createSprite("a_shield.png", {x:15, y:18}, this);
+        var box = parent.getBoundingBox();
+        this.image  =  pd.createSprite("a_shield.png", {x:box.width/2, y:-5}, this);
+        this.image.setAnchorPoint(0.5, 0);
         this.animate();
         this.scheduleUpdate();
 
